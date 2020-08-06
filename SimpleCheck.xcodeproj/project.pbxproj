@@ -99,9 +99,10 @@
 		A097866624DBD4A5002AB009 /* SimpleCheck */ = {
 			isa = PBXGroup;
 			children = (
+				A097869A24DBD4DF002AB009 /* Model */,
+				A097869924DBD4DC002AB009 /* View */,
+				A097869824DBD4DA002AB009 /* Controller */,
 				A097866724DBD4A5002AB009 /* AppDelegate.swift */,
-				A097866924DBD4A5002AB009 /* ViewController.swift */,
-				A097866B24DBD4A5002AB009 /* Main.storyboard */,
 				A097867124DBD4AC002AB009 /* Assets.xcassets */,
 				A097867324DBD4AC002AB009 /* LaunchScreen.storyboard */,
 				A097867624DBD4AC002AB009 /* Info.plist */,
@@ -126,6 +127,29 @@
 				A097868C24DBD4AC002AB009 /* Info.plist */,
 			);
 			path = SimpleCheckUITests;
+			sourceTree = "<group>";
+		};
+		A097869824DBD4DA002AB009 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A097866924DBD4A5002AB009 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A097869924DBD4DC002AB009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A097866B24DBD4A5002AB009 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A097869A24DBD4DF002AB009 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,14 +463,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YD5BHG2DGB;
 				INFOPLIST_FILE = SimpleCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.SimpleCheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -457,14 +482,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YD5BHG2DGB;
 				INFOPLIST_FILE = SimpleCheck/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.SimpleCheck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
