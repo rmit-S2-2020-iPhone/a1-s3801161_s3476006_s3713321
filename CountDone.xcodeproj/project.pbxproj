@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
-		A09786EE24DC16C2002AB009 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* ViewController.swift */; };
+		A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
 		A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */; };
 		A09786F624DC16C4002AB009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09786F524DC16C4002AB009 /* Assets.xcassets */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A09786ED24DC16C2002AB009 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneViewController.swift; sourceTree = "<group>"; };
 		A09786F024DC16C2002AB009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountDone.xcdatamodel; sourceTree = "<group>"; };
 		A09786F524DC16C4002AB009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,9 +99,10 @@
 		A09786EA24DC16C2002AB009 /* CountDone */ = {
 			isa = PBXGroup;
 			children = (
+				A097871E24DC16E5002AB009 /* Controller */,
+				A097871D24DC16DF002AB009 /* View */,
+				A097871C24DC16CB002AB009 /* Model */,
 				A09786EB24DC16C2002AB009 /* AppDelegate.swift */,
-				A09786ED24DC16C2002AB009 /* ViewController.swift */,
-				A09786EF24DC16C2002AB009 /* Main.storyboard */,
 				A09786F524DC16C4002AB009 /* Assets.xcassets */,
 				A09786F724DC16C4002AB009 /* LaunchScreen.storyboard */,
 				A09786FA24DC16C4002AB009 /* Info.plist */,
@@ -126,6 +127,29 @@
 				A097871024DC16C4002AB009 /* Info.plist */,
 			);
 			path = CountDoneUITests;
+			sourceTree = "<group>";
+		};
+		A097871C24DC16CB002AB009 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A097871D24DC16DF002AB009 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A09786EF24DC16C2002AB009 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A097871E24DC16E5002AB009 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +220,7 @@
 				TargetAttributes = {
 					A09786E724DC16C2002AB009 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					A09786FE24DC16C4002AB009 = {
 						CreatedOnToolsVersion = 10.3;
@@ -259,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09786EE24DC16C2002AB009 /* ViewController.swift in Sources */,
+				A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 			);
@@ -438,13 +463,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CountDone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.CountDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -455,13 +481,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CountDone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.CountDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
