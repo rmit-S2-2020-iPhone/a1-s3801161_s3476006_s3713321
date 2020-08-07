@@ -16,6 +16,7 @@
 		A09786F924DC16C4002AB009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786F724DC16C4002AB009 /* LaunchScreen.storyboard */; };
 		A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870324DC16C4002AB009 /* CountDoneTests.swift */; };
 		A097870F24DC16C4002AB009 /* CountDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870E24DC16C4002AB009 /* CountDoneUITests.swift */; };
+		A0D8692024DD67DF00253151 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8691F24DD67DE00253151 /* AddItemViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A097870A24DC16C4002AB009 /* CountDoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountDoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097870E24DC16C4002AB009 /* CountDoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneUITests.swift; sourceTree = "<group>"; };
 		A097871024DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0D8691F24DD67DE00253151 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */,
+				A0D8691F24DD67DE00253151 /* AddItemViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D8692024DD67DF00253151 /* AddItemViewController.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
 				A049F9CA24DD027C00042CF7 /* ToDolistItem.swift in Sources */,

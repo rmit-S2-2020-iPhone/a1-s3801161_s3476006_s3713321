@@ -18,7 +18,8 @@ class CountDoneViewController: UITableViewController {
         //TODO:- Hardcoding data change later
         items.append(ToDolistItem(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
         
-        
+        //Large size navigation title
+        navigationController?.navigationBar.prefersLargeTitles = true
         
         
         
@@ -81,5 +82,6 @@ class CountDoneViewController: UITableViewController {
         }
     }
     
+  
 }
 
