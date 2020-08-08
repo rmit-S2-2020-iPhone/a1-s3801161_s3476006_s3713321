@@ -8,15 +8,16 @@
 
 import UIKit
 
-class CountDoneViewController: UITableViewController {
+class CountDoneViewController: UITableViewController,ChangeButton {
+   
 
-    var items = [ToDolistItem]()
+    var tasks = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //TODO:- Hardcoding data change later
-        items.append(ToDolistItem(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
         
         //Large size navigation title
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -28,58 +29,63 @@ class CountDoneViewController: UITableViewController {
     
     //MARK:- Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItems", for: indexPath)
-        let item = items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+    
+        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.subtitleLabel.text = tasks[indexPath.row].description
+        cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
+        cell.dateLabel.text = tasks[indexPath.row].date
+        cell.timeLabel.text = tasks[indexPath.row].title
         
-        let date = cell.viewWithTag(999) as! UILabel
-        let time = cell.viewWithTag(1000) as! UILabel
-        let emoji = cell.viewWithTag(1001) as! UILabel
-        let title = cell.viewWithTag(1002) as! UILabel
-        let decription = cell.viewWithTag(1003) as! UILabel
+        configureCheckmark(for: cell, with: tasks[indexPath.row])
         
-        date.text = item.date
-        time.text = item.time
-        emoji.text = item.typeEmoji
-        title.text = item.title
-        decription.text  = item.description
+
+        cell.delegate = self
+        cell.indexPath = indexPath.row
+        cell.tasks = tasks
         
-        configureCheckmark(for: cell, with: item)
         
         return cell
     }
-    
+//
     //MARK:- Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath){
-            let item = items[indexPath.row]
-            item.toggleCheck()
-            
-            configureCheckmark(for:cell,with: item)
-        }
-        
+//        if let cell = tableView.cellForRow(at: indexPath) {
+//            let item = tasks[indexPath.row]
+//            item.toggleCheck()
+//
+//            configureCheckmark(for:cell as! TaskCell,with: item)
+//        }
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     //MARK:- Confirgure the checkmark
-    func configureCheckmark(for cell: UITableViewCell,with item: ToDolistItem) {
+    func configureCheckmark(for cell: TaskCell,with item: Task) {
         if item.checked{
-            cell.accessoryType = .checkmark
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
+            
         }else{
-            cell.accessoryType = .none
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
         }
     }
 
-    //MARK:- Delete item
+    //MARK:- Delete task
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            items.remove(at: indexPath.row)
+            tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
         }
+    }
+    
+    func changeButton(checked: Bool, index: Int) {
+        tasks[index].checked = checked
+        tableView.reloadData()
     }
     
   

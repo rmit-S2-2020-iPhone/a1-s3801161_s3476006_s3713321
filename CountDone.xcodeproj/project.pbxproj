@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A049F9CA24DD027C00042CF7 /* ToDolistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049F9C924DD027C00042CF7 /* ToDolistItem.swift */; };
+		A049F9CA24DD027C00042CF7 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A049F9C924DD027C00042CF7 /* Task.swift */; };
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
 		A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
@@ -16,7 +16,8 @@
 		A09786F924DC16C4002AB009 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786F724DC16C4002AB009 /* LaunchScreen.storyboard */; };
 		A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870324DC16C4002AB009 /* CountDoneTests.swift */; };
 		A097870F24DC16C4002AB009 /* CountDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870E24DC16C4002AB009 /* CountDoneUITests.swift */; };
-		A0D8692024DD67DF00253151 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8691F24DD67DE00253151 /* AddItemViewController.swift */; };
+		A0D8692424DE8E9700253151 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8692324DE8E9700253151 /* TaskCell.swift */; };
+		A0D8692624DE9B8600253151 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D8692524DE9B8600253151 /* CreateTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A049F9C924DD027C00042CF7 /* ToDolistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDolistItem.swift; sourceTree = "<group>"; };
+		A049F9C924DD027C00042CF7 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +53,8 @@
 		A097870A24DC16C4002AB009 /* CountDoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountDoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097870E24DC16C4002AB009 /* CountDoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneUITests.swift; sourceTree = "<group>"; };
 		A097871024DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0D8691F24DD67DE00253151 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		A0D8692324DE8E9700253151 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		A0D8692524DE9B8600253151 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +138,7 @@
 		A097871C24DC16CB002AB009 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A049F9C924DD027C00042CF7 /* ToDolistItem.swift */,
+				A049F9C924DD027C00042CF7 /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,7 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */,
-				A0D8691F24DD67DE00253151 /* AddItemViewController.swift */,
+				A0D8692324DE8E9700253151 /* TaskCell.swift */,
+				A0D8692524DE9B8600253151 /* CreateTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -290,11 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0D8692024DD67DF00253151 /* AddItemViewController.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
-				A049F9CA24DD027C00042CF7 /* ToDolistItem.swift in Sources */,
+				A049F9CA24DD027C00042CF7 /* Task.swift in Sources */,
+				A0D8692424DE8E9700253151 /* TaskCell.swift in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
+				A0D8692624DE9B8600253151 /* CreateTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ToDolistItem{
+class Task{
     var title = ""
     var typeEmoji = ""
     var description = ""
