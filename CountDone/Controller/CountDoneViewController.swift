@@ -8,59 +8,85 @@
 
 import UIKit
 
-class search_D {
-    
-}
+class CountDoneViewController: UITableViewController,ChangeButton {
+   
 
-class CountDoneViewController: UITableViewController {
-
-    var search_display = [search_D]()
+    var tasks = [Task]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        //TODO: listing data for search display
-        //search_display.append(search_D(description: "purchase book"))
-        //search_display.append(search_D(description: "barbecue party"))
+        //TODO:- Hardcoding data change later
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
+        
+        //Large size navigation title
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
+        
     }
 
     
     //MARK:- Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItems", for: indexPath)
-        let date = cell.viewWithTag(999) as! UILabel
-        let time = cell.viewWithTag(1000) as! UILabel
-        let emoji = cell.viewWithTag(1001) as! UILabel
-        let title = cell.viewWithTag(1002) as! UILabel
-        let decription = cell.viewWithTag(1003) as! UILabel
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+    
+        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.subtitleLabel.text = tasks[indexPath.row].description
+        cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
+        cell.dateLabel.text = tasks[indexPath.row].date
+        cell.timeLabel.text = tasks[indexPath.row].title
         
-        date.text = "Mon"
-        time.text = "09:00"
-        emoji.text = "🏃‍♀️"
-        title.text = "Morning Jog"
-        decription.text = "5km run in 30 mins"
+        configureCheckmark(for: cell, with: tasks[indexPath.row])
+        
+
+        cell.delegate = self
+        cell.indexPath = indexPath.row
+        cell.tasks = tasks
+        
         
         return cell
     }
-    
+//
     //MARK:- Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath){
-            if(cell.accessoryType == .none){
-                cell.accessoryType = .checkmark
-            }else{
-                cell.accessoryType = .none
-            }
-        }
-        
-        tableView.deselectRow(at: indexPath, animated: false)
+//        if let cell = tableView.cellForRow(at: indexPath) {
+//            let item = tasks[indexPath.row]
+//            item.toggleCheck()
+//
+//            configureCheckmark(for:cell as! TaskCell,with: item)
+//        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //MARK:- Confirgure the checkmark
+    func configureCheckmark(for cell: TaskCell,with item: Task) {
+        if item.checked{
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
+            
+        }else{
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
+        }
+    }
 
+    //MARK:- Delete task
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete{
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        }
+    }
+    
+    func changeButton(checked: Bool, index: Int) {
+        tasks[index].checked = checked
+        tableView.reloadData()
+    }
+    
+  
 }
-
