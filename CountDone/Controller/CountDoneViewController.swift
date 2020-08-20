@@ -8,22 +8,6 @@
 
 import UIKit
 
-class CountDoneViewController: UITableViewController,ChangeButton {
-   
-
-    var tasks = [Task]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //TODO:- Hardcoding data change later
-        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
-        
-        //Large size navigation title
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
-        
     }
 
     

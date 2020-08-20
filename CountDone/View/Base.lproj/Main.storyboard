@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1bV-Rx-lh7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SqT-fD-VJ9">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,68 +93,3 @@
                             <outlet property="delegate" destination="Uuk-UC-2aG" id="xze-6m-nBJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="CountDone" id="m7G-hE-Ajv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4Yc-Hz-H1S">
-                            <connections>
-                                <segue destination="V7K-E5-PgK" kind="show" id="NgW-Vv-MRI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Bq-lx-v4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1546.875" y="-230"/>
-        </scene>
-        <!--Create Task-->
-        <scene sceneID="Hmd-Ux-IgJ">
-            <objects>
-                <viewController id="V7K-E5-PgK" customClass="CreateTaskViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3v3-kD-880">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PUX-jH-LDk">
-                                <rect key="frame" x="16" y="172" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="goH-IR-yiY"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Create Task" id="Oin-eQ-LAv">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="LCV-9W-hfm"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="taskTitle" destination="PUX-jH-LDk" id="KbV-G6-cnJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kT9-vv-qiO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2415" y="-230.28169014084509"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="e3H-ny-U0g">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1bV-Rx-lh7" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dfg-Lf-PJC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Uuk-UC-2aG" kind="relationship" relationship="rootViewController" id="i4d-rE-28A"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xgZ-DA-QWc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="637.68115942028987" y="-228.34821428571428"/>
-        </scene>
-    </scenes>
-    <resources>
-        <image name="checked" width="40" height="40"/>
-    </resources>
-</document>
