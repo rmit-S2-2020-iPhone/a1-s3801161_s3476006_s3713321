@@ -8,11 +8,21 @@
 
 import UIKit
 
+class search_D {
+    
+}
+
 class CountDoneViewController: UITableViewController {
 
+    var search_display = [search_D]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //TODO: listing data for search display
+        //search_display.append(search_D(description: "purchase book"))
+        //search_display.append(search_D(description: "barbecue party"))
     }
 
     
