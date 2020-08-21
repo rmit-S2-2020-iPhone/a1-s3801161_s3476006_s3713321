@@ -7,10 +7,8 @@
 //
 
 import UIKit
-
-class CountDoneViewController: UITableViewController,ChangeButton {
+class CountDoneViewController: UITableViewController,ChangeButton,Storyboarded {
    
-
     var tasks = [Task]()
     
     override func viewDidLoad() {

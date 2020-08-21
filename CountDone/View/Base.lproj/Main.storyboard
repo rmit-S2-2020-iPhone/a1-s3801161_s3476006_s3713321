@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SqT-fD-VJ9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2805" y="457.3943661971831"/>
+            <point key="canvasLocation" x="2505" y="373"/>
         </scene>
         <!--Search Result-->
         <scene sceneID="di9-h4-XNH">
@@ -169,27 +169,10 @@
             </objects>
             <point key="canvasLocation" x="4891.875" y="456.33802816901408"/>
         </scene>
-        <!--welcome-->
-        <scene sceneID="nzN-PA-uBJ">
-            <objects>
-                <tabBarController title="welcome" id="SqT-fD-VJ9" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xOR-33-iy0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="WNE-Uf-050" kind="relationship" relationship="viewControllers" id="uGH-Zf-NEa"/>
-                        <segue destination="VOo-dk-uTH" kind="relationship" relationship="viewControllers" id="aHn-J4-5JZ"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JKd-T6-XkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="182" y="112"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="PB7-PU-TDk">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D5k-x4-3B3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mxe-DC-Xao" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AxN-Bd-cKz">
@@ -201,7 +184,6 @@
                         <segue destination="73K-sN-npI" kind="relationship" relationship="rootViewController" id="sId-b1-WRP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D5k-x4-3B3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3894.375" y="456.33802816901408"/>
         </scene>
@@ -332,44 +314,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9M-3k-stM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3465" y="-365.49295774647885"/>
-        </scene>
-        <!--event-->
-        <scene sceneID="eL7-bc-dUk">
-            <objects>
-                <navigationController title="event" automaticallyAdjustsScrollViewInsets="NO" id="WNE-Uf-050" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="events" id="6Qb-RJ-916"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JeD-Cq-eec">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SAd-l1-zN8" kind="relationship" relationship="rootViewController" id="vrh-iu-35q"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R48-Wo-w8o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1507.5" y="-365.49295774647885"/>
-        </scene>
-        <!--search-->
-        <scene sceneID="fZX-nk-7Od">
-            <objects>
-                <navigationController title="search" automaticallyAdjustsScrollViewInsets="NO" id="VOo-dk-uTH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="search" id="4U6-n5-zOF"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wip-Yq-iSN">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7yr-pd-hz7" kind="relationship" relationship="rootViewController" id="4vH-dc-EeJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XA5-92-IpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1807.5" y="457.3943661971831"/>
         </scene>
     </scenes>
     <resources>
