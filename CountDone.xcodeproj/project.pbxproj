@@ -17,8 +17,9 @@
 		3D78DC8E24F03EA3000060FA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8D24F03EA3000060FA /* StartViewController.swift */; };
 		3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */; };
 		3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9124F03F7B000060FA /* TabBarController.swift */; };
+		3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9324F042D7000060FA /* EventsCoordinator.swift */; };
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
-		A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */; };
+		A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* EventViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
 		A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */; };
 		A09786F624DC16C4002AB009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09786F524DC16C4002AB009 /* Assets.xcassets */; };
@@ -54,9 +55,10 @@
 		3D78DC8D24F03EA3000060FA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		3D78DC9124F03F7B000060FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3D78DC9324F042D7000060FA /* EventsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneViewController.swift; sourceTree = "<group>"; };
+		A09786ED24DC16C2002AB009 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		A09786F024DC16C2002AB009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountDone.xcdatamodel; sourceTree = "<group>"; };
 		A09786F524DC16C4002AB009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				3D78DC8224F014C1000060FA /* Coordinator.swift */,
 				3D78DC8B24F03B7C000060FA /* StartCoordinator.swift */,
 				3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */,
+				3D78DC9324F042D7000060FA /* EventsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -180,7 +183,7 @@
 			children = (
 				3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */,
 				3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */,
-				A09786ED24DC16C2002AB009 /* CountDoneViewController.swift */,
+				A09786ED24DC16C2002AB009 /* EventViewController.swift */,
 				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
 			);
@@ -322,11 +325,12 @@
 				3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */,
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
 				3D78DC8C24F03B7C000060FA /* StartCoordinator.swift in Sources */,
-				A09786EE24DC16C2002AB009 /* CountDoneViewController.swift in Sources */,
+				A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */,
 				3D78DC8E24F03EA3000060FA /* StartViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
+				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */,
 				3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,

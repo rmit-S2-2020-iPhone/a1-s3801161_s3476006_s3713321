@@ -19,8 +19,9 @@ class TabBarCoordinator: Coordinator {
         let tabBarController = TabBarController()
         tabBarController.coordinator = self
         
-        let topRatedNavigationController = UINavigationController()
-        topRatedNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        let eventNavigationController = UINavigationController()
+        eventNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        let eventCoordinator = EventCoordinator(navigationController: eventNavigationController)
         
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(
@@ -28,11 +29,13 @@ class TabBarCoordinator: Coordinator {
      
         
         
-        tabBarController.viewControllers = [topRatedNavigationController,
+        tabBarController.viewControllers = [eventNavigationController,
                                             searchNavigationController]
         
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: true, completion: nil)
+        
+        coordinate(to:eventCoordinator)
         
     }
 }

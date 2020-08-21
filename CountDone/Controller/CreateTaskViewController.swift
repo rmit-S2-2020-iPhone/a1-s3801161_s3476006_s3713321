@@ -10,8 +10,9 @@ import UIKit
 
 
 
-class CreateTaskViewController: UIViewController {
+class CreateTaskViewController: UIViewController, Storyboarded {
 
+    var coordinator: EventdFlow?
     @IBOutlet weak var taskTitle: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()

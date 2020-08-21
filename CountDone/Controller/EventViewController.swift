@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class CountDoneViewController: UITableViewController,ChangeButton,Storyboarded {
+class EventViewController: UITableViewController,ChangeButton,Storyboarded {
    
     var tasks = [Task]()
     
@@ -20,9 +20,9 @@ class CountDoneViewController: UITableViewController,ChangeButton,Storyboarded {
         //Large size navigation title
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        
-        
     }
+    
+     var coordinator: EventdFlow?
 
     
     //MARK:- Table view data source
@@ -30,9 +30,10 @@ class CountDoneViewController: UITableViewController,ChangeButton,Storyboarded {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //self.tableView.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
+     
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
-    
+        
         cell.titleLabel.text = tasks[indexPath.row].title
         cell.subtitleLabel.text = tasks[indexPath.row].description
         cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
@@ -86,5 +87,8 @@ class CountDoneViewController: UITableViewController,ChangeButton,Storyboarded {
         tableView.reloadData()
     }
     
-  
+    @IBAction func AddItem(_ sender: Any) {
+        coordinator?.add_item()
+    }
+    
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController,Storyboarded {
     
     override func viewDidLoad() {
         self.tabBar.layer.masksToBounds = true

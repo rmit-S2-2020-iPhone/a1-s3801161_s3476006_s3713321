@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController,Storyboarded {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {

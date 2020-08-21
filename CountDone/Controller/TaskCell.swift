@@ -11,8 +11,9 @@ import UIKit
 protocol ChangeButton{
     func changeButton(checked: Bool, index: Int)
 }
-class TaskCell: UITableViewCell {
 
+class TaskCell: UITableViewCell {
+    
     @IBOutlet weak var checkBox: UIButton!
     @IBOutlet weak var typeEmoji: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
