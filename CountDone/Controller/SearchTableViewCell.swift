@@ -6,8 +6,14 @@
 //  Copyright © 2020 G33. All rights reserved.
 //
 //  reference for uibutton function: https://blog.csdn.net/sbt0198/article/details/53727709
+//  reference for add uibutton: https://www.youtube.com/watch?v=fzjtvq-jC4E
+
 
 import UIKit
+
+protocol CreateThisTask {
+    func addThisTask(index: Int)
+}
 
 class SearchTableViewCell: UITableViewCell {
 
@@ -33,12 +39,16 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    //@IBAction func addThisTask(sender: UIButton) {
-    //    delegate.addEvent(eventID: eventID)
-    //}
-
+    
+    var addBtn: CreateThisTask?
+    var index: IndexPath?
+    
+    
+    @IBAction func addThisLabel(_ sender: Any) {
+        addBtn?.addThisTask(index: (index?.row)!)
+    }
+    
+    
 }
 
-protocol SearchTableViewCellDelegate {
-    func addEvent(eventID: Int!)
-}
+

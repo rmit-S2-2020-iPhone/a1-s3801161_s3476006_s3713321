@@ -47,7 +47,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-Jb-pNe">
-                                                    <rect key="frame" x="67" y="15" width="107" height="21"/>
+                                                    <rect key="frame" x="67" y="15" width="96" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="107" id="vgX-gV-5Lf"/>
                                                     </constraints>
@@ -72,6 +72,14 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addThisLabel" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLS-XV-wI9">
+                                                    <rect key="frame" x="282" y="11" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="➕"/>
+                                                    <connections>
+                                                        <action selector="addThisLabel:" destination="MCC-ej-zgz" eventType="touchUpInside" id="6U9-2a-MVG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nwa-Jb-pNe" firstAttribute="firstBaseline" secondItem="rz5-wz-WTK" secondAttribute="firstBaseline" id="6Ar-07-dik"/>

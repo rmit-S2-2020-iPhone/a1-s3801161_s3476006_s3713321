@@ -59,6 +59,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         //  return the number of array items in tableView
     }
     
+    
     // table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? SearchTableViewCell else {
@@ -68,6 +69,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
         cell.dateLabel.text = tmpEventArray[indexPath.row].date
         cell.timeLabel.text = tmpEventArray[indexPath.row].time
+        cell.addBtn = self
+        cell.index = indexPath
+        
         return cell
     }
     
@@ -126,3 +130,11 @@ class Event {
         //self.addThisTask = addThisTask
     }
 }
+
+
+extension SearchViewController: CreateThisTask {
+    func addThisTask(index: Int) {
+        
+    }
+}
+ 
