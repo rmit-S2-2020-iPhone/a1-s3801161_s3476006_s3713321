@@ -26,7 +26,7 @@ class TabBarCoordinator: Coordinator {
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(
             tabBarSystemItem: .search, tag: 1)
-        let searchCoordinator = SearchCoordinator(navigationController: searchNavigationController)
+        let searchViewCoordinator = SearchViewCoordinator(navigationController: searchNavigationController)
         
         
         tabBarController.viewControllers = [eventNavigationController,
@@ -36,7 +36,7 @@ class TabBarCoordinator: Coordinator {
         navigationController.present(tabBarController, animated: true, completion: nil)
         
         coordinate(to:eventCoordinator)
-        coordinate(to:searchCoordinator)
+        coordinate(to:searchViewCoordinator)
         
     }
 }

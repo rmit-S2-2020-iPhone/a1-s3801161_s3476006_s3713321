@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */; };
+		015B1D8224F185910023FFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D8124F185910023FFCC /* ViewController.swift */; };
 		3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75C24EEB78700BEE330 /* Task.swift */; };
 		3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */; };
 		3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */; };
@@ -19,8 +21,6 @@
 		3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9124F03F7B000060FA /* TabBarController.swift */; };
 		3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9324F042D7000060FA /* EventsCoordinator.swift */; };
 		3DA2998A24F06DCA00F24FF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2998924F06DCA00F24FF7 /* Assets.xcassets */; };
-		3DA2998C24F0D72A00F24FF7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */; };
-		3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */; };
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
 		A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* EventViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
@@ -47,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
+		015B1D8124F185910023FFCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3D3AD75C24EEB78700BEE330 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -59,8 +61,6 @@
 		3D78DC9124F03F7B000060FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3D78DC9324F042D7000060FA /* EventsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
 		3DA2998924F06DCA00F24FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CountDone/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09786ED24DC16C2002AB009 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 				3D78DC8B24F03B7C000060FA /* StartCoordinator.swift */,
 				3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */,
 				3D78DC9324F042D7000060FA /* EventsCoordinator.swift */,
-				3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */,
+				015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 				A09786ED24DC16C2002AB009 /* EventViewController.swift */,
 				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
-				3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */,
+				015B1D8124F185910023FFCC /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -327,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DA2998C24F0D72A00F24FF7 /* SearchViewController.swift in Sources */,
 				3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */,
 				3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */,
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
@@ -339,8 +338,9 @@
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */,
-				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
+				015B1D8224F185910023FFCC /* ViewController.swift in Sources */,
 				3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */,
+				015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
 				3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */,
 			);
