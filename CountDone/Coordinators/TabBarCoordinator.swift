@@ -28,15 +28,20 @@ class TabBarCoordinator: Coordinator {
             tabBarSystemItem: .search, tag: 1)
         let searchCoordinator = SearchCoordinator(navigationController: searchNavigationController)
         
-        
+        let calenderNavigationController = UINavigationController()
+        calenderNavigationController.tabBarItem = UITabBarItem(
+            title: "Calender", image: UIImage(named:"events"), tag:2)
+        let calenderCoordinator = CalenderCoordinator(navigationController: calenderNavigationController)
         tabBarController.viewControllers = [eventNavigationController,
-                                            searchNavigationController]
+                                            searchNavigationController,
+                                            calenderNavigationController]
         
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: true, completion: nil)
         
         coordinate(to:eventCoordinator)
         coordinate(to:searchCoordinator)
+        coordinate(to:calenderCoordinator)
         
     }
 }
