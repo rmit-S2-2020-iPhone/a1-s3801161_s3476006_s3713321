@@ -24,20 +24,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         setUpEvents()
         setUpSearchBar()
         searchBarLayout()
-        // Do any additional setup after loading the view.
+        
+        searchTable.isScrollEnabled = true
     }
     
     private func setUpEvents() {
+        eventArray.append(Event(typeEmoji: "⛽️", title: "fuel up", date: "02/Sep/2020", time: "all day"))
         eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
         eventArray.append(Event(typeEmoji: "🛒", title: "shopping", date: "13/Sep/2020", time: "all day"))
+        eventArray.append(Event(typeEmoji: "🎉", title: "bachelor party", date: "05/Oct/2020", time: "5:00p.m."))
         eventArray.append(Event(typeEmoji: "👰", title: "shaw's wedding", date: "08/Oct/2020", time: "11:00a.m."))
-        eventArray.append(Event(typeEmoji: "🎉", title: "graduation party", date: "11/Nov/2020", time: "6:00p.m."))
+        eventArray.append(Event(typeEmoji: "🎓", title: "graduation party", date: "11/Nov/2020", time: "6:00p.m."))
         eventArray.append(Event(typeEmoji: "✈️", title: "to europe", date: "11/Dec/2020", time: "6:30a.m."))
-        eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
-        eventArray.append(Event(typeEmoji: "🛒", title: "shopping", date: "13/Sep/2020", time: "all day"))
-        eventArray.append(Event(typeEmoji: "👰", title: "shaw's wedding", date: "08/Oct/2020", time: "11:00a.m."))
-        eventArray.append(Event(typeEmoji: "🎉", title: "graduation party", date: "11/Nov/2020", time: "6:00p.m."))
-        eventArray.append(Event(typeEmoji: "✈️", title: "to europe", date: "11/Dec/2020", time: "6:30a.m."))
+        eventArray.append(Event(typeEmoji: "🚗", title: "car maintenance", date: "18/Dec/2020", time: "all day"))
+        eventArray.append(Event(typeEmoji: "💉", title: "vaccination", date: "28/Feb/2021", time: "1:00p.m."))
         
         tmpEventArray = eventArray
     }
