@@ -18,11 +18,11 @@
 		3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */; };
 		3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9124F03F7B000060FA /* TabBarController.swift */; };
 		3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9324F042D7000060FA /* EventsCoordinator.swift */; };
+		3DA2998A24F06DCA00F24FF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DA2998924F06DCA00F24FF7 /* Assets.xcassets */; };
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
 		A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* EventViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
 		A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */; };
-		A09786F624DC16C4002AB009 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A09786F524DC16C4002AB009 /* Assets.xcassets */; };
 		A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870324DC16C4002AB009 /* CountDoneTests.swift */; };
 		A097870F24DC16C4002AB009 /* CountDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870E24DC16C4002AB009 /* CountDoneUITests.swift */; };
 /* End PBXBuildFile section */
@@ -56,12 +56,12 @@
 		3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		3D78DC9124F03F7B000060FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3D78DC9324F042D7000060FA /* EventsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
+		3DA2998924F06DCA00F24FF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CountDone/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09786ED24DC16C2002AB009 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		A09786F024DC16C2002AB009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountDone.xcdatamodel; sourceTree = "<group>"; };
-		A09786F524DC16C4002AB009 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A09786FA24DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A09786FF24DC16C4002AB009 /* CountDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097870324DC16C4002AB009 /* CountDoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneTests.swift; sourceTree = "<group>"; };
@@ -131,13 +131,13 @@
 		A09786EA24DC16C2002AB009 /* CountDone */ = {
 			isa = PBXGroup;
 			children = (
+				3DA2998924F06DCA00F24FF7 /* Assets.xcassets */,
 				3D78DC8A24F03B4D000060FA /* Coordinators */,
 				A097871E24DC16E5002AB009 /* Controller */,
 				A097871D24DC16DF002AB009 /* View */,
 				A097871C24DC16CB002AB009 /* Model */,
 				A09786EB24DC16C2002AB009 /* AppDelegate.swift */,
 				3D78DC8424F0155A000060FA /* Storyboarded.swift */,
-				A09786F524DC16C4002AB009 /* Assets.xcassets */,
 				A09786FA24DC16C4002AB009 /* Info.plist */,
 				A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */,
 			);
@@ -295,7 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A09786F624DC16C4002AB009 /* Assets.xcassets in Resources */,
+				3DA2998A24F06DCA00F24FF7 /* Assets.xcassets in Resources */,
 				A09786F124DC16C2002AB009 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

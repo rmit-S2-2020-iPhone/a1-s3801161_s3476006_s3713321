@@ -20,7 +20,7 @@ class TabBarCoordinator: Coordinator {
         tabBarController.coordinator = self
         
         let eventNavigationController = UINavigationController()
-        eventNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
+        eventNavigationController.tabBarItem = UITabBarItem.init(title: "Events", image: UIImage(named:"events"), tag:0)
         let eventCoordinator = EventCoordinator(navigationController: eventNavigationController)
         
         let searchNavigationController = UINavigationController()
