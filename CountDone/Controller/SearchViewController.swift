@@ -23,10 +23,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         setUpEvents()
         setUpSearchBar()
+        searchBarLayout()
         // Do any additional setup after loading the view.
     }
     
     private func setUpEvents() {
+        eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
+        eventArray.append(Event(typeEmoji: "🛒", title: "shopping", date: "13/Sep/2020", time: "all day"))
+        eventArray.append(Event(typeEmoji: "👰", title: "shaw's wedding", date: "08/Oct/2020", time: "11:00a.m."))
+        eventArray.append(Event(typeEmoji: "🎉", title: "graduation party", date: "11/Nov/2020", time: "6:00p.m."))
+        eventArray.append(Event(typeEmoji: "✈️", title: "to europe", date: "11/Dec/2020", time: "6:30a.m."))
         eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
         eventArray.append(Event(typeEmoji: "🛒", title: "shopping", date: "13/Sep/2020", time: "all day"))
         eventArray.append(Event(typeEmoji: "👰", title: "shaw's wedding", date: "08/Oct/2020", time: "11:00a.m."))
@@ -39,6 +45,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // search bar
     private func setUpSearchBar() {
         //searchBar.delegate = self
+    }
+    
+    private func searchBarLayout() {
+        searchTable.tableHeaderView = UIView()
+        searchTable.estimatedSectionHeaderHeight = 50
     }
     
     
@@ -63,6 +74,17 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // table
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    // table
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return searchBar
+        // even if scroll down. the search bar is still on top of the page
+    }
+    
+    // table
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     

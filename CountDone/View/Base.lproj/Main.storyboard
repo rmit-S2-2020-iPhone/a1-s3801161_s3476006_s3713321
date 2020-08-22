@@ -40,16 +40,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz5-wz-WTK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz5-wz-WTK">
                                                     <rect key="frame" x="24" y="15" width="23" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-Jb-pNe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-Jb-pNe">
                                                     <rect key="frame" x="67" y="15" width="107" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="107" id="vgX-gV-5Lf"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -70,12 +71,17 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="SkU-mk-gpm" secondAttribute="trailing" constant="6" id="2hw-Qy-ycK"/>
-                                                        <constraint firstItem="SkU-mk-gpm" firstAttribute="leading" secondItem="7hr-og-Xqd" secondAttribute="leading" constant="6" id="Skx-iZ-nre"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="firstBaseline" secondItem="rz5-wz-WTK" secondAttribute="firstBaseline" id="6Ar-07-dik"/>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="centerY" secondItem="h6t-wB-zoL" secondAttribute="centerY" id="K1r-Qi-P1Z"/>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="leading" secondItem="h6t-wB-zoL" secondAttribute="leading" constant="67" id="LIY-QM-pst"/>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="leading" secondItem="rz5-wz-WTK" secondAttribute="trailing" constant="20" id="gFc-J8-SYQ"/>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="baseline" secondItem="rz5-wz-WTK" secondAttribute="baseline" id="gcH-MI-Ndc"/>
+                                                <constraint firstItem="7hr-og-Xqd" firstAttribute="leading" secondItem="nwa-Jb-pNe" secondAttribute="trailing" constant="8" symbolic="YES" id="pdc-QU-GON"/>
+                                                <constraint firstItem="nwa-Jb-pNe" firstAttribute="top" secondItem="h6t-wB-zoL" secondAttribute="topMargin" constant="-16" id="vYy-gh-21M"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="sBw-AF-qwj" id="Yus-Gr-lxc"/>
