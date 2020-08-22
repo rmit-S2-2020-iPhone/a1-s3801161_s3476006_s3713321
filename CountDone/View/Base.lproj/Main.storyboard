@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="RZb-U4-1Mp">
             <objects>
-                <viewController id="4ct-BX-XtR" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4ct-BX-XtR" customClass="SearchViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vL4-nS-fKp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,6 +28,9 @@
                                     <scopeButtonTitles>
                                         <string>Tasks</string>
                                     </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="4ct-BX-XtR" id="yKt-uR-3uu"/>
+                                    </connections>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="52" id="MCC-ej-zgz" customClass="SearchTableViewCell" customModule="CountDone" customModuleProvider="target">
@@ -37,7 +40,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="typeEmoji" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz5-wz-WTK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz5-wz-WTK">
                                                     <rect key="frame" x="24" y="15" width="23" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -45,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-Jb-pNe">
-                                                    <rect key="frame" x="67" y="15" width="34" height="21"/>
+                                                    <rect key="frame" x="67" y="15" width="107" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -54,13 +57,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7hr-og-Xqd">
                                                     <rect key="frame" x="182" y="5" width="34.5" height="43"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBw-AF-qwj">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="dataLabel" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBw-AF-qwj">
                                                             <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkU-mk-gpm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="timeLabel" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkU-mk-gpm">
                                                             <rect key="frame" x="0.0" y="22.5" width="34.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -72,19 +75,13 @@
                                                         <constraint firstItem="SkU-mk-gpm" firstAttribute="leading" secondItem="7hr-og-Xqd" secondAttribute="leading" constant="6" id="Skx-iZ-nre"/>
                                                     </constraints>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjH-tt-UBi">
-                                                    <rect key="frame" x="279" y="10" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="➕"/>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="addThisTask" destination="MjH-tt-UBi" id="8pT-Sj-zSl"/>
-                                            <outlet property="date" destination="sBw-AF-qwj" id="a6e-Gg-6Ip"/>
-                                            <outlet property="time" destination="SkU-mk-gpm" id="uyW-if-wnS"/>
+                                            <outlet property="dateLabel" destination="sBw-AF-qwj" id="Yus-Gr-lxc"/>
+                                            <outlet property="timeLabel" destination="SkU-mk-gpm" id="VAZ-Ds-xrI"/>
                                             <outlet property="titleLabel" destination="nwa-Jb-pNe" id="Z2Q-3L-JHm"/>
-                                            <outlet property="typeEmoji" destination="rz5-wz-WTK" id="ynH-pr-mdr"/>
+                                            <outlet property="typeEmojiLabel" destination="rz5-wz-WTK" id="PHc-dN-43X"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -103,6 +100,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1zp-ol-eew"/>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="Zqt-7F-NsN" id="dEN-Bb-W3F"/>
+                        <outlet property="searchTable" destination="2Ot-gA-R99" id="WYP-Fl-WNk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ve-1A-2xM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

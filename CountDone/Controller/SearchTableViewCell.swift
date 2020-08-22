@@ -11,10 +11,12 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
+
     @IBOutlet weak var typeEmojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
     //@IBOutlet weak var addThisTask: UIButton!
     
     //var eventID: Int!

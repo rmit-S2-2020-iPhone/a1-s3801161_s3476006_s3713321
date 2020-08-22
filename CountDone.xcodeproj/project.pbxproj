@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */; };
-		015B1D8224F185910023FFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D8124F185910023FFCC /* ViewController.swift */; };
 		01C1847D24F18D53002B00A8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */; };
+		01C1847F24F1B949002B00A8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C1847E24F1B949002B00A8 /* SearchViewController.swift */; };
 		3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75C24EEB78700BEE330 /* Task.swift */; };
 		3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */; };
 		3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */; };
@@ -49,8 +49,8 @@
 
 /* Begin PBXFileReference section */
 		015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
-		015B1D8124F185910023FFCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		01C1847E24F1B949002B00A8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3D3AD75C24EEB78700BEE330 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				A09786ED24DC16C2002AB009 /* EventViewController.swift */,
 				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
-				015B1D8124F185910023FFCC /* ViewController.swift */,
+				01C1847E24F1B949002B00A8 /* SearchViewController.swift */,
 				01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */,
 			);
 			path = Controller;
@@ -342,7 +342,7 @@
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */,
 				01C1847D24F18D53002B00A8 /* SearchTableViewCell.swift in Sources */,
-				015B1D8224F185910023FFCC /* ViewController.swift in Sources */,
+				01C1847F24F1B949002B00A8 /* SearchViewController.swift in Sources */,
 				3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */,
 				015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
@@ -513,7 +513,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CountDone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -522,6 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.CountDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -531,7 +534,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CountDone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -540,6 +545,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.G33.CountDone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
