@@ -19,9 +19,12 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
     @IBOutlet weak var Description: UIView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         calender.delegate = self
-
+        calender.appearance.eventDefaultColor = UIColor.blue
+        calender.appearance.eventSelectionColor = UIColor.red
+        
         // Do any additional setup after loading the view.
     }
     
@@ -30,10 +33,12 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
         dateFormatter3.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter3.string(from: date)
         if self.dateArray.contains(dateString){
-           text.text = "Today you have an event"
+            text.text = "Today you have an event"
+            self.calender.reloadData()
         }else{
             text.text = "you don't have work for today!!"
         }
+       
     }
     
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -43,7 +48,7 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
         
         //display events as dots
         cell.eventIndicator.isHidden = false
-        cell.eventIndicator.color = UIColor.green
+        //cell.eventIndicator.color = UIColor.green
         
         
         if self.dateArray.contains(dateString){
