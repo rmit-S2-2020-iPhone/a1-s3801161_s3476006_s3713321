@@ -30,7 +30,7 @@ class EventCoordinator: Coordinator, EventdFlow {
     func add_item(){
         let vc = CreateTaskViewController.instantiate()
         vc.coordinator = self
-         navigationController?.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     // MARK: - Flow Methods

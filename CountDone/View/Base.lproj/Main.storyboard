@@ -13,7 +13,7 @@
         <!--Search-->
         <scene sceneID="vxb-Sa-M2x">
             <objects>
-                <viewController id="7yr-pd-hz7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="7yr-pd-hz7" customClass="SearchViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
                     <searchBar key="view" contentMode="redraw" text="" id="g7E-oE-slS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -41,7 +41,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="4118" y="-365"/>
+            <point key="canvasLocation" x="2436" y="391"/>
         </scene>
         <!--Search Result-->
         <scene sceneID="di9-h4-XNH">
@@ -167,7 +167,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6X-gw-yti" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4911" y="-365"/>
+            <point key="canvasLocation" x="3255" y="391"/>
         </scene>
         <!--events-->
         <scene sceneID="YGQ-4g-gIL">
