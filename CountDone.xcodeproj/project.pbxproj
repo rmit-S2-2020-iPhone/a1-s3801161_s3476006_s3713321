@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */; };
 		015B1D8224F185910023FFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015B1D8124F185910023FFCC /* ViewController.swift */; };
+		01C1847D24F18D53002B00A8 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */; };
 		3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75C24EEB78700BEE330 /* Task.swift */; };
 		3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */; };
 		3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		015B1D7F24F1854B0023FFCC /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
 		015B1D8124F185910023FFCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		3D3AD75C24EEB78700BEE330 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
 				015B1D8124F185910023FFCC /* ViewController.swift */,
+				01C1847C24F18D53002B00A8 /* SearchTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */,
+				01C1847D24F18D53002B00A8 /* SearchTableViewCell.swift in Sources */,
 				015B1D8224F185910023FFCC /* ViewController.swift in Sources */,
 				3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */,
 				015B1D8024F1854B0023FFCC /* SearchViewCoordinator.swift in Sources */,

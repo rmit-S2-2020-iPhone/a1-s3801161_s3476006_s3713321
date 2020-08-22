@@ -5,6 +5,7 @@
 //  Created by Fanwei Wang on 8/8/20.
 //  Copyright © 2020 G33. All rights reserved.
 //
+//  Reference: https://www.youtube.com/watch?v=4RyhnwIRjpA&t=281s
 
 import UIKit
 

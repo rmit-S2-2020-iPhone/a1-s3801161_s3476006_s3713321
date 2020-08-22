@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SearchViewFlow: class {
+    func add_this_task()
 }
 
 class SearchViewCoordinator: Coordinator, SearchViewFlow {
@@ -26,6 +27,15 @@ class SearchViewCoordinator: Coordinator, SearchViewFlow {
         
         navigationController?.pushViewController(viewController, animated: false)
     }
+    
+    func add_this_task() {
+        let att = CreateTaskViewController.instantiate()
+        att.coordinator = self as? EventdFlow
+        // navigate to createTask page like event page
+        
+        navigationController?.pushViewController(att, animated: false)
+    }
+    
     
     // MARK: - Flow Methods
     
