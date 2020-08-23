@@ -11,7 +11,7 @@ import FSCalendar
 
 class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate,UIWebViewDelegate {
     var coordinator: CalenderFlow?
-    var dateArray: [String] = ["2020-08-08","2020-08-18"]
+    var dateArray: [String] = ["2020-08-08","2020-08-23"]
     
     @IBOutlet weak var text: UITextField!
     @IBOutlet var calender:FSCalendar!
