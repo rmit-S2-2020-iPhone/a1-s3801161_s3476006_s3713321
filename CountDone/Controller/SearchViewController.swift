@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController, Storyboarded {
     var coordinator: SearchFlow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

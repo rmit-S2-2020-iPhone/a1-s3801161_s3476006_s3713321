@@ -8,17 +8,17 @@
 
 import UIKit
 class EventViewController: UITableViewController,ChangeButton,Storyboarded {
-   
-    var tasks = [Task]()
+  
+    var tasks:[Task] = []
     
-    override func viewDidLoad() {
+ override func viewDidLoad() {
         super.viewDidLoad()
         
         //TODO:- Hardcoding data change later
-        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: true))
         
         //Large size navigation title
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     
@@ -38,7 +38,7 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
         cell.subtitleLabel.text = tasks[indexPath.row].description
         cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
         cell.dateLabel.text = tasks[indexPath.row].date
-        cell.timeLabel.text = tasks[indexPath.row].title
+        cell.timeLabel.text = tasks[indexPath.row].time
         
         configureCheckmark(for: cell, with: tasks[indexPath.row])
         
@@ -53,15 +53,11 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
 //
     //MARK:- Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let cell = tableView.cellForRow(at: indexPath) {
-//            let item = tasks[indexPath.row]
-//            item.toggleCheck()
-//
-//            configureCheckmark(for:cell as! TaskCell,with: item)
-//        }
 
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+  
     
     //MARK:- Confirgure the checkmark
     func configureCheckmark(for cell: TaskCell,with item: Task) {

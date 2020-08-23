@@ -256,7 +256,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="events" largeTitleDisplayMode="never" id="ZUh-NP-T91">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="N2U-N4-Ov5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="N2U-N4-Ov5">
                             <connections>
                                 <action selector="AddItem:" destination="SAd-l1-zN8" id="eB1-4d-efs"/>
                             </connections>
@@ -276,29 +276,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dv5-zq-eC9">
-                                <rect key="frame" x="16" y="172" width="288" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n2K-FC-ru2">
+                                <rect key="frame" x="16" y="164" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Notes" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EQa-kz-0Gs">
+                                <rect key="frame" x="16" y="202" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFU-Es-eGH">
+                                <rect key="frame" x="133" y="84" width="54" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="🏃"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mik-9B-qRH">
+                                <rect key="frame" x="16" y="245" width="171" height="32"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="🔔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhP-pZ-3XD">
+                                <rect key="frame" x="224" y="245" width="28" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17Z-EO-g2k">
+                                <rect key="frame" x="253" y="245" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dFU-Es-eGH" firstAttribute="top" secondItem="vhP-FY-BXG" secondAttribute="top" constant="20" id="02O-hL-FG9"/>
+                            <constraint firstItem="vhP-FY-BXG" firstAttribute="trailing" secondItem="EQa-kz-0Gs" secondAttribute="trailing" constant="16" id="3vi-sN-KmG"/>
+                            <constraint firstItem="n2K-FC-ru2" firstAttribute="top" secondItem="dFU-Es-eGH" secondAttribute="bottom" constant="8" id="LdL-9u-nkg"/>
+                            <constraint firstItem="mik-9B-qRH" firstAttribute="top" secondItem="EQa-kz-0Gs" secondAttribute="bottom" constant="8" id="Q1J-O9-Wyq"/>
+                            <constraint firstItem="mik-9B-qRH" firstAttribute="leading" secondItem="vhP-FY-BXG" secondAttribute="leading" constant="16" id="SFl-5T-DoA"/>
+                            <constraint firstItem="vhP-FY-BXG" firstAttribute="trailing" secondItem="n2K-FC-ru2" secondAttribute="trailing" constant="16" id="Tgg-fT-tm4"/>
+                            <constraint firstItem="vhP-FY-BXG" firstAttribute="trailing" secondItem="dFU-Es-eGH" secondAttribute="trailing" constant="133" id="UaS-Z2-hs7"/>
+                            <constraint firstItem="dFU-Es-eGH" firstAttribute="leading" secondItem="vhP-FY-BXG" secondAttribute="leading" constant="133" id="d6H-Yq-cZc"/>
+                            <constraint firstItem="EQa-kz-0Gs" firstAttribute="top" secondItem="n2K-FC-ru2" secondAttribute="bottom" constant="8" id="d70-5Z-JIf"/>
+                            <constraint firstItem="EQa-kz-0Gs" firstAttribute="leading" secondItem="vhP-FY-BXG" secondAttribute="leading" constant="16" id="pJL-f2-ktC"/>
+                            <constraint firstItem="n2K-FC-ru2" firstAttribute="leading" secondItem="vhP-FY-BXG" secondAttribute="leading" constant="16" id="qQM-cI-32h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vhP-FY-BXG"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="create task" id="hVi-Dm-bbl">
                         <barButtonItem key="backBarButtonItem" title="back" id="jMp-Ti-Yt1"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="dai-yW-D8l"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="dai-yW-D8l">
+                            <connections>
+                                <action selector="done" destination="GAH-Yx-zJR" id="b3t-Qe-XFX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="taskTitle" destination="dv5-zq-eC9" id="T8l-fe-PpJ"/>
+                        <outlet property="dateTimeTextField" destination="mik-9B-qRH" id="sLD-ci-r74"/>
+                        <outlet property="descriptionTextField" destination="EQa-kz-0Gs" id="qEm-c3-vYm"/>
+                        <outlet property="doneBarButton" destination="dai-yW-D8l" id="ysr-u5-Ahh"/>
+                        <outlet property="emojiTag" destination="dFU-Es-eGH" id="xS1-pC-dRb"/>
+                        <outlet property="titleTextField" destination="n2K-FC-ru2" id="4EW-Lx-cCy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9M-3k-stM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3255" y="-365"/>
+            <point key="canvasLocation" x="3255" y="-365.49295774647885"/>
         </scene>
     </scenes>
     <resources>
