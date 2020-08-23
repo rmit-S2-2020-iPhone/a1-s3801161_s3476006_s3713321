@@ -11,10 +11,6 @@
 
 import UIKit
 
-protocol CreateThisTask {
-    func addThisTask(index: Int)
-}
-
 class SearchTableViewCell: UITableViewCell {
 
 
@@ -22,11 +18,6 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
-    //@IBOutlet weak var addThisTask: UIButton!
-    
-    //var eventID: Int!
-    //var delegate: SearchTableViewCellDelegate
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,14 +30,6 @@ class SearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    var addBtn: CreateThisTask?
-    var index: IndexPath?
-    
-    
-    @IBAction func addThisLabel(_ sender: Any) {
-        addBtn?.addThisTask(index: (index?.row)!)
-    }
     
     
 }

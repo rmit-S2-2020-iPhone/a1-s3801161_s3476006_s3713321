@@ -11,7 +11,6 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, Storyboarded {
     
-    var coordinator: SearchViewFlow?
     
     @IBOutlet var searchTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
@@ -24,7 +23,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         setUpEvents()
         setUpSearchBar()
         searchBarLayout()
-        
         searchTable.isScrollEnabled = true
     }
     
@@ -69,8 +67,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
         cell.dateLabel.text = tmpEventArray[indexPath.row].date
         cell.timeLabel.text = tmpEventArray[indexPath.row].time
-        cell.addBtn = self
-        cell.index = indexPath
+        
         
         return cell
     }
@@ -106,11 +103,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTable.reloadData()
         
     }
-    // search bar
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
+
+    // action
+    @IBAction func addThisTask(_ sender: Any) {
+    coordinator?.add_this_task()
     }
     
+    var coordinator: SearchViewFlow?
     
 }
 
@@ -131,10 +130,3 @@ class Event {
     }
 }
 
-
-extension SearchViewController: CreateThisTask {
-    func addThisTask(index: Int) {
-        
-    }
-}
- 
