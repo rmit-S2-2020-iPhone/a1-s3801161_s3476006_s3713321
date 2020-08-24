@@ -56,7 +56,8 @@ class CreateTaskViewController: UIViewController, Storyboarded {
     
     
     @IBAction func done() {
-    
+        coordinator?.backToEvent()
+        
 // navigationController?.popViewController(animated: true)
     }
     

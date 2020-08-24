@@ -271,7 +271,7 @@
         <!--create task-->
         <scene sceneID="6lS-rR-pJM">
             <objects>
-                <viewController storyboardIdentifier="CreateTaskViewController" id="GAH-Yx-zJR" customClass="CreateTaskViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateTaskViewController" id="GAH-Yx-zJR" customClass="CreateTaskViewController" customModule="CountDone" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dnz-BN-aNa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

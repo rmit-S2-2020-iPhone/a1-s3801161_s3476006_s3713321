@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventdFlow: class {
    func add_item()
+    func backToEvent()
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
@@ -29,6 +30,12 @@ class EventCoordinator: Coordinator, EventdFlow {
     
     func add_item(){
         let vc = CreateTaskViewController.instantiate()
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func backToEvent(){
+        let vc = EventViewController.instantiate()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
