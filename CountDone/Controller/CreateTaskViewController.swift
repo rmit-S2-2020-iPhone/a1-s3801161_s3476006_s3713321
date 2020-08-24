@@ -9,6 +9,8 @@
 import UIKit
 
 
+
+
 class CreateTaskViewController: UIViewController, Storyboarded {
 
     var coordinator: EventdFlow?
@@ -56,7 +58,7 @@ class CreateTaskViewController: UIViewController, Storyboarded {
     
     
     @IBAction func done() {
-        coordinator?.backToEvent()
+        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: emojiTag.titleLabel!.text!, description: descriptionTextField.text!, date: "Monday", time: "09:00", checked: false))
         
 // navigationController?.popViewController(animated: true)
     }

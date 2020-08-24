@@ -87,4 +87,9 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
         coordinator?.add_item()
     }
     
+    func reloadTableView(newTask : Task){
+        tasks.append(newTask)
+        tableView.reloadData()
+    }
+    
 }

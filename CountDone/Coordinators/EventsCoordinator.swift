@@ -9,10 +9,12 @@ import UIKit
 
 protocol EventdFlow: class {
    func add_item()
-    func backToEvent()
+    func backToEvent(_ newTask:Task)
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
+   
+    var controllerDic:[String: UIViewController] = [:]
     
     weak var navigationController: UINavigationController?
     
@@ -24,6 +26,9 @@ class EventCoordinator: Coordinator, EventdFlow {
         let eventController = EventViewController.instantiate()
         
         eventController.coordinator = self
+        controllerDic = ["eventController":eventController]
+        
+        
         
         navigationController?.pushViewController(eventController, animated: false)
     }
@@ -34,12 +39,18 @@ class EventCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func backToEvent(){
-        let vc = EventViewController.instantiate()
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: false)
+    func backToEvent(_ newTask: Task) {
+        
+        var ec:EventViewController!
+        ec = controllerDic["eventController"] as! EventViewController
+        ec.reloadTableView(newTask: newTask)
+        navigationController?.popToViewController(ec, animated: false)
     }
     
-    // MARK: - Flow Methods
+    
+    
+    
+    
+    //MARK:- Flow Methods
     
 }
