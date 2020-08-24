@@ -26,6 +26,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTable.isScrollEnabled = true
     }
     
+   
+    
+    
     private func setUpEvents() {
         eventArray.append(Event(typeEmoji: "⛽️", title: "fuel up", date: "02/Sep/2020", time: "all day"))
         eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
@@ -67,6 +70,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
         cell.dateLabel.text = tmpEventArray[indexPath.row].date
         cell.timeLabel.text = tmpEventArray[indexPath.row].time
+
+        cell.delegate = self
         
         
         return cell
@@ -104,14 +109,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
+   
     // action
     //@IBAction func addThisTask(_ sender: Any) {
     //    coordinator?.add_this_task()
     //}
     //
-    var coordinator: SearchViewFlow?
+    var coordinator: EventdFlow?
     
 }
+
+extension SearchViewController : CellDelegate {
+    
+    func customcell(cell: SearchTableViewCell) {
+        
+        coordinator?.add_item()
+        print(cell.timeLabel.text)
+    }
+    
+    }
+
 
 
 class Event {

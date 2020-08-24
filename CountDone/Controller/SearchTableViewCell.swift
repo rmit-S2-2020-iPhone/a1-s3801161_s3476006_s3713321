@@ -11,6 +11,10 @@
 
 import UIKit
 
+protocol CellDelegate: class {
+    func customcell(cell:SearchTableViewCell)
+    
+}
 class SearchTableViewCell: UITableViewCell {
     
     
@@ -18,12 +22,18 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var addThisBtn: UIButton!
+    @IBOutlet weak var cellButton: UIButton!
+    weak var delegate : CellDelegate!
+    
+    
     
     
     
     override func awakeFromNib() {
+       
+        
         super.awakeFromNib()
+
         // Initialization code
     }
     
@@ -31,6 +41,10 @@ class SearchTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    @IBAction func cellButtonAction(_ sender: Any) {
+        delegate?.customcell(cell: self)
     }
     
     
