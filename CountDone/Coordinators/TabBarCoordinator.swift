@@ -26,7 +26,7 @@ class TabBarCoordinator: Coordinator {
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem(
             tabBarSystemItem: .search, tag: 1)
-        let searchCoordinator = SearchCoordinator(navigationController: searchNavigationController)
+        let searchCoordinator = SearchViewCoordinator(navigationController: searchNavigationController)
         
         let calenderNavigationController = UINavigationController()
         calenderNavigationController.tabBarItem = UITabBarItem(
