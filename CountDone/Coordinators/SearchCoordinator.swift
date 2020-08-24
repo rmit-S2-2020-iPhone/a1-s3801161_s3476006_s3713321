@@ -1,17 +1,18 @@
 //
-//  SearchCoordinator.swift
+//  SearchViewCoordinator.swift
 //  CountDone
 //
-//  Created by 段欣寰 on 2020/8/22.
+//  Created by Changyu on 23/8/20.
 //  Copyright © 2020 G33. All rights reserved.
 //
 
 import UIKit
 
-protocol SearchFlow: class {
+protocol SearchViewFlow: class {
+    func add_this_task()
 }
 
-class SearchCoordinator: Coordinator, SearchFlow {
+class SearchViewCoordinator: Coordinator, SearchViewFlow {
     
     weak var navigationController: UINavigationController?
     
@@ -27,7 +28,15 @@ class SearchCoordinator: Coordinator, SearchFlow {
         navigationController?.pushViewController(searchViewController, animated: false)
     }
     
+    func add_this_task() {
+        let att = CreateTaskViewController.instantiate()
+        att.coordinator = self as? SearchViewFlow as! EventdFlow
+        // navigate to createTask page like event page
+        
+        navigationController?.pushViewController(att, animated: false)
+    }
+    
+    
     // MARK: - Flow Methods
     
-    // cy: can be deleted later
 }
