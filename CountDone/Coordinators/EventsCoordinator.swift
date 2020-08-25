@@ -9,6 +9,7 @@ import UIKit
 
 protocol EventdFlow: class {
     func add_item()
+    
     func backToEvent(_ newTask:Task)
 }
 
@@ -42,4 +43,9 @@ class EventCoordinator: Coordinator, EventdFlow {
     }
     // MARK: - Flow Methods
     
+    func changeButton(){
+        
+    }
 }
+
+

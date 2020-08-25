@@ -12,26 +12,30 @@
 import UIKit
 
 protocol CellDelegate: class {
-    func customcell(cell:SearchTableViewCell)
-    
+    func customcell(cell:TaskTableViewCell)
 }
-class SearchTableViewCell: UITableViewCell {
+
+protocol CheckBoxDelegate{
+    func changeButton(checked: Bool, index: Int)
+}
+class TaskTableViewCell: UITableViewCell {
     
-    
+    @IBOutlet weak var checkBox: UIButton!
     @IBOutlet weak var typeEmojiLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cellButton: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
     weak var delegate : CellDelegate!
+    var changeButtonDelegate:CheckBoxDelegate?
+    var indexPath: Int?
+    var tasks:[Task]?
+
     
     
     
-    
-    
-    override func awakeFromNib() {
-       
-        
+    override func awakeFromNib() { 
         super.awakeFromNib()
 
         // Initialization code
@@ -47,7 +51,15 @@ class SearchTableViewCell: UITableViewCell {
         delegate?.customcell(cell: self)
     }
     
-    
+    @IBAction func checkBoxAction(_ sender: Any) {
+        if tasks![indexPath!].checked{
+            changeButtonDelegate?.changeButton(checked: false, index: indexPath!)
+        }else{
+            changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
+        }
+        
+    }
+
     
 }
 

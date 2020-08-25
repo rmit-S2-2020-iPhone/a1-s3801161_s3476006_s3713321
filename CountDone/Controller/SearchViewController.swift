@@ -63,7 +63,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? SearchTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
         cell.typeEmojiLabel.text = tmpEventArray[indexPath.row].typeEmoji
@@ -120,14 +120,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 }
 
 extension SearchViewController : CellDelegate {
-    
-    func customcell(cell: SearchTableViewCell) {
-        
+    func customcell(cell: TaskTableViewCell) {
         coordinator?.add_item()
-        
     }
-    
-    }
+}
 
 
 
