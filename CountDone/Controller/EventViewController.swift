@@ -9,14 +9,13 @@
 import UIKit
 class EventViewController: UITableViewController,ChangeButton,Storyboarded {
    
-    var tasks = [Task]()
+     var tasks:[Task] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //TODO:- Hardcoding data change later
-        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
-        
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: true))
         //Large size navigation title
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -89,6 +88,11 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
     
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
+    }
+    
+    func reloadTableView(newTask : Task){
+        tasks.append(newTask)
+        tableView.reloadData()
     }
     
 }
