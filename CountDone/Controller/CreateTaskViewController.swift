@@ -8,9 +8,6 @@
 
 import UIKit
 
-
-
-
 class CreateTaskViewController: UIViewController, Storyboarded {
     
     var coordinator: EventdFlow?
@@ -20,8 +17,6 @@ class CreateTaskViewController: UIViewController, Storyboarded {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTimeTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    
-    
     
     private var datePicker : UIDatePicker?
     
@@ -58,8 +53,8 @@ class CreateTaskViewController: UIViewController, Storyboarded {
     
     
     @IBAction func done() {
-        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: emojiTag.titleLabel!.text!, description: descriptionTextField.text!, date: "Monday", time: "09:00", checked: false))
         
+        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: emojiTag.titleLabel!.text!, description: descriptionTextField.text!, date: datePicker!.date, checked: false))
         
         // navigationController?.popViewController(animated: true)
     }

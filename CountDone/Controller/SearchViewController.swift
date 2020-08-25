@@ -124,7 +124,7 @@ extension SearchViewController : CellDelegate {
     func customcell(cell: SearchTableViewCell) {
         
         coordinator?.add_item()
-        print(cell.timeLabel.text)
+        
     }
     
     }

@@ -37,7 +37,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Barbecue">
                                                     <attributes>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -71,7 +71,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Barbecue">
                                                     <attributes>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -106,7 +106,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Barbecue">
                                                     <attributes>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
+                                                        <font key="NSFont" metaFont="menu" size="14"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -144,7 +144,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TaskCell" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="53" id="r5K-gS-eUC" customClass="TaskCell" customModule="CountDone" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="53" id="r5K-gS-eUC" customClass="SearchTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="320" height="53"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r5K-gS-eUC" id="SZt-iu-D3S">
@@ -158,9 +158,6 @@
                                                 <bool key="isElement" value="NO"/>
                                             </accessibility>
                                             <state key="normal" backgroundImage="button:VNV-1p-a4T:backgroundImage"/>
-                                            <connections>
-                                                <action selector="checkBoxAction:" destination="r5K-gS-eUC" eventType="touchUpInside" id="IuT-2F-GFd"/>
-                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1A-NU-Ifl">
                                             <rect key="frame" x="83" y="5" width="102" height="20.5"/>
@@ -208,13 +205,73 @@
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="66" id="I4x-eM-5Qq" customClass="SearchTableViewCell" customModule="CountDone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="81" width="320" height="66"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I4x-eM-5Qq" id="BAx-ta-aI7">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="65.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTU-PV-GWU">
+                                            <rect key="frame" x="24" y="15" width="23" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jut-pL-fiV">
+                                            <rect key="frame" x="67" y="15" width="96" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="107" id="gV2-mO-Tfh"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fFR-2r-Xpr">
+                                            <rect key="frame" x="182" y="5" width="34.5" height="43"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="dataLabel" text="date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Gz-s4-ss6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="timeLabel" text="time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-pO-mGk">
+                                                    <rect key="frame" x="0.0" y="22.5" width="34.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addThisBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w16-3T-J6K">
+                                            <rect key="frame" x="282" y="18" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="➕"/>
+                                            <connections>
+                                                <action selector="cellButtonAction:" destination="I4x-eM-5Qq" eventType="touchDown" id="wwp-KJ-e4D"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="leading" secondItem="BAx-ta-aI7" secondAttribute="leading" constant="67" id="CZS-OS-oyp"/>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="firstBaseline" secondItem="YTU-PV-GWU" secondAttribute="firstBaseline" id="EZm-IA-Ftv"/>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="top" secondItem="BAx-ta-aI7" secondAttribute="topMargin" constant="-16" id="IgZ-VT-cfH"/>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="centerY" secondItem="BAx-ta-aI7" secondAttribute="centerY" id="N2X-Wg-3vB"/>
+                                        <constraint firstItem="fFR-2r-Xpr" firstAttribute="leading" secondItem="jut-pL-fiV" secondAttribute="trailing" constant="8" symbolic="YES" id="dVQ-19-vqP"/>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="baseline" secondItem="YTU-PV-GWU" secondAttribute="baseline" id="mmc-2d-reG"/>
+                                        <constraint firstItem="jut-pL-fiV" firstAttribute="leading" secondItem="YTU-PV-GWU" secondAttribute="trailing" constant="20" id="u1y-Fa-R8d"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
                                 <connections>
-                                    <outlet property="checkBox" destination="VNV-1p-a4T" id="xro-qf-zYv"/>
-                                    <outlet property="dateLabel" destination="TYd-Gi-h86" id="9gf-AP-Njv"/>
-                                    <outlet property="subtitleLabel" destination="5dv-FU-xWP" id="rge-pu-RqW"/>
-                                    <outlet property="timeLabel" destination="BhH-DY-WKU" id="uCk-nK-Xaw"/>
-                                    <outlet property="titleLabel" destination="q1A-NU-Ifl" id="cOe-Zg-5U5"/>
-                                    <outlet property="typeEmoji" destination="am9-Mn-j3N" id="In9-wL-Qhl"/>
+                                    <outlet property="dateLabel" destination="7Gz-s4-ss6" id="kuv-ay-0Iy"/>
+                                    <outlet property="timeLabel" destination="j5M-pO-mGk" id="Rhl-da-Ua2"/>
+                                    <outlet property="titleLabel" destination="jut-pL-fiV" id="zrd-bW-Cl9"/>
+                                    <outlet property="typeEmojiLabel" destination="YTU-PV-GWU" id="elE-cn-bRx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -235,7 +292,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tyR-YD-wgq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2436" y="-365"/>
+            <point key="canvasLocation" x="2435.625" y="-365.49295774647885"/>
         </scene>
         <!--Calender View Controller-->
         <scene sceneID="wdc-d1-qRB">

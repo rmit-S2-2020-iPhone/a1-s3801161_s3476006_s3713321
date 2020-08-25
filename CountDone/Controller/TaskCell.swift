@@ -21,6 +21,7 @@ class TaskCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    var date: Date?
     var delegate:ChangeButton?
     var indexPath: Int?
     var tasks:[Task]?

@@ -14,11 +14,14 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO:- Hardcoding data change later
-        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: true))
-        //Large size navigation title
-        navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.rowHeight = 50.0
         
+        //TODO:- Hardcoding data change later
+        let currentDate  = Date()
+        let currentDateTimeFormatter = DateFormatter()
+        currentDateTimeFormatter.dateFormat = "HH:mm E, d MMM"
+        
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: currentDate, checked: true))
     }
     
      var coordinator: EventdFlow?
@@ -29,22 +32,36 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //self.tableView.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { 
      
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? SearchTableViewCell else {
+            return UITableViewCell()
+        }
         
+//        cell.titleLabel.text = tasks[indexPath.row].title
+//        cell.subtitleLabel.text = tasks[indexPath.row].description
+//        cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
+//        cell.dateLabel.text = tasks[indexPath.row].date
+//        cell.timeLabel.text = tasks[indexPath.row].title
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM"
+        let date = dateFormatter.string(from: tasks[indexPath.row].date!)
+        dateFormatter.dateFormat = "HH:mm E"
+        let time = dateFormatter.string(from: tasks[indexPath.row].date!)
+        
+        cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
         cell.titleLabel.text = tasks[indexPath.row].title
-        cell.subtitleLabel.text = tasks[indexPath.row].description
-        cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
-        cell.dateLabel.text = tasks[indexPath.row].date
-        cell.timeLabel.text = tasks[indexPath.row].title
+        cell.dateLabel.text = date
+        cell.timeLabel.text = time
         
-        configureCheckmark(for: cell, with: tasks[indexPath.row])
+        
+//        configureCheckmark(for: cell, with: tasks[indexPath.row])
         
 
         cell.delegate = self
-        cell.indexPath = indexPath.row
-        cell.tasks = tasks
+//        cell.indexPath = indexPath.row
+//        cell.tasks = tasks
         
         
         return cell
@@ -63,13 +80,13 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
     }
     
     //MARK:- Confirgure the checkmark
-    func configureCheckmark(for cell: TaskCell,with item: Task) {
-        if item.checked{
-            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
-            
-        }else{
-            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
-        }
+    func configureCheckmark(for cell: SearchTableViewCell,with item: Task) {
+//        if item.checked{
+//            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
+//
+//        }else{
+//            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
+//        }
     }
 
     //MARK:- Delete task
@@ -94,5 +111,17 @@ class EventViewController: UITableViewController,ChangeButton,Storyboarded {
         tasks.append(newTask)
         tableView.reloadData()
     }
+    
+   
+    
+}
+
+extension EventViewController: CellDelegate{
+    func customcell(cell: SearchTableViewCell) {
+        coordinator?.add_item()
+    }
+    
+    
+    
     
 }
