@@ -11,6 +11,10 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+    func backToEvent(_ newTask: Task) {
+    
+    }
+    
     
     weak var navigationController: UINavigationController?
     
