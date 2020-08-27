@@ -30,7 +30,6 @@
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
 		A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* EventViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
-		A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */; };
 		A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870324DC16C4002AB009 /* CountDoneTests.swift */; };
 		A097870F24DC16C4002AB009 /* CountDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870E24DC16C4002AB009 /* CountDoneUITests.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +77,6 @@
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09786ED24DC16C2002AB009 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		A09786F024DC16C2002AB009 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CountDone.xcdatamodel; sourceTree = "<group>"; };
 		A09786FA24DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A09786FF24DC16C4002AB009 /* CountDoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountDoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097870324DC16C4002AB009 /* CountDoneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneTests.swift; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				A09786EB24DC16C2002AB009 /* AppDelegate.swift */,
 				3D78DC8424F0155A000060FA /* Storyboarded.swift */,
 				A09786FA24DC16C4002AB009 /* Info.plist */,
-				A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */,
 			);
 			path = CountDone;
 			sourceTree = "<group>";
@@ -495,7 +492,6 @@
 				3D78DC8E24F03EA3000060FA /* StartViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* SearchTableViewCell.swift in Sources */,
-				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */,
@@ -825,19 +821,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */,
-			);
-			currentVersion = A09786F324DC16C2002AB009 /* CountDone.xcdatamodel */;
-			path = CountDone.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A09786E024DC16C2002AB009 /* Project object */;
 }
