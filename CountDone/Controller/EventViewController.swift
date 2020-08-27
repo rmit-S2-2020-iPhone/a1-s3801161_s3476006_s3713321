@@ -7,14 +7,21 @@
 //
 
 import UIKit
+<<<<<<< HEAD
 class EventViewController: UITableViewController,Storyboarded {
     
     var tasks:[Task] = []
     var coordinator: EventdFlow?
+=======
+class EventViewController: UITableViewController,ChangeButton,Storyboarded {
+   
+    var tasks = [Task]()
+>>>>>>> cy
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+<<<<<<< HEAD
         tableView.rowHeight = 50.0
         
         //TODO:- Hardcoding data change later
@@ -24,11 +31,25 @@ class EventViewController: UITableViewController,Storyboarded {
         tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: currentDate, checked: true))
     }
  
+=======
+        //TODO:- Hardcoding data change later
+        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: "Tuesday", time: "07:00", checked: false))
+        
+        //Large size navigation title
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+    
+     var coordinator: EventdFlow?
+
+    
+>>>>>>> cy
     //MARK:- Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
+<<<<<<< HEAD
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { 
      
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
@@ -65,6 +86,50 @@ class EventViewController: UITableViewController,Storyboarded {
     
     
     
+=======
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { //self.tableView.register(TaskCell.self, forCellReuseIdentifier: "TaskCell")
+     
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskCell
+        
+        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.subtitleLabel.text = tasks[indexPath.row].description
+        cell.typeEmoji.text = tasks[indexPath.row].typeEmoji
+        cell.dateLabel.text = tasks[indexPath.row].date
+        cell.timeLabel.text = tasks[indexPath.row].title
+        
+        configureCheckmark(for: cell, with: tasks[indexPath.row])
+        
+
+        cell.delegate = self
+        cell.indexPath = indexPath.row
+        cell.tasks = tasks
+        
+        
+        return cell
+    }
+//
+    //MARK:- Table view delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let cell = tableView.cellForRow(at: indexPath) {
+//            let item = tasks[indexPath.row]
+//            item.toggleCheck()
+//
+//            configureCheckmark(for:cell as! TaskCell,with: item)
+//        }
+
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK:- Confirgure the checkmark
+    func configureCheckmark(for cell: TaskCell,with item: Task) {
+        if item.checked{
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
+            
+        }else{
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
+        }
+    }
+>>>>>>> cy
 
     //MARK:- Delete task
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -74,6 +139,7 @@ class EventViewController: UITableViewController,Storyboarded {
             
         }
     }
+<<<<<<< HEAD
   
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
@@ -93,11 +159,15 @@ extension EventViewController: CellDelegate{
 }
 
 extension EventViewController:CheckBoxDelegate{
+=======
+    
+>>>>>>> cy
     func changeButton(checked: Bool, index: Int) {
         tasks[index].checked = checked
         tableView.reloadData()
     }
     
+<<<<<<< HEAD
     //MARK:- Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{
@@ -107,4 +177,10 @@ extension EventViewController:CheckBoxDelegate{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
         }
     } 
+=======
+    @IBAction func AddItem(_ sender: Any) {
+        coordinator?.add_item()
+    }
+    
+>>>>>>> cy
 }

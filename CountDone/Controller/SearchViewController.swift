@@ -26,9 +26,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTable.isScrollEnabled = true
     }
     
+<<<<<<< HEAD
    
     
     
+=======
+>>>>>>> cy
     private func setUpEvents() {
         eventArray.append(Event(typeEmoji: "⛽️", title: "fuel up", date: "02/Sep/2020", time: "all day"))
         eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
@@ -63,15 +66,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+<<<<<<< HEAD
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
+=======
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? SearchTableViewCell else {
+>>>>>>> cy
             return UITableViewCell()
         }
         cell.typeEmojiLabel.text = tmpEventArray[indexPath.row].typeEmoji
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
         cell.dateLabel.text = tmpEventArray[indexPath.row].date
         cell.timeLabel.text = tmpEventArray[indexPath.row].time
+<<<<<<< HEAD
 
         cell.delegate = self
+=======
+>>>>>>> cy
         
         
         return cell
@@ -102,19 +112,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         tmpEventArray = eventArray.filter({ event -> Bool in
+<<<<<<< HEAD
             (event.title.lowercased().contains(searchText.lowercased()) || event.date.lowercased().contains(searchText.lowercased()))
+=======
+            (event.title.lowercased().contains(searchText.lowercased()) || event.date.contains(searchText))
+>>>>>>> cy
             // if the text typed in the search bar matching the event, it will show the result
         })
         searchTable.reloadData()
         
     }
     
+<<<<<<< HEAD
    
+=======
+>>>>>>> cy
     // action
     //@IBAction func addThisTask(_ sender: Any) {
     //    coordinator?.add_this_task()
     //}
     //
+<<<<<<< HEAD
     var coordinator: EventdFlow?
     
 }
@@ -126,6 +144,12 @@ extension SearchViewController : CellDelegate {
 }
 
 
+=======
+    var coordinator: SearchViewFlow?
+    
+}
+
+>>>>>>> cy
 
 class Event {
     let typeEmoji: String

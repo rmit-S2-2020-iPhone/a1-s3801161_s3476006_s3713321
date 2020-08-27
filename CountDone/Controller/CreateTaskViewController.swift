@@ -8,6 +8,7 @@
 
 import UIKit
 
+<<<<<<< HEAD
 class CreateTaskViewController: UIViewController, Storyboarded {
     
     var coordinator: EventdFlow?
@@ -92,4 +93,19 @@ class CreateTaskViewController: UIViewController, Storyboarded {
         dateTimeTextField.inputView = datePicker
     }
     
+=======
+
+
+class CreateTaskViewController: UIViewController, Storyboarded {
+
+    var coordinator: EventdFlow?
+    @IBOutlet weak var taskTitle: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+    
+
+
+>>>>>>> cy
 }
