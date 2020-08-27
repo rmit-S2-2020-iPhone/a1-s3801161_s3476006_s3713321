@@ -102,7 +102,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             return
         }
         tmpEventArray = eventArray.filter({ event -> Bool in
-            event.title.lowercased().contains(searchText.lowercased())
+            (event.title.lowercased().contains(searchText.lowercased()) || event.date.lowercased().contains(searchText.lowercased()))
             // if the text typed in the search bar matching the event, it will show the result
         })
         searchTable.reloadData()
