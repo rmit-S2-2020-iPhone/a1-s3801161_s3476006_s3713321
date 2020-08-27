@@ -8,21 +8,11 @@
 
 import UIKit
 
-<<<<<<< HEAD
-
-
-class SearchViewCoordinator: Coordinator, EventdFlow {
-    func backToEvent(_ newTask: Task) {
-    
-    }
-    
-=======
 protocol SearchViewFlow: class {
     func add_this_task()
 }
 
 class SearchViewCoordinator: Coordinator, SearchViewFlow {
->>>>>>> cy
     
     weak var navigationController: UINavigationController?
     
@@ -38,15 +28,9 @@ class SearchViewCoordinator: Coordinator, SearchViewFlow {
         navigationController?.pushViewController(searchViewController, animated: false)
     }
     
-<<<<<<< HEAD
-    func add_item() {
-        let att = CreateTaskViewController.instantiate()
-        att.coordinator = self
-=======
     func add_this_task() {
         let att = CreateTaskViewController.instantiate()
         att.coordinator = self as? SearchViewFlow as! EventdFlow
->>>>>>> cy
         // navigate to createTask page like event page
         
         navigationController?.pushViewController(att, animated: false)

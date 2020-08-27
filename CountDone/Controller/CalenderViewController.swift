@@ -34,18 +34,10 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
         let dateString = dateFormatter3.string(from: date)
         if self.dateArray.contains(dateString){
             text.text = "Today you have an event"
-<<<<<<< HEAD
-            
-        }else{
-            text.text = "you don't have work for today!!"
-        }
-        self.calender.reloadData()
-=======
             self.calender.reloadData()
         }else{
             text.text = "you don't have work for today!!"
         }
->>>>>>> cy
        
     }
     
