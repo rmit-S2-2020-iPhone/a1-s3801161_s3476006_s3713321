@@ -1,6 +1,0 @@
-framework module Pods_CountDoneTests {
-  umbrella header "Pods-CountDoneTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

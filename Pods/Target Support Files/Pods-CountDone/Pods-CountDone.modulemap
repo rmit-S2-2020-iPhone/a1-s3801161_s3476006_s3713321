@@ -1,6 +1,0 @@
-framework module Pods_CountDone {
-  umbrella header "Pods-CountDone-umbrella.h"
-
-  export *
-  module * { export * }
-}
