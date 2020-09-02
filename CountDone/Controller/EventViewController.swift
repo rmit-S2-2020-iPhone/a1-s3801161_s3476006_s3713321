@@ -15,7 +15,7 @@ class EventViewController: UITableViewController,Storyboarded {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = 50.0
+        
         
         //TODO:- Hardcoding data change later
         let currentDate  = Date()
@@ -38,7 +38,8 @@ class EventViewController: UITableViewController,Storyboarded {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM"
         let date = dateFormatter.string(from: tasks[indexPath.row].date!)
-        dateFormatter.dateFormat = "HH:mm E"
+//        dateFormatter.dateFormat = "HH:mm E"
+        dateFormatter.dateFormat = "HH:mm"
         let time = dateFormatter.string(from: tasks[indexPath.row].date!)
         
         cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
@@ -101,10 +102,10 @@ extension EventViewController:CheckBoxDelegate{
     //MARK:- Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{
-            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "checked"), for: .normal)
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "uncheck"), for: .normal)
             
         }else{
-            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "unchecked"), for: .normal)
+            cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         }
     } 
 }
