@@ -9,14 +9,16 @@ import UIKit
 
 protocol EventdFlow: class {
     func add_item()
-    
+    func showDetails()
     func backToEvent(_ newTask:Task)
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
     
     weak var navigationController: UINavigationController?
+    
     var controllerDic:[String: UIViewController] = [:]
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -30,7 +32,13 @@ class EventCoordinator: Coordinator, EventdFlow {
     }
     
     func add_item(){
-        let vc = CreateTaskViewController.instantiate()
+        let vc = CreateTaskTableViewController.instantiate()
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func showDetails(){
+        let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }

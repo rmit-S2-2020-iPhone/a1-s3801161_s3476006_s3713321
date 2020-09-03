@@ -11,6 +11,10 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+    func showDetails() {
+        
+    }
+    
     func backToEvent(_ newTask: Task) {
     
     }
@@ -31,7 +35,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     }
     
     func add_item() {
-        let att = CreateTaskViewController.instantiate()
+        let att = CreateTaskTableViewController.instantiate()
         att.coordinator = self
         // navigate to createTask page like event page
         

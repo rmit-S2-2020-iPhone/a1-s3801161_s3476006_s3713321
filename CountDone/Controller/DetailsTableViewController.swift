@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DetailsTableViewController: UITableViewController {
+class DetailsTableViewController: UITableViewController,Storyboarded {
 
+    var coordinator: EventdFlow?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -21,19 +22,25 @@ class DetailsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.tableFooterView = UIView(frame: .zero)
+        //TODO:- Hardcoding data change later
+        let currentDate  = Date()
+        let currentDateTimeFormatter = DateFormatter()
+        currentDateTimeFormatter.dateFormat = "HH:mm E, d MMM"
+        let task = Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: currentDate, checked: true)
+        
+        setDetails(from: task )
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    func setDetails(from task: Task){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm E, d MMM"
+        titleLabel.text = task.title
+        descriptionLabel.text = task.description
+        dateLabel.text = dateFormatter.string(from: task.date!)
+        emojiLabel.text = task.typeEmoji
+        
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    
 
 
 }

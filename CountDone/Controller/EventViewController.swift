@@ -89,7 +89,8 @@ class EventViewController: UITableViewController,Storyboarded {
 
 extension EventViewController: CellDelegate{
     func customcell(cell: TaskTableViewCell) {
-        coordinator?.add_item()
+//        coordinator?.add_item()
+        coordinator?.showDetails()
     }
 }
 
