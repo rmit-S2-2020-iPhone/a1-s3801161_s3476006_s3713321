@@ -53,7 +53,19 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTable.estimatedSectionHeaderHeight = 50
     }
     
+   
+    // action
+    //@IBAction func addThisTask(_ sender: Any) {
+    //    coordinator?.add_this_task()
+    //}
+    //
+    var coordinator: EventdFlow?
     
+}
+
+
+
+extension SearchViewController : CellDelegate {
     // table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tmpEventArray.count
@@ -70,7 +82,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
         cell.dateLabel.text = tmpEventArray[indexPath.row].date
         cell.timeLabel.text = tmpEventArray[indexPath.row].time
-
+        
         cell.delegate = self
         
         
@@ -93,7 +105,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return UITableView.automaticDimension
     }
     
-    
     // search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
@@ -109,17 +120,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-   
-    // action
-    //@IBAction func addThisTask(_ sender: Any) {
-    //    coordinator?.add_this_task()
-    //}
-    //
-    var coordinator: EventdFlow?
     
-}
-
-extension SearchViewController : CellDelegate {
     func customcell(cell: TaskTableViewCell) {
         coordinator?.add_item()
     }
