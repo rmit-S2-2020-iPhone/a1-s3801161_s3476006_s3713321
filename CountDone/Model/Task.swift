@@ -18,14 +18,13 @@ class Task{
     var typeEmoji = ""
     var description = ""
     var date = ""
-    var time = ""
+    var time:Time
     var checked  = true
     
-    init(title: String, typeEmoji:String,description:String,date:String,time:String,checked:Bool) {
+    init(title: String, typeEmoji:String,description:String,time:Time,checked:Bool) {
         self.title = title
         self.typeEmoji = typeEmoji
         self.description = description
-        self.date = date
         self.time = time
         self.checked = checked
     }

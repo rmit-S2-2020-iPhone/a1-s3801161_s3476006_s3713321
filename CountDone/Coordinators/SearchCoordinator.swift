@@ -8,11 +8,25 @@
 
 import UIKit
 
-protocol SearchViewFlow: class {
-    func add_this_task()
-}
 
-class SearchViewCoordinator: Coordinator, SearchViewFlow {
+
+class SearchViewCoordinator: Coordinator, EventdFlow {
+    var parentCoordinator: TabBarCoordinator?
+    
+    var currentCell: TaskTableViewCell?
+    
+    var searchViewController:SearchViewController?
+    
+    func showDetails(){
+        let vc = DetailsTableViewController.instantiate()
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func backToEvent(_ newTask: Task) {
+    
+    }
+    
     
     weak var navigationController: UINavigationController?
     
@@ -21,16 +35,16 @@ class SearchViewCoordinator: Coordinator, SearchViewFlow {
     }
     
     func start() {
-        let searchViewController = SearchViewController.instantiate()
+        searchViewController = SearchViewController.instantiate()
         
-        searchViewController.coordinator = self
+        searchViewController!.coordinator = self
         
-        navigationController?.pushViewController(searchViewController, animated: false)
+        navigationController?.pushViewController(searchViewController!, animated: false)
     }
     
-    func add_this_task() {
-        let att = CreateTaskViewController.instantiate()
-        att.coordinator = self as? SearchViewFlow as! EventdFlow
+    func add_item() {
+        let att = CreateTaskTableViewController.instantiate()
+        att.coordinator = self
         // navigate to createTask page like event page
         
         navigationController?.pushViewController(att, animated: false)

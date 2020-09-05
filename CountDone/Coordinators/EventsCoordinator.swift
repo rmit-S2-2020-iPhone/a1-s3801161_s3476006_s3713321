@@ -8,12 +8,22 @@
 import UIKit
 
 protocol EventdFlow: class {
-   func add_item()
+    var currentCell: TaskTableViewCell?{get set}
+    var parentCoordinator:TabBarCoordinator?{get set}
+    func add_item()
+    func showDetails()
+    func backToEvent(_ newTask:Task)
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
+    var currentCell: TaskTableViewCell?
+    
     
     weak var navigationController: UINavigationController?
+    
+    var controllerDic:[String: UIViewController] = [:]
+    var parentCoordinator:TabBarCoordinator?
+    
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -23,16 +33,33 @@ class EventCoordinator: Coordinator, EventdFlow {
         let eventController = EventViewController.instantiate()
         
         eventController.coordinator = self
-        
+        controllerDic = ["eventController":eventController]
         navigationController?.pushViewController(eventController, animated: false)
     }
     
     func add_item(){
-        let vc = CreateTaskViewController.instantiate()
+        let vc = CreateTaskTableViewController.instantiate()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
     
+    func showDetails(){
+        let vc = DetailsTableViewController.instantiate()
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func backToEvent(_ newTask: Task) {
+        var ec:EventViewController!
+        ec = controllerDic["eventController"] as? EventViewController
+        ec.reloadTableView(newTask: newTask)
+        navigationController?.popToViewController(ec, animated: false)
+    }
     // MARK: - Flow Methods
     
+    func changeButton(){
+        
+    }
 }
+
+
