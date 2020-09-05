@@ -11,8 +11,10 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
-    func showDetails() {
-        
+    func showDetails(){
+        let vc = DetailsTableViewController.instantiate()
+        vc.coordinator = self
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     func backToEvent(_ newTask: Task) {

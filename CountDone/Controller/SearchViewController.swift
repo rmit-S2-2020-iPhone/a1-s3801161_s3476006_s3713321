@@ -124,6 +124,19 @@ extension SearchViewController : CellDelegate {
     func customcell(cell: TaskTableViewCell) {
         coordinator?.add_item()
     }
+    
+    func detailcell(cell: TaskTableViewCell) {
+        coordinator?.showDetails()
+    }
+
+}
+
+extension SearchViewController: CellDetail{
+    // respond to the click on the certain cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //let cell = tableView.cellForRow(at: indexPath)
+        coordinator?.showDetails()
+    }
 }
 
 

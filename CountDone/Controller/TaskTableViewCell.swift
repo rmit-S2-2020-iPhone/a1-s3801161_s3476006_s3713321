@@ -18,6 +18,11 @@ protocol CellDelegate: class {
 protocol CheckBoxDelegate{
     func changeButton(checked: Bool, index: Int)
 }
+
+protocol CellDetail{
+    func detailcell(cell:TaskTableViewCell)
+}
+
 class TaskTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkBox: UIButton!
@@ -31,6 +36,7 @@ class TaskTableViewCell: UITableViewCell {
     var changeButtonDelegate:CheckBoxDelegate?
     var indexPath: Int?
     var tasks:[Task]?
+    var detailcell: CellDetail?
 
     
     
@@ -50,6 +56,8 @@ class TaskTableViewCell: UITableViewCell {
     @IBAction func cellButtonAction(_ sender: Any) {
         delegate?.customcell(cell: self)
     }
+    
+
     
     @IBAction func checkBoxAction(_ sender: Any) {
         if tasks![indexPath!].checked{

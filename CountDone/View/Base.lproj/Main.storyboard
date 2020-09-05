@@ -638,16 +638,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-ET-zBY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-ET-zBY">
                                                     <rect key="frame" x="24" y="15" width="23" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBj-fP-ejX">
-                                                    <rect key="frame" x="67" y="15" width="96" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBj-fP-ejX">
+                                                    <rect key="frame" x="67" y="15" width="107" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="107" id="YL7-eg-yz7"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="107" id="xyU-a3-rCG"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -670,8 +672,9 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="addThisBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-io-TnD">
-                                                    <rect key="frame" x="282" y="11" width="30" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="addThisBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-io-TnD">
+                                                    <rect key="frame" x="275" y="11" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="➕"/>
                                                     <connections>
                                                         <action selector="cellButtonAction:" destination="FCz-uQ-abd" eventType="touchDown" id="sc4-te-fFK"/>
@@ -679,15 +682,9 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="centerY" secondItem="6yT-io-TnD" secondAttribute="centerY" id="2qe-1Z-RpI"/>
+                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="top" constant="15" id="7zi-OT-3I8"/>
                                                 <constraint firstItem="6za-Q3-yUD" firstAttribute="leading" secondItem="IBj-fP-ejX" secondAttribute="trailing" constant="8" symbolic="YES" id="Dop-TT-AUk"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="leading" secondItem="Q6m-ET-zBY" secondAttribute="trailing" constant="20" id="EtR-ya-uKn"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="baseline" secondItem="6yT-io-TnD" secondAttribute="baseline" id="KyQ-4c-dTI"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="baseline" secondItem="6yT-io-TnD" secondAttribute="firstBaseline" id="Lrd-ES-0yh"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="firstBaseline" secondItem="IBj-fP-ejX" secondAttribute="firstBaseline" id="X2W-jZ-Uh6"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="baseline" secondItem="IBj-fP-ejX" secondAttribute="baseline" id="cKi-hj-CbZ"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="topMargin" constant="-16" id="ceA-gg-Iaj"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="centerY" secondItem="5F3-XS-Nbc" secondAttribute="centerY" id="yGZ-pj-Bts"/>
+                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="topMargin" constant="4" id="ceA-gg-Iaj"/>
                                                 <constraint firstItem="IBj-fP-ejX" firstAttribute="leading" secondItem="5F3-XS-Nbc" secondAttribute="leading" constant="67" id="ywg-Li-Ig7"/>
                                             </constraints>
                                         </tableViewCellContentView>
