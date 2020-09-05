@@ -7,19 +7,26 @@
 //
 
 import Foundation
+enum type{
+    case sports
+}
+
 
 class Task{
+    var list = ["🏃",]
     var title = ""
     var typeEmoji = ""
     var description = ""
+    var date = ""
+    var time = ""
     var checked  = true
-    var date:Date?
     
-    init(title: String, typeEmoji:String,description:String,date:Date,checked:Bool) {
+    init(title: String, typeEmoji:String,description:String,date:String,time:String,checked:Bool) {
         self.title = title
         self.typeEmoji = typeEmoji
         self.description = description
         self.date = date
+        self.time = time
         self.checked = checked
     }
     
