@@ -13,6 +13,7 @@
 		3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75C24EEB78700BEE330 /* Task.swift */; };
 		3D3AD75F24EEB7D300BEE330 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */; };
 		3D3AD76124EEB7DB00BEE330 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */; };
+		3D70BB5524FF961A003E9824 /*  Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB5424FF961A003E9824 /*  Time.swift */; };
 		3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8224F014C1000060FA /* Coordinator.swift */; };
 		3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8424F0155A000060FA /* Storyboarded.swift */; };
 		3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8624F0170A000060FA /* AppCoordinator.swift */; };
@@ -59,6 +60,7 @@
 		3D3AD75C24EEB78700BEE330 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3D3AD75E24EEB7D300BEE330 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
 		3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		3D70BB5424FF961A003E9824 /*  Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " Time.swift"; sourceTree = "<group>"; };
 		3D78DC8224F014C1000060FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3D78DC8424F0155A000060FA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		3D78DC8624F0170A000060FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				3D3AD75C24EEB78700BEE330 /* Task.swift */,
+				3D70BB5424FF961A003E9824 /*  Time.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DA2999024F1703200F24FF7 /* CalenderCoordinator.swift in Sources */,
+				3D70BB5524FF961A003E9824 /*  Time.swift in Sources */,
 				3DA2998C24F0D72A00F24FF7 /* SearchViewController.swift in Sources */,
 				3D3AD75D24EEB78700BEE330 /* Task.swift in Sources */,
 				3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */,

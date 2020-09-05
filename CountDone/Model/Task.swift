@@ -7,8 +7,13 @@
 //
 
 import Foundation
+enum type{
+    case sports
+}
+
 
 class Task{
+    var list = ["🏃",]
     var title = ""
     var typeEmoji = ""
     var description = ""
