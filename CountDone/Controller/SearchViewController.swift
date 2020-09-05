@@ -15,8 +15,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var searchTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var eventArray = [Event]() // to setup event mockup data
-    var tmpEventArray = [Event]() // update event array
+    var eventArray = [Task]() // to setup event mockup data
+    var tmpEventArray = [Task]() // update event array
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +30,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     private func setUpEvents() {
-        eventArray.append(Event(typeEmoji: "⛽️", title: "fuel up", date: "02/Sep/2020", time: "all day"))
-        eventArray.append(Event(typeEmoji: "🧪", title: "lab test", date: "11/Sep/2020", time: "10:00a.m."))
-        eventArray.append(Event(typeEmoji: "🛒", title: "shopping", date: "13/Sep/2020", time: "all day"))
-        eventArray.append(Event(typeEmoji: "🎉", title: "bachelor party", date: "05/Oct/2020", time: "5:00p.m."))
-        eventArray.append(Event(typeEmoji: "👰", title: "shaw's wedding", date: "08/Oct/2020", time: "11:00a.m."))
-        eventArray.append(Event(typeEmoji: "🎓", title: "graduation party", date: "11/Nov/2020", time: "6:00p.m."))
-        eventArray.append(Event(typeEmoji: "✈️", title: "to europe", date: "11/Dec/2020", time: "6:30a.m."))
-        eventArray.append(Event(typeEmoji: "🚗", title: "car maintenance", date: "18/Dec/2020", time: "all day"))
-        eventArray.append(Event(typeEmoji: "💉", title: "vaccination", date: "28/Feb/2021", time: "1:00p.m."))
+        eventArray =  (self.coordinator?.parentCoordinator?.tasks!)!
         
         tmpEventArray = eventArray
     }
@@ -80,8 +72,18 @@ extension SearchViewController : CellDelegate {
         }
         cell.typeEmojiLabel.text = tmpEventArray[indexPath.row].typeEmoji
         cell.titleLabel.text = tmpEventArray[indexPath.row].title
-        cell.dateLabel.text = tmpEventArray[indexPath.row].date
-        cell.timeLabel.text = tmpEventArray[indexPath.row].time
+        
+        let calender = Calendar.current
+        let datetime = calender.date(from: tmpEventArray[indexPath.row].time.startDateComponent)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d/MMM/yyyy"
+        let date = dateFormatter.string(from: datetime!)
+        //        dateFormatter.dateFormat = "HH:mm E"
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.string(from: datetime!)
+        
+        cell.dateLabel.text = date
+        cell.timeLabel.text = time
         
         cell.delegate = self
         
@@ -134,26 +136,13 @@ extension SearchViewController : CellDelegate {
 extension SearchViewController: CellDetail{
     // respond to the click on the certain cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //let cell = tableView.cellForRow(at: indexPath)
+        let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
+        cell.indexPath = indexPath.row
+        coordinator?.currentCell = cell
+        cell.tasks = self.tmpEventArray
         coordinator?.showDetails()
-    }
-}
-
-
-
-class Event {
-    let typeEmoji: String
-    let title: String
-    let date: String
-    let time: String
-    //let addThisTask: UIButton
-    
-    init(typeEmoji: String, title: String, date: String, time: String) {
-        self.typeEmoji = typeEmoji
-        self.title = title
-        self.date = date
-        self.time = time
-        //self.addThisTask = addThisTask
+        
+        
     }
 }
 

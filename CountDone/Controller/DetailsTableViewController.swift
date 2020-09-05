@@ -24,20 +24,23 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         super.viewDidLoad()
 //        tableView.tableFooterView = UIView(frame: .zero)
         //TODO:- Hardcoding data change later
-        let currentDate  = Date()
-        let currentDateTimeFormatter = DateFormatter()
-        currentDateTimeFormatter.dateFormat = "HH:mm E, d MMM"
-        let task = Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: currentDate, checked: true)
-        
-        setDetails(from: task )
+       
+//        let time = Time(startDateComponent: DateComponents(year: 2018, month: 11,
+//                        day: 4, hour: 23,minute:48))
+//        let task = Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", time: time, checked: true)
+        let cell = coordinator?.currentCell!
+        let task = (cell?.tasks![(cell?.indexPath)!])!
+        self.setDetails(from: task )
     }
 
     func setDetails(from task: Task){
+        let calender = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleLabel.text = task.title
         descriptionLabel.text = task.description
-        dateLabel.text = dateFormatter.string(from: task.date!)
+        let dateTime = calender.date(from: task.time.startDateComponent)
+        dateLabel.text = dateFormatter.string(from: dateTime!)
         emojiLabel.text = task.typeEmoji
         
     }

@@ -94,8 +94,13 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     }
     
     @IBAction func done() {
+        let calender = Calendar.current
         
-        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: TagTextField.text! , description: descriptionTextField.text!, date: datePicker!.date, checked: false))
+        let dateComponent = calender.dateComponents([.year, .month, .day, .hour, .minute], from: datePicker!.date)
+        let time = Time(startDateComponent: dateComponent)
+        
+        
+        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: TagTextField.text! , description: descriptionTextField.text!, time: time, checked: false))
         
         // navigationController?.popViewController(animated: true)
     }

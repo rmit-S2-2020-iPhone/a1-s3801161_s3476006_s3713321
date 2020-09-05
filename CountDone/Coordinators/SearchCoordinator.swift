@@ -11,6 +11,12 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+    var parentCoordinator: TabBarCoordinator?
+    
+    var currentCell: TaskTableViewCell?
+    
+    var searchViewController:SearchViewController?
+    
     func showDetails(){
         let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
@@ -29,11 +35,11 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     }
     
     func start() {
-        let searchViewController = SearchViewController.instantiate()
+        searchViewController = SearchViewController.instantiate()
         
-        searchViewController.coordinator = self
+        searchViewController!.coordinator = self
         
-        navigationController?.pushViewController(searchViewController, animated: false)
+        navigationController?.pushViewController(searchViewController!, animated: false)
     }
     
     func add_item() {

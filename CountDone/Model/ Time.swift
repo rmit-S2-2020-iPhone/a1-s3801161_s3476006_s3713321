@@ -29,6 +29,10 @@ struct Time{
         -end_min: the min of end time
      
      */
+    
+    init(startDateComponent:DateComponents) {
+        self.startDateComponent = startDateComponent
+    }
     init(year: Int, month:Int, day: Int, hour: Int, min: Int){
         self.startDateComponent = DateComponents(
             year: year,

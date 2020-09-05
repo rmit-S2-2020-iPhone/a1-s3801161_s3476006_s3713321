@@ -9,19 +9,15 @@
 import UIKit
 class EventViewController: UITableViewController,Storyboarded {
     
-    var tasks:[Task] = []
+    var tasks = [Task]()
     var coordinator: EventdFlow?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         //TODO:- Hardcoding data change later
-        let currentDate  = Date()
-        let currentDateTimeFormatter = DateFormatter()
-        currentDateTimeFormatter.dateFormat = "HH:mm E, d MMM"
-        tasks.append(Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", date: currentDate, checked: true))
+       
+        tasks = coordinator!.parentCoordinator!.tasks!
     }
  
     //MARK:- Table view data source
@@ -34,13 +30,14 @@ class EventViewController: UITableViewController,Storyboarded {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
-        
+        let calender = Calendar.current
+        let datetime = calender.date(from: tasks[indexPath.row].time.startDateComponent)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM"
-        let date = dateFormatter.string(from: tasks[indexPath.row].date!)
+        let date = dateFormatter.string(from: datetime!)
 //        dateFormatter.dateFormat = "HH:mm E"
         dateFormatter.dateFormat = "HH:mm"
-        let time = dateFormatter.string(from: tasks[indexPath.row].date!)
+        let time = dateFormatter.string(from: datetime!)
         
         cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
         cell.titleLabel.text = tasks[indexPath.row].title
@@ -71,7 +68,11 @@ class EventViewController: UITableViewController,Storyboarded {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
             tasks.remove(at: indexPath.row)
+
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
+            self.coordinator?.parentCoordinator?.searchCoordinator?.start()
             
         }
     }
@@ -82,7 +83,9 @@ class EventViewController: UITableViewController,Storyboarded {
     
     func reloadTableView(newTask : Task){
         tasks.append(newTask)
+        coordinator?.parentCoordinator?.tasks?.append(newTask)
         tableView.reloadData()
+        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
 
 }
@@ -90,6 +93,7 @@ class EventViewController: UITableViewController,Storyboarded {
 extension EventViewController: CellDelegate{
     func customcell(cell: TaskTableViewCell) {
 //        coordinator?.add_item()
+        coordinator!.currentCell =  cell
         coordinator?.showDetails()
     }
 }

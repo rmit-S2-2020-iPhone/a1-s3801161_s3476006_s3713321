@@ -567,22 +567,6 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKk-oG-aiv">
-                                <rect key="frame" x="0.0" y="328" width="320" height="164"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kfV-B6-m7L">
-                                        <rect key="frame" x="12" y="80" width="25" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="kfV-B6-m7L" firstAttribute="top" secondItem="gKk-oG-aiv" secondAttribute="top" constant="80" id="GXz-k7-mvK"/>
-                                    <constraint firstItem="kfV-B6-m7L" firstAttribute="leading" secondItem="gKk-oG-aiv" secondAttribute="leading" constant="12" id="Rp7-Eo-d9Y"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -590,18 +574,12 @@
                             <constraint firstItem="sIV-r5-kGV" firstAttribute="top" secondItem="S0F-r4-i0H" secondAttribute="top" id="CA0-oa-8BL"/>
                             <constraint firstItem="S0F-r4-i0H" firstAttribute="trailing" secondItem="sIV-r5-kGV" secondAttribute="trailing" id="Fj0-qa-h6b"/>
                             <constraint firstItem="sIV-r5-kGV" firstAttribute="leading" secondItem="S0F-r4-i0H" secondAttribute="leading" id="Kqx-fw-X6z"/>
-                            <constraint firstItem="gKk-oG-aiv" firstAttribute="trailing" secondItem="sIV-r5-kGV" secondAttribute="trailing" id="Vxt-dS-8BU"/>
-                            <constraint firstItem="gKk-oG-aiv" firstAttribute="top" secondItem="S0F-r4-i0H" secondAttribute="top" constant="308" id="XfH-9A-zPg"/>
                             <constraint firstItem="sIV-r5-kGV" firstAttribute="top" secondItem="S0F-r4-i0H" secondAttribute="top" id="dN8-jM-swL"/>
-                            <constraint firstItem="gKk-oG-aiv" firstAttribute="leading" secondItem="sIV-r5-kGV" secondAttribute="leading" id="quk-Xh-U9q"/>
-                            <constraint firstItem="S0F-r4-i0H" firstAttribute="bottom" secondItem="gKk-oG-aiv" secondAttribute="bottom" constant="76" id="wJo-EC-hVJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S0F-r4-i0H"/>
                     </view>
                     <connections>
-                        <outlet property="Description" destination="gKk-oG-aiv" id="Jb0-EB-Fne"/>
                         <outlet property="calender" destination="sIV-r5-kGV" id="ZpV-Y0-hdJ"/>
-                        <outlet property="text" destination="kfV-B6-m7L" id="9Gh-4G-jsF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjc-0h-8jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -639,13 +617,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-ET-zBY">
-                                                    <rect key="frame" x="18" y="14" width="23" height="21"/>
+                                                    <rect key="frame" x="18" y="14.5" width="23" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="titleLabel" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBj-fP-ejX">
-                                                    <rect key="frame" x="67" y="15" width="34" height="21"/>
+                                                    <rect key="frame" x="67" y="15" width="33.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
