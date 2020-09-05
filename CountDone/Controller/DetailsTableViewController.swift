@@ -41,6 +41,8 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         emojiLabel.text = task.typeEmoji
         
     }
+    
+  
 
 
 }

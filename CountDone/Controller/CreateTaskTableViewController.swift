@@ -18,15 +18,16 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTimeTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!    
-    @IBOutlet weak var emojiTag: UIButton!
+//    @IBOutlet weak var emojiTag: UIButton!
+    @IBOutlet weak var TagTextField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    
-    let emojiSelectView = UIView()
-    let emojiTableview = UITableView()
-    var selectedBtn = UIButton()
+//
+//    let emojiSelectView = UIView()
+//    let emojiTableview = UITableView()
+//    var selectedBtn = UIButton()
     
     //hard code
-    var dataSource = [String]()
+//    var dataSource = [String]()
     
     private var datePicker : UIDatePicker?
     override func viewDidLoad() {
@@ -38,10 +39,10 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         
         setDatePicker()
         
-        emojiTableview.delegate = self
-        emojiTableview.dataSource = self
-        
-        emojiTableview.register(CellClass.self, forCellReuseIdentifier: "Cell")
+//        emojiTableview.delegate = self
+//        emojiTableview.dataSource = self
+//        
+//        emojiTableview.register(CellClass.self, forCellReuseIdentifier: "Cell")
     }
     
     
@@ -88,59 +89,60 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     @objc func dateChange(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
-        
         dateTimeTextField.text = dateFormatter.string(from: datePicker.date)
         view.endEditing(true)
     }
     
     @IBAction func done() {
         
-        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: emojiTag.titleLabel!.text!, description: descriptionTextField.text!, date: datePicker!.date, checked: false))
+        coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: TagTextField.text! , description: descriptionTextField.text!, date: datePicker!.date, checked: false))
         
         // navigationController?.popViewController(animated: true)
     }
    
 }
 
-extension CreateTaskTableViewController{
-    
-    func addEmojiSelectView(frames: CGRect) {
-        let window = UIApplication.shared.keyWindow
-        emojiSelectView.frame = window?.frame ?? self.view.frame
-        self.view.addSubview(emojiSelectView)
-        
-        emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-        
-        self.view.addSubview(emojiTableview)
-        emojiTableview.layer.cornerRadius = 5
-        
-        emojiSelectView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeEmojiSelectView))
-        
-        emojiSelectView.addGestureRecognizer(tapgesture)
-        emojiSelectView.alpha = 0
-        
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseOut, animations: {
-            self.emojiSelectView.alpha = 0.5
-            self.emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width , height: 200)
-        },completion: nil)
-    }
 
-    @objc func removeEmojiSelectView(){
-        let frames = selectedBtn.frame
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseOut, animations: {
-            self.emojiSelectView.alpha = 0
-            self.emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
-        },completion: nil)
-    }
-    @IBAction func selectTag(_ sender: Any) {
-        dataSource = ["🏃", "🏠", "💼"]
-        selectedBtn = emojiTag
-        addEmojiSelectView(frames: emojiTag.frame)
-        
-    }
-}
+
+//extension CreateTaskTableViewController{
+//
+//    func addEmojiSelectView(frames: CGRect) {
+//        let window = UIApplication.shared.keyWindow
+//        emojiSelectView.frame = window?.frame ?? self.view.frame
+//        self.view.addSubview(emojiSelectView)
+//
+//        emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+//
+//        self.view.addSubview(emojiTableview)
+//        emojiTableview.layer.cornerRadius = 5
+//
+//        emojiSelectView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+//
+//        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeEmojiSelectView))
+//
+//        emojiSelectView.addGestureRecognizer(tapgesture)
+//        emojiSelectView.alpha = 0
+//
+//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseOut, animations: {
+//            self.emojiSelectView.alpha = 0.5
+//            self.emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height + 5, width: frames.width , height: 200)
+//        },completion: nil)
+//    }
+
+//    @objc func removeEmojiSelectView(){
+//        let frames = selectedBtn.frame
+//        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,options: .curveEaseOut, animations: {
+//            self.emojiSelectView.alpha = 0
+//            self.emojiTableview.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+//        },completion: nil)
+//    }
+//    @IBAction func selectTag(_ sender: Any) {
+//        dataSource = ["🏃", "🏠", "💼"]
+//        selectedBtn = emojiTag
+//        addEmojiSelectView(frames: emojiTag.frame)
+//
+//    }
+//}
 
 //extension CreateTaskTableViewController{
 //    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
