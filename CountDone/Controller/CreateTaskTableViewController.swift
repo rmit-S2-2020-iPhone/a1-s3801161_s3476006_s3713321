@@ -112,7 +112,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         task?.title = titleTextField.text!
         task?.description = descriptionTextField.text!
         task?.typeEmoji = TagTextField.text!
-//        task?.time = datePicker?.date
+        task?.time = Time(startDateComponent: dateComponent)
         }
         
         coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: TagTextField.text! , description: descriptionTextField.text!, time: time, checked: false))
