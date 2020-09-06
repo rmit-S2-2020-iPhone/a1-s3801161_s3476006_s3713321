@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "uncheck.png",
+      "filename" : "check_icon-4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "check_icon.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "check_icon-1.png",
       "scale" : "3x"
     }
   ],

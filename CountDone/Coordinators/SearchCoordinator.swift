@@ -11,6 +11,7 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+    
     var parentCoordinator: TabBarCoordinator?
     
     var currentCell: TaskTableViewCell?
@@ -23,11 +24,15 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func backToEvent(_ newTask: Task) {
+    func backToEvent(_ newTask: Task, isEditMode: Bool) {
     
     }
-    
-    
+    func edit_item() {
+        
+    }
+    func delete_item() {
+        
+    }
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {

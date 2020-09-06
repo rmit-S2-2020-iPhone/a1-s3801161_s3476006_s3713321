@@ -24,12 +24,7 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.tableFooterView = UIView(frame: .zero)
-        //TODO:- Hardcoding data change later
-       
-//        let time = Time(startDateComponent: DateComponents(year: 2018, month: 11,
-//                        day: 4, hour: 23,minute:48))
-//        let task = Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", time: time, checked: true)
+        
         let cell = coordinator?.currentCell!
         task = (cell?.task!)!
         self.setDetails(from: task! )
@@ -47,7 +42,13 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         
     }
     
-  
-
+    @IBAction func editTask(_ sender: Any) {
+        coordinator?.edit_item()
+    }
+    
+    @IBAction func deleteTask(_ sender: Any) {
+        coordinator?.delete_item()
+    }
+    
 
 }
