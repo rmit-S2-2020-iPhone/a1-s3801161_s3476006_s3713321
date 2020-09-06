@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CellClass: UITableViewCell{
-    
-}
+//class CellClass: UITableViewCell{
+//
+//}
 
 class CreateTaskTableViewController: UITableViewController,Storyboarded {
     var coordinator: EventdFlow?
@@ -21,7 +21,11 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
 //    @IBOutlet weak var emojiTag: UIButton!
     @IBOutlet weak var TagTextField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
-//
+
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    var task: Task?
+    
+    var editMode = false
 //    let emojiSelectView = UIView()
 //    let emojiTableview = UITableView()
 //    var selectedBtn = UIButton()
@@ -30,6 +34,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
 //    var dataSource = [String]()
     
     private var datePicker : UIDatePicker?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +44,10 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         
         setDatePicker()
         
+        if editMode == true{
+            doneBarButton.isEnabled = true
+            setEditDetail()
+        }
 //        emojiTableview.delegate = self
 //        emojiTableview.dataSource = self
 //        
@@ -99,12 +108,35 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         let dateComponent = calender.dateComponents([.year, .month, .day, .hour, .minute], from: datePicker!.date)
         let time = Time(startDateComponent: dateComponent)
         
+        if editMode{
+        task?.title = titleTextField.text!
+        task?.description = descriptionTextField.text!
+        task?.typeEmoji = TagTextField.text!
+        task?.time = Time(startDateComponent: dateComponent)
+        }
         
         coordinator?.backToEvent(Task(title: titleTextField.text!, typeEmoji: TagTextField.text! , description: descriptionTextField.text!, time: time, checked: false))
         
-        // navigationController?.popViewController(animated: true)
+        
     }
    
+    func editModeOn(){
+        editMode = true
+    }
+    
+    func setEditDetail(){
+        let cell = coordinator?.currentCell!
+        let task = cell?.task!
+        
+        let calender = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm E, d MMM"
+        titleTextField.text = task?.title
+        descriptionTextField.text = task?.description
+        let dateTime = calender.date(from: task!.time.startDateComponent)
+        dateTimeTextField.text = dateFormatter.string(from: dateTime!)
+        TagTextField.text = task?.typeEmoji
+    }
 }
 
 

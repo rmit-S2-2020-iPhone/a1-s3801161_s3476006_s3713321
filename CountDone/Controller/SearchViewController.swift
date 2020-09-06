@@ -15,7 +15,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var searchTable: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var eventArray = [Task]() // to setup event mockup data
+    var tasks = [Task]() // to setup event mockup data
     var tmpEventArray = [Task]() // update event array
     
     override func viewDidLoad() {
@@ -30,9 +30,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     private func setUpEvents() {
-        eventArray =  (self.coordinator?.parentCoordinator?.tasks!)!
+        tasks = coordinator!.parentCoordinator!.tasks!
         
-        tmpEventArray = eventArray
+        tmpEventArray = tasks
     }
     
     // search bar
@@ -45,6 +45,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchTable.estimatedSectionHeaderHeight = 50
     }
     
+    
+//    func reloadTableView(newTask : Task,isEditMode: Bool){
+//        
+//        if isEditMode{
+//            let cell = coordinator?.currentCell!
+//            //            cell?.tasks![(cell?.indexPath)!] = newTask
+//            tasks[(cell?.indexPath)!] = newTask
+//            coordinator?.parentCoordinator?.tasks?[(cell?.indexPath)!] = newTask
+//        }else{
+//            tasks.append(newTask)
+//            coordinator?.parentCoordinator?.tasks?.append(newTask)
+//        }
+//        searchTable.reloadData()
+//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
+//    }
    
     // action
     //@IBAction func addThisTask(_ sender: Any) {
@@ -86,6 +101,7 @@ extension SearchViewController : CellDelegate {
         cell.timeLabel.text = time
         
         cell.delegate = self
+        cell.task = tmpEventArray[indexPath.row]
         
         
         return cell
@@ -110,11 +126,11 @@ extension SearchViewController : CellDelegate {
     // search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
-            tmpEventArray = eventArray
+            tmpEventArray = tasks
             searchTable.reloadData()
             return
         }
-        tmpEventArray = eventArray.filter({ event -> Bool in
+        tmpEventArray = tasks.filter({ event -> Bool in
             (event.title.lowercased().contains(searchText.lowercased()) || event.date.lowercased().contains(searchText.lowercased()))
             // if the text typed in the search bar matching the event, it will show the result
         })
@@ -124,6 +140,7 @@ extension SearchViewController : CellDelegate {
     
     
     func customcell(cell: TaskTableViewCell) {
+//        coordinator!.currentCell =  cell
         coordinator?.add_item()
     }
     
@@ -137,12 +154,9 @@ extension SearchViewController: CellDetail{
     // respond to the click on the certain cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
-        cell.indexPath = indexPath.row
         coordinator?.currentCell = cell
-        cell.tasks = self.tmpEventArray
         coordinator?.showDetails()
-        
-        
+     
     }
 }
 

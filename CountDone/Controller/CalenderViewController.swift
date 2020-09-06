@@ -28,34 +28,36 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
         // Do any additional setup after loading the view.
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let dateFormatter3 = DateFormatter()
-        dateFormatter3.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter3.string(from: date)
-        if self.dateArray.contains(dateString){
-            text.text = "Today you have an event"
-            self.calender.reloadData()
-        }else{
-            text.text = "you don't have work for today!!"
-        }
-       
-    }
+
+//     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+//         let dateFormatter3 = DateFormatter()
+//         dateFormatter3.dateFormat = "yyyy-MM-dd"
+//         let dateString = dateFormatter3.string(from: date)
+//         if self.dateArray.contains(dateString){
+//             text.text = "Today you have an event"
+//             self.calender.reloadData()
+//         }else{
+//             text.text = "you don't have work for today!!"
+//         }
+//        
+//     }
+
     
-    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let dateFormatter3 = DateFormatter()
-        dateFormatter3.dateFormat = "yyyy-MM-dd"
-        let dateString = dateFormatter3.string(from: date)
-        
-        //display events as dots
-        cell.eventIndicator.isHidden = false
-        //cell.eventIndicator.color = UIColor.green
-        
-        
-        if self.dateArray.contains(dateString){
-            cell.eventIndicator.numberOfEvents = 1
-        }
-        
-    }
+//    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+//        let dateFormatter3 = DateFormatter()
+//        dateFormatter3.dateFormat = "yyyy-MM-dd"
+//        let dateString = dateFormatter3.string(from: date)
+//        
+//        //display events as dots
+//        cell.eventIndicator.isHidden = false
+//        //cell.eventIndicator.color = UIColor.green
+//        
+//        
+//        if self.dateArray.contains(dateString){
+//            cell.eventIndicator.numberOfEvents = 1
+//        }
+//        
+//    }
     
 
     /*

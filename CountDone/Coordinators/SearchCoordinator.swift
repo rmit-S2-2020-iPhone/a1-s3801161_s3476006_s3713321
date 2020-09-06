@@ -11,12 +11,17 @@ import UIKit
 
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+
+    
+    
     var parentCoordinator: TabBarCoordinator?
     
     var currentCell: TaskTableViewCell?
     
     var searchViewController:SearchViewController?
     
+    var controllerDic:[String: UIViewController] = [:]
+
     func showDetails(){
         let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
@@ -24,10 +29,31 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     }
     
     func backToEvent(_ newTask: Task) {
-    
+        var sc: SearchViewController!
+        sc = controllerDic["SearchViewController"] as? SearchViewController
+        
+//        sc.reloadTableView(newTask: newTask,isEditMode: isEditMode)
+        
+//        let vc = SearchViewController.instantiate()
+//        vc.coordinator = self
+        
+        
+        navigationController?.popToViewController(sc, animated: false)
+        
     }
-    
-    
+    func edit_item(task: Task) {
+        let vc = CreateTaskTableViewController.instantiate()
+        vc.coordinator = self
+        vc.editModeOn()
+        vc.task = task
+        vc.navigationItem.title = "Edit task"
+        self.start()
+        self.parentCoordinator?.eventCoordinator?.start()
+        navigationController?.pushViewController(vc, animated: false)
+    }
+    func delete_item() {
+        
+    }
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
@@ -37,19 +63,22 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     func start() {
         searchViewController = SearchViewController.instantiate()
         
+        
         searchViewController!.coordinator = self
+        
+        controllerDic = ["SearchViewController":searchViewController!]
         
         navigationController?.pushViewController(searchViewController!, animated: false)
     }
     
     func add_item() {
-        let att = CreateTaskTableViewController.instantiate()
-        att.coordinator = self
-        // navigate to createTask page like event page
-        
-        navigationController?.pushViewController(att, animated: false)
+//        let att = CreateTaskTableViewController.instantiate()
+//        att.coordinator = self
+//        // navigate to createTask page like event page
+//
+//        navigationController?.pushViewController(att, animated: false)
     }
-    
+
     
     // MARK: - Flow Methods
     
