@@ -20,7 +20,7 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var emojiLabel: UILabel!
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var deleteButton: UIButton!
+//    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,8 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         let cell = coordinator?.currentCell!
         task = (cell?.task!)!
         self.setDetails(from: task! )
+        
+//        deleteButton.isEnabled = false
     }
 
     func setDetails(from task: Task){
@@ -43,12 +45,12 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     }
     
     @IBAction func editTask(_ sender: Any) {
-        coordinator?.edit_item()
+        coordinator?.edit_item(task: task!)
     }
     
-    @IBAction func deleteTask(_ sender: Any) {
-        coordinator?.delete_item()
-    }
-    
+//    @IBAction func deleteTask(_ sender: Any) {
+//        coordinator?.delete_item()
+//    }
+//
 
 }

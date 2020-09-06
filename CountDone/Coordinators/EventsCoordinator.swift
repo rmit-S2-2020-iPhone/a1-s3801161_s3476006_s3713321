@@ -11,10 +11,10 @@ protocol EventdFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
     func add_item()
-    func edit_item()
+    func edit_item(task: Task)
     func delete_item()
     func showDetails()
-    func backToEvent(_ newTask:Task, isEditMode: Bool)
+    func backToEvent(_ newTask:Task)
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
@@ -45,19 +45,25 @@ class EventCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func edit_item() {
+    func edit_item(task: Task) {
         let vc = CreateTaskTableViewController.instantiate()
         vc.coordinator = self
+        vc.task = task
         vc.editModeOn()
+        vc.navigationItem.title = "Edit task"
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func delete_item() {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
+        
+    
         let cell = ec.coordinator?.currentCell!
         let indexPath = IndexPath(row: (cell?.indexPath)!, section: 0)
+        
         ec.deleteTask(indexPath:indexPath)
+       
         navigationController?.popToViewController(ec, animated: false)
     }
     
@@ -67,11 +73,12 @@ class EventCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func backToEvent(_ newTask: Task, isEditMode: Bool) {
+    func backToEvent(_ newTask: Task) {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
         
-        ec.reloadTableView(newTask: newTask,isEditMode: isEditMode)
+        ec.reloadTableView(newTask: newTask)
+        
         
         navigationController?.popToViewController(ec, animated: false)
         
