@@ -86,6 +86,7 @@ extension SearchViewController : CellDelegate {
         cell.timeLabel.text = time
         
         cell.delegate = self
+        cell.task = tmpEventArray[indexPath.row]
         
         
         return cell
@@ -137,9 +138,7 @@ extension SearchViewController: CellDetail{
     // respond to the click on the certain cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
-        cell.indexPath = indexPath.row
         coordinator?.currentCell = cell
-        cell.tasks = self.tmpEventArray
         coordinator?.showDetails()
         
         

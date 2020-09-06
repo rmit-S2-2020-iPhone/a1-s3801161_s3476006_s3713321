@@ -50,8 +50,8 @@ class EventViewController: UITableViewController,Storyboarded {
         cell.delegate = self
         cell.changeButtonDelegate = self
         cell.indexPath = indexPath.row
-        cell.tasks = tasks
-        
+//        cell.tasks = tasks
+        cell.task = tasks[indexPath.row]
         return cell
     }
 

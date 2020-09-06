@@ -12,6 +12,8 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
 
     var coordinator: EventdFlow?
     
+    var task:Task?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -29,8 +31,8 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
 //                        day: 4, hour: 23,minute:48))
 //        let task = Task(title: "Run", typeEmoji: "🏃", description: "Run from house to school", time: time, checked: true)
         let cell = coordinator?.currentCell!
-        let task = (cell?.tasks![(cell?.indexPath)!])!
-        self.setDetails(from: task )
+        task = (cell?.task!)!
+        self.setDetails(from: task! )
     }
 
     func setDetails(from task: Task){

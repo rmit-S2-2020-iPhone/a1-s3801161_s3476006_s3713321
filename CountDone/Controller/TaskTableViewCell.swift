@@ -35,7 +35,7 @@ class TaskTableViewCell: UITableViewCell {
     weak var delegate : CellDelegate!
     var changeButtonDelegate:CheckBoxDelegate?
     var indexPath: Int?
-    var tasks:[Task]?
+    var task:Task?
     var detailcell: CellDetail?
 
     
@@ -60,7 +60,7 @@ class TaskTableViewCell: UITableViewCell {
 
     
     @IBAction func checkBoxAction(_ sender: Any) {
-        if tasks![indexPath!].checked{
+        if task!.checked{
             changeButtonDelegate?.changeButton(checked: false, index: indexPath!)
         }else{
             changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
