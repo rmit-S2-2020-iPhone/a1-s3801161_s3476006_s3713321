@@ -67,34 +67,23 @@ class EventViewController: UITableViewController,Storyboarded {
     //MARK:- Delete task
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            deleteTask(indexPath: indexPath)
+            tasks.remove(at: indexPath.row)
+
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
+            self.coordinator?.parentCoordinator?.searchCoordinator?.start()
             
         }
-    }
-    func deleteTask(indexPath: IndexPath){
-        tasks.remove(at: indexPath.row)
-        
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
-        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
   
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
     
-    func reloadTableView(newTask : Task,isEditMode: Bool){
-        
-        if isEditMode{
-            let cell = coordinator?.currentCell!
-//            cell?.tasks![(cell?.indexPath)!] = newTask
-            tasks[(cell?.indexPath)!] = newTask
-            coordinator?.parentCoordinator?.tasks?[(cell?.indexPath)!] = newTask
-        }else{
-            tasks.append(newTask)
-            coordinator?.parentCoordinator?.tasks?.append(newTask)
-        }
+    func reloadTableView(newTask : Task){
+        tasks.append(newTask)
+        coordinator?.parentCoordinator?.tasks?.append(newTask)
         tableView.reloadData()
         self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
