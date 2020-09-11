@@ -8,12 +8,8 @@
 
 import UIKit
 
-
-
 class SearchViewCoordinator: Coordinator, EventdFlow {
 
-    
-    
     var parentCoordinator: TabBarCoordinator?
     
     var currentCell: TaskTableViewCell?
@@ -31,13 +27,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     func backToEvent(_ newTask: Task) {
         var sc: SearchViewController!
         sc = controllerDic["SearchViewController"] as? SearchViewController
-        
-//        sc.reloadTableView(newTask: newTask,isEditMode: isEditMode)
-        
-//        let vc = SearchViewController.instantiate()
-//        vc.coordinator = self
-        
-        
+     
         navigationController?.popToViewController(sc, animated: false)
         
     }
@@ -51,9 +41,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
         self.parentCoordinator?.eventCoordinator?.start()
         navigationController?.pushViewController(vc, animated: false)
     }
-    func delete_item() {
-        
-    }
+    
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
@@ -71,15 +59,6 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(searchViewController!, animated: false)
     }
     
-    func add_item() {
-//        let att = CreateTaskTableViewController.instantiate()
-//        att.coordinator = self
-//        // navigate to createTask page like event page
-//
-//        navigationController?.pushViewController(att, animated: false)
-    }
-
-    
-    // MARK: - Flow Methods
-    
+    func add_item() {}
+    func delete_item() {}
 }

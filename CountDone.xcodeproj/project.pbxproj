@@ -237,10 +237,10 @@
 			children = (
 				3D3AD76024EEB7DB00BEE330 /* TaskCell.swift */,
 				A09786ED24DC16C2002AB009 /* EventViewController.swift */,
+				3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */,
 				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
 				3DA2999124F1718400F24FF7 /* CalenderViewController.swift */,
-				3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */,
 				012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */,
 				A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */,
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,

@@ -8,26 +8,54 @@
 
 import UIKit
 class EventViewController: UITableViewController,Storyboarded {
-    
-    var tasks = [Task]()
     var coordinator: EventdFlow?
-    
+    var tasks = [Task]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //TODO:- Hardcoding data change later
-        
         tasks = coordinator!.parentCoordinator!.tasks!
     }
     
-    //MARK:- Table view data source
+    @IBAction func AddItem(_ sender: Any) {
+        coordinator?.add_item()
+    }
+    
+    //Reload Table view
+    func reloadTableView(newTask : Task){
+        tasks.append(newTask)
+        coordinator?.parentCoordinator?.tasks?.append(newTask)
+        tableView.reloadData()
+        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
+    }
+    
+}
+
+extension EventViewController: CellDelegate{
+    func customcell(cell: TaskTableViewCell) {
+        //        coordinator?.add_item()
+        coordinator!.currentCell =  cell
+        coordinator?.showDetails()
+    }
+}
+
+extension EventViewController:CheckBoxDelegate{
+    func changeButton(checked: Bool, index: Int) {
+        tasks[index].checked = checked
+        tableView.reloadData()
+    }
+}
+
+
+ //MARK:- Table view data source
+extension EventViewController{
+   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell { 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
         let calender = Calendar.current
@@ -54,18 +82,23 @@ class EventViewController: UITableViewController,Storyboarded {
         cell.task = tasks[indexPath.row]
         return cell
     }
-    
+}
+
+
+//MARK:- Table view editing
+extension EventViewController{
     //set cell not be selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    //MARK:- Delete task
+    //MARK: Delete task
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            deleteTask(indexPath: indexPath)    
+            deleteTask(indexPath: indexPath)
         }
     }
+    
     func deleteTask(indexPath: IndexPath){
         tasks.remove(at: indexPath.row)
         
@@ -75,35 +108,7 @@ class EventViewController: UITableViewController,Storyboarded {
         self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
     
-    @IBAction func AddItem(_ sender: Any) {
-        coordinator?.add_item()
-    }
-    
-    func reloadTableView(newTask : Task){
-        
-        tasks.append(newTask)
-        coordinator?.parentCoordinator?.tasks?.append(newTask)
-        tableView.reloadData()
-        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
-    }
-    
-}
-
-extension EventViewController: CellDelegate{
-    func customcell(cell: TaskTableViewCell) {
-        //        coordinator?.add_item()
-        coordinator!.currentCell =  cell
-        coordinator?.showDetails()
-    }
-}
-
-extension EventViewController:CheckBoxDelegate{
-    func changeButton(checked: Bool, index: Int) {
-        tasks[index].checked = checked
-        tableView.reloadData()
-    }
-    
-    //MARK:- Confirgure the checkmark
+    //MARK: Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "uncheck"), for: .normal)
@@ -111,5 +116,5 @@ extension EventViewController:CheckBoxDelegate{
         }else{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         }
-    } 
+    }
 }

@@ -38,26 +38,11 @@ class TaskTableViewCell: UITableViewCell {
     var task:Task?
     var detailcell: CellDetail?
 
-    
-    
-    
-    override func awakeFromNib() { 
-        super.awakeFromNib()
 
-        // Initialization code
-    }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    @IBAction func cellButtonAction(_ sender: Any) {
+    @IBAction func showDetails(_ sender: Any) {
         delegate?.customcell(cell: self)
     }
-    
-
     
     @IBAction func checkBoxAction(_ sender: Any) {
         if task!.checked{
@@ -65,10 +50,7 @@ class TaskTableViewCell: UITableViewCell {
         }else{
             changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
         }
-        
     }
-
-    
 }
 
 

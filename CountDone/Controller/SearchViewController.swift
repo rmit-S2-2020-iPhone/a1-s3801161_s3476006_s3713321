@@ -9,10 +9,11 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, Storyboarded {
+class SearchViewController: UIViewController, Storyboarded {
     
+    var coordinator: EventdFlow?
     
-    @IBOutlet var searchTable: UITableView!
+    @IBOutlet var tableview: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
     var tasks = [Task]() // to setup event mockup data
@@ -21,59 +22,32 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpEvents()
-        setUpSearchBar()
+        //        setUpSearchBar()
         searchBarLayout()
-        searchTable.isScrollEnabled = true
+        tableview.isScrollEnabled = true
     }
-    
-   
-    
     
     private func setUpEvents() {
         tasks = coordinator!.parentCoordinator!.tasks!
-        
         tmpEventArray = tasks
     }
     
     // search bar
-    private func setUpSearchBar() {
-        //searchBar.delegate = self
-    }
-    
-    private func searchBarLayout() {
-        searchTable.tableHeaderView = UIView()
-        searchTable.estimatedSectionHeaderHeight = 50
-    }
-    
-    
-//    func reloadTableView(newTask : Task,isEditMode: Bool){
-//        
-//        if isEditMode{
-//            let cell = coordinator?.currentCell!
-//            //            cell?.tasks![(cell?.indexPath)!] = newTask
-//            tasks[(cell?.indexPath)!] = newTask
-//            coordinator?.parentCoordinator?.tasks?[(cell?.indexPath)!] = newTask
-//        }else{
-//            tasks.append(newTask)
-//            coordinator?.parentCoordinator?.tasks?.append(newTask)
-//        }
-//        searchTable.reloadData()
-//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
-//    }
-   
-    // action
-    //@IBAction func addThisTask(_ sender: Any) {
-    //    coordinator?.add_this_task()
-    //}
-    //
-    var coordinator: EventdFlow?
+    //    private func setUpSearchBar() {
+    //        //searchBar.delegate = self
+    //    }
     
 }
 
 
-
 extension SearchViewController : CellDelegate {
-    // table
+    func customcell(cell: TaskTableViewCell) {
+        //        coordinator!.currentCell =  cell
+        coordinator?.add_item()
+    }
+}
+
+extension SearchViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tmpEventArray.count
         //  return the number of array items in tableView
@@ -106,8 +80,39 @@ extension SearchViewController : CellDelegate {
         
         return cell
     }
+}
+extension SearchViewController:UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
+        coordinator?.currentCell = cell
+        coordinator?.showDetails()
+        
+    }
+}
+
+extension SearchViewController:UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {
+            tmpEventArray = tasks
+            tableview.reloadData()
+            return
+        }
+        tmpEventArray = tasks.filter({ event -> Bool in
+            (event.title.lowercased().contains(searchText.lowercased()) || event.date.lowercased().contains(searchText.lowercased()))
+            // if the text typed in the search bar matching the event, it will show the result
+        })
+        tableview.reloadData()
+        
+    }
+}
+
+//Mark:- Table view setting
+extension SearchViewController{
+    private func searchBarLayout() {
+        tableview.tableHeaderView = UIView()
+        tableview.estimatedSectionHeaderHeight = 50
+    }
     
-    // table
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
@@ -122,41 +127,4 @@ extension SearchViewController : CellDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    // search bar
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-            tmpEventArray = tasks
-            searchTable.reloadData()
-            return
-        }
-        tmpEventArray = tasks.filter({ event -> Bool in
-            (event.title.lowercased().contains(searchText.lowercased()) || event.date.lowercased().contains(searchText.lowercased()))
-            // if the text typed in the search bar matching the event, it will show the result
-        })
-        searchTable.reloadData()
-        
-    }
-    
-    
-    func customcell(cell: TaskTableViewCell) {
-//        coordinator!.currentCell =  cell
-        coordinator?.add_item()
-    }
-    
-    func detailcell(cell: TaskTableViewCell) {
-        coordinator?.showDetails()
-    }
-
 }
-
-extension SearchViewController: CellDetail{
-    // respond to the click on the certain cell
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
-        coordinator?.currentCell = cell
-        coordinator?.showDetails()
-     
-    }
-}
-

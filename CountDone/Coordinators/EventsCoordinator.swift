@@ -55,16 +55,7 @@ class EventCoordinator: Coordinator, EventdFlow {
     }
     
     func delete_item() {
-//        var ec:EventViewController!
-//        ec = controllerDic["eventController"] as? EventViewController
-//        
-//    
-//        let cell = ec.coordinator?.currentCell!
-//        let indexPath = IndexPath(row: (cell?.indexPath)!, section: 0)
-//        
-//        ec.deleteTask(indexPath:indexPath)
-//       
-//        navigationController?.popToViewController(ec, animated: false)
+
     }
     
     func showDetails(){

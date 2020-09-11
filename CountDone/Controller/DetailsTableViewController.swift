@@ -18,18 +18,15 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
-    @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var editButton: UIButton!
-//    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cell = coordinator?.currentCell!
         task = (cell?.task!)!
-        self.setDetails(from: task! )
         
-//        deleteButton.isEnabled = false
+        self.setDetails(from: task! )
     }
 
     func setDetails(from task: Task){
@@ -48,9 +45,4 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         coordinator?.edit_item(task: task!)
     }
     
-//    @IBAction func deleteTask(_ sender: Any) {
-//        coordinator?.delete_item()
-//    }
-//
-
 }

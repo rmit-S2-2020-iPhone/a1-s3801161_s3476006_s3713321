@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="66" id="I4x-eM-5Qq" customClass="TaskTableViewCell" customModule="CountDone" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="66" id="I4x-eM-5Qq" customClass="TaskTableViewCell" customModule="CountDone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I4x-eM-5Qq" id="BAx-ta-aI7">
@@ -97,7 +97,7 @@
                                             </constraints>
                                             <state key="normal" backgroundImage="information-button"/>
                                             <connections>
-                                                <action selector="cellButtonAction:" destination="I4x-eM-5Qq" eventType="touchDown" id="wwp-KJ-e4D"/>
+                                                <action selector="showDetails:" destination="I4x-eM-5Qq" eventType="touchUpInside" id="Qj7-sN-E44"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -124,6 +124,7 @@
                                     <accessibilityTraits key="traits" button="YES"/>
                                 </accessibility>
                                 <connections>
+                                    <outlet property="cellButton" destination="w16-3T-J6K" id="TFz-dv-N1q"/>
                                     <outlet property="checkBox" destination="VNV-1p-a4T" id="qcx-n6-Wyc"/>
                                     <outlet property="dateLabel" destination="7Gz-s4-ss6" id="kuv-ay-0Iy"/>
                                     <outlet property="descriptionLabel" destination="5dv-FU-xWP" id="6lB-wT-FUS"/>
@@ -563,22 +564,22 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="typeEmojiLabel" text="🧪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="22" translatesAutoresizingMaskIntoConstraints="NO" id="Q6m-ET-zBY">
-                                                    <rect key="frame" x="18" y="14" width="23" height="21"/>
+                                                    <rect key="frame" x="20" y="15.5" width="23" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="titleLabel" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBj-fP-ejX">
-                                                    <rect key="frame" x="49" y="15" width="135" height="20.5"/>
+                                                    <rect key="frame" x="48" y="15.5" width="135" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="brD-M0-yG5"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135" id="1hD-Jy-J7y"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6za-Q3-yUD">
-                                                    <rect key="frame" x="194" y="12" width="80" height="28"/>
+                                                    <rect key="frame" x="220" y="12" width="80" height="28"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="dataLabel" text="date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fU-FX-pJy">
                                                             <rect key="frame" x="0.0" y="0.0" width="80" height="13"/>
@@ -605,17 +606,13 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="top" constant="15" id="7zi-OT-3I8"/>
-                                                <constraint firstItem="6za-Q3-yUD" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="topMargin" constant="1" id="8ck-KZ-ugf"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="leading" secondItem="5F3-XS-Nbc" secondAttribute="leadingMargin" constant="3" id="9yk-yK-cuW"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Q6m-ET-zBY" secondAttribute="bottom" constant="6" id="A3l-Kh-tnF"/>
-                                                <constraint firstItem="6za-Q3-yUD" firstAttribute="leading" secondItem="5F3-XS-Nbc" secondAttribute="leadingMargin" constant="179" id="FJy-tQ-fHq"/>
-                                                <constraint firstItem="6za-Q3-yUD" firstAttribute="leading" secondItem="IBj-fP-ejX" secondAttribute="trailing" constant="10" id="YlW-91-Xhg"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="topMargin" constant="4" id="ceA-gg-Iaj"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="6za-Q3-yUD" secondAttribute="bottom" constant="1" id="ge7-iv-NHJ"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="leading" secondItem="Q6m-ET-zBY" secondAttribute="trailing" constant="8" id="s7Z-cU-gLv"/>
-                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="top" secondItem="5F3-XS-Nbc" secondAttribute="topMargin" constant="3" id="yu0-AH-cO3"/>
-                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5F3-XS-Nbc" secondAttribute="leading" constant="49" id="ywg-Li-Ig7"/>
+                                                <constraint firstItem="6za-Q3-yUD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IBj-fP-ejX" secondAttribute="trailing" constant="8" symbolic="YES" id="1Ka-hj-sha"/>
+                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="leading" secondItem="5F3-XS-Nbc" secondAttribute="leadingMargin" constant="5" id="3u2-8v-mK3"/>
+                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="leading" secondItem="Q6m-ET-zBY" secondAttribute="trailing" constant="5" id="6vP-dV-fl7"/>
+                                                <constraint firstItem="IBj-fP-ejX" firstAttribute="centerY" secondItem="5F3-XS-Nbc" secondAttribute="centerY" id="D1i-Y3-S4d"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6za-Q3-yUD" secondAttribute="trailing" constant="5" id="FOo-KY-ATJ"/>
+                                                <constraint firstItem="6za-Q3-yUD" firstAttribute="centerY" secondItem="5F3-XS-Nbc" secondAttribute="centerY" id="kZK-Qo-GPH"/>
+                                                <constraint firstItem="Q6m-ET-zBY" firstAttribute="centerY" secondItem="5F3-XS-Nbc" secondAttribute="centerY" id="w5T-Do-az7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration">
@@ -646,7 +643,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="B1z-7y-WDj" id="oZV-B6-e4a"/>
-                        <outlet property="searchTable" destination="kse-kY-rot" id="NJ4-Db-udl"/>
+                        <outlet property="tableview" destination="kse-kY-rot" id="NQH-nM-xMN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7w0-eI-uAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
