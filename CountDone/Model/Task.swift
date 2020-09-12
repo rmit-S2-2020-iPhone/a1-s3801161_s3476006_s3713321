@@ -12,20 +12,20 @@ enum type{
 }
 
 
-class Task{
+class _Task{
     var list = ["🏃",]
     var title = ""
     var typeEmoji = ""
-    var description = ""
+    var taskDescrip = ""
     var date = ""
-    var time:Time
+    var taskTime:Time
     var checked  = true
     
     init(title: String, typeEmoji:String,description:String,time:Time,checked:Bool) {
         self.title = title
         self.typeEmoji = typeEmoji
-        self.description = description
-        self.time = time
+        self.taskDescrip = description
+        self.taskTime = time
         self.checked = checked
     }
     

@@ -50,6 +50,7 @@ class TaskTableViewCell: UITableViewCell {
         }else{
             changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
         }
+        CoreDataStack.shared.save()
     }
 }
 

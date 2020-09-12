@@ -24,19 +24,19 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         super.viewDidLoad()
         
         let cell = coordinator?.currentCell!
-        task = (cell?.task!)!
+        self.task = (cell?.task!)!
         
         self.setDetails(from: task! )
     }
 
     func setDetails(from task: Task){
-        let calender = Calendar.current
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleLabel.text = task.title
-        descriptionLabel.text = task.description
-        let dateTime = calender.date(from: task.time.startDateComponent)
-        dateLabel.text = dateFormatter.string(from: dateTime!)
+        descriptionLabel.text = task.taskDescrip
+        let dateTime = task.taskTime.startDate
+        dateLabel.text = dateFormatter.string(from: dateTime as Date)
         emojiLabel.text = task.typeEmoji
         
     }

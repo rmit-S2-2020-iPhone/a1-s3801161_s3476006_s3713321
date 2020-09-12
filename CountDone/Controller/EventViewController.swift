@@ -7,32 +7,64 @@
 //
 
 import UIKit
+import CoreData
+
 class EventViewController: UITableViewController,Storyboarded {
     var coordinator: EventdFlow?
+    
     var tasks = [Task]()
-
+//    {
+//        didSet{
+//            tableView.reloadData()
+//        }
+//    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tasks = coordinator!.parentCoordinator!.tasks!
+        
+        reloadData()
     }
-    
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
     
-    //Reload Table view
-    func reloadTableView(newTask : Task){
-        tasks.append(newTask)
-        coordinator?.parentCoordinator?.tasks?.append(newTask)
+    func reloadData() {
+        //Request
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        // Init
+        let sortByDate = NSSortDescriptor(key: "taskTime.startDate", ascending: true)
+        let sortByCheck = NSSortDescriptor(key: "checked", ascending: true)
+        request.sortDescriptors = [sortByCheck,sortByDate]
+        
+        //Fetch
+        do{
+            let tasks = try CoreDataStack.shared.context.fetch(request)
+            self.tasks = tasks
+        } catch{}
+        
         tableView.reloadData()
-        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadData()
+    }
+    //Reload Table view
+//    func reloadTableView(newTask : Task){
+//        tasks.append(newTask)
+////        coordinator?.parentCoordinator?.tasks?.append(newTask)
+//        tableView.reloadData()
+//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
+//    }
     
 }
 
 extension EventViewController: CellDelegate{
     func customcell(cell: TaskTableViewCell) {
-        //        coordinator?.add_item()
         coordinator!.currentCell =  cell
         coordinator?.showDetails()
     }
@@ -41,14 +73,14 @@ extension EventViewController: CellDelegate{
 extension EventViewController:CheckBoxDelegate{
     func changeButton(checked: Bool, index: Int) {
         tasks[index].checked = checked
-        tableView.reloadData()
+        reloadData()
     }
 }
 
 
- //MARK:- Table view data source
+//MARK:- Table view data source
 extension EventViewController{
-   
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -58,18 +90,17 @@ extension EventViewController{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
-        let calender = Calendar.current
-        let datetime = calender.date(from: tasks[indexPath.row].time.startDateComponent)
+        
+        let dateTime = tasks[indexPath.row].taskTime.startDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM"
-        let date = dateFormatter.string(from: datetime!)
-        //        dateFormatter.dateFormat = "HH:mm E"
+        let date = dateFormatter.string(from: dateTime as Date)
         dateFormatter.dateFormat = "HH:mm"
-        let time = dateFormatter.string(from: datetime!)
+        let time = dateFormatter.string(from: dateTime as Date)
         
         cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
         cell.titleLabel.text = tasks[indexPath.row].title
-        cell.descriptionLabel.text = tasks[indexPath.row].description
+        cell.descriptionLabel.text = tasks[indexPath.row].taskDescrip
         cell.dateLabel.text = date
         cell.timeLabel.text = time
         
@@ -78,7 +109,6 @@ extension EventViewController{
         cell.delegate = self
         cell.changeButtonDelegate = self
         cell.indexPath = indexPath.row
-        //        cell.tasks = tasks
         cell.task = tasks[indexPath.row]
         return cell
     }
@@ -100,12 +130,12 @@ extension EventViewController{
     }
     
     func deleteTask(indexPath: IndexPath){
+        let task = tasks[indexPath.row]
         tasks.remove(at: indexPath.row)
-        
         tableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
-        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
+        CoreDataStack.shared.delete(task)
+//        self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
+//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
     
     //MARK: Confirgure the checkmark
@@ -116,5 +146,6 @@ extension EventViewController{
         }else{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         }
+
     }
 }

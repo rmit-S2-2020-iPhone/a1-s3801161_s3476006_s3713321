@@ -643,7 +643,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="B1z-7y-WDj" id="oZV-B6-e4a"/>
-                        <outlet property="tableview" destination="kse-kY-rot" id="NQH-nM-xMN"/>
+                        <outlet property="tableView" destination="kse-kY-rot" id="hfI-ec-Q53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7w0-eI-uAF" userLabel="First Responder" sceneMemberID="firstResponder"/>

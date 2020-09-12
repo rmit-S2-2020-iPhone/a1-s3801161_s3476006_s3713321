@@ -14,10 +14,12 @@ protocol EventdFlow: class {
     func edit_item(task: Task)
     func delete_item()
     func showDetails()
-    func backToEvent(_ newTask:Task)
+    func backToEvent()
 }
 
 class EventCoordinator: Coordinator, EventdFlow {
+ 
+    
 
     var currentCell: TaskTableViewCell?
     
@@ -50,7 +52,7 @@ class EventCoordinator: Coordinator, EventdFlow {
         vc.coordinator = self
         vc.task = task
         vc.editModeOn()
-        vc.navigationItem.title = "Edit task"
+        vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }
     
@@ -63,13 +65,10 @@ class EventCoordinator: Coordinator, EventdFlow {
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
-    
-    func backToEvent(_ newTask: Task) {
+    func backToEvent() {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
-        
-        ec.reloadTableView(newTask: newTask)
-        
+        ec.reloadData()
         
         navigationController?.popToViewController(ec, animated: false)
         

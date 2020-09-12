@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchViewCoordinator: Coordinator, EventdFlow {
+  
+    
 
     var parentCoordinator: TabBarCoordinator?
     
@@ -24,7 +26,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func backToEvent(_ newTask: Task) {
+    func backToEvent() {
         var sc: SearchViewController!
         sc = controllerDic["SearchViewController"] as? SearchViewController
      
@@ -36,9 +38,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
         vc.coordinator = self
         vc.editModeOn()
         vc.task = task
-        vc.navigationItem.title = "Edit task"
-        self.start()
-        self.parentCoordinator?.eventCoordinator?.start()
+        vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }
     
