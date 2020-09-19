@@ -9,23 +9,19 @@
 import UIKit
 import CoreData
 
-class EventViewController: UITableViewController,Storyboarded {
+class EventViewController: UIViewController,Storyboarded {
     var coordinator: EventdFlow?
     
+    @IBOutlet var tableView: UITableView!
+   
     var tasks = [Task]()
-//    {
-//        didSet{
-//            tableView.reloadData()
-//        }
-//    }
-    
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        reloadData()
+        
     }
+    
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
@@ -79,13 +75,13 @@ extension EventViewController:CheckBoxDelegate{
 
 
 //MARK:- Table view data source
-extension EventViewController{
+extension EventViewController: UITableViewDataSource,UITableViewDelegate{
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskTableViewCell else {
             return UITableViewCell()
@@ -118,12 +114,12 @@ extension EventViewController{
 //MARK:- Table view editing
 extension EventViewController{
     //set cell not be selected
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
     //MARK: Delete task
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
             deleteTask(indexPath: indexPath)
         }
@@ -140,6 +136,11 @@ extension EventViewController{
     
     //MARK: Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
+        
+//        let checkAttribute: NSAttributedString = NSAttributedString()
+//        let uncheckAttribute: NSAttributedString = NSAttributedString()
+        
+        
         if item.checked{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "uncheck"), for: .normal)
             

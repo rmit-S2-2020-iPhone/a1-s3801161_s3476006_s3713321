@@ -18,7 +18,6 @@ class SearchViewController: UIViewController, Storyboarded {
     @IBOutlet var searchBar: UISearchBar!
     
     var tasks = [Task]() // to setup event mockup data
-//    var tmpEventArray = [Task]() // update event array
     
     override func viewDidLoad() {
         super.viewDidLoad()

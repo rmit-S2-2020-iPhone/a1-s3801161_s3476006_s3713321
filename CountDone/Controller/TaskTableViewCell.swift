@@ -38,10 +38,12 @@ class TaskTableViewCell: UITableViewCell {
     var task:Task?
     var detailcell: CellDetail?
 
-
+    
+    
     
     @IBAction func showDetails(_ sender: Any) {
         delegate?.customcell(cell: self)
+        
     }
     
     @IBAction func checkBoxAction(_ sender: Any) {
@@ -52,6 +54,8 @@ class TaskTableViewCell: UITableViewCell {
         }
         CoreDataStack.shared.save()
     }
+    
+ 
 }
 
 
