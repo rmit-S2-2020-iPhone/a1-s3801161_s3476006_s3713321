@@ -55,8 +55,19 @@ class EventViewController: UIViewController,Storyboarded {
     func setDateRange(){
         calendar.timeZone = NSTimeZone.local
         let format = DateFormatter()
-        format.dateFormat = "EEEE d MMM"
+        format.dateFormat = "d MMM"
         dateButton.title = format.string(from: selectedDate)
+        format.dateFormat = "EEEE"
+        
+        if calendar.isDateInToday(selectedDate){
+            navigationbar.title = "Today"
+        }else if calendar.isDateInTomorrow(selectedDate){
+            navigationbar.title = "Tomorrow"
+        }else if calendar.isDateInYesterday(selectedDate){
+            navigationbar.title = "Yesterday"
+        }else{
+            navigationbar.title = format.string(from: selectedDate)
+        }
         
         dateFrom = calendar.startOfDay(for: selectedDate)
         dateTo = calendar.date(byAdding: .day, value: 1,to: dateFrom!)

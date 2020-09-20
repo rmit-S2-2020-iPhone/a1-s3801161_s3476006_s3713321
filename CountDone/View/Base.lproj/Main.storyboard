@@ -510,7 +510,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events" largeTitleDisplayMode="always" id="hXx-x0-JSR">
                         <barButtonItem key="rightBarButtonItem" title="Today" id="94C-e8-PdH">
-                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <segue destination="GSU-sd-c5H" kind="presentation" identifier="toCalendarSegue" id="7np-fx-gMv"/>
                             </connections>
