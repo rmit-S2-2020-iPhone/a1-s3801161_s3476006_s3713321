@@ -10,15 +10,38 @@ import UIKit
 import CoreData
 
 class EventViewController: UIViewController,Storyboarded {
-    var coordinator: EventdFlow?
+    var coordinator: EventFlow?
     
+    var selectedDate = Date()
+    var dateFrom:Date?
+    var dateTo:Date?
+    var calendar = Calendar.current
+    
+    
+    
+    
+    
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet var tableView: UITableView!
-   
+    
+    
+    @IBOutlet weak var navigationbar: UINavigationItem!
+    @IBOutlet weak var dateButton: UIBarButtonItem!
+    
     var tasks = [Task]()
-   
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDateRange()        
+        setCalendarLayer()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     
@@ -26,15 +49,41 @@ class EventViewController: UIViewController,Storyboarded {
         coordinator?.add_item()
     }
     
+    
+   
+    
+    func setDateRange(){
+        calendar.timeZone = NSTimeZone.local
+        let format = DateFormatter()
+        format.dateFormat = "EEEE d MMM"
+        dateButton.title = format.string(from: selectedDate)
+        
+        dateFrom = calendar.startOfDay(for: selectedDate)
+        dateTo = calendar.date(byAdding: .day, value: 1,to: dateFrom!)
+    }
+    
+    func setCalendarLayer() {
+        addButton.layer.cornerRadius = addButton.frame.height/2
+        addButton.layer.shadowOpacity = 0.25
+        addButton.layer.shadowRadius = 5
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+    }
+    
     func reloadData() {
         //Request
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         
-        // Init
+
+        //set sort
         let sortByDate = NSSortDescriptor(key: "taskTime.startDate", ascending: true)
         let sortByCheck = NSSortDescriptor(key: "checked", ascending: true)
         request.sortDescriptors = [sortByCheck,sortByDate]
-        
+        //set filter
+        let fromPredicate = NSPredicate(format: "taskTime.startDate >= %@", dateFrom! as NSDate)
+        let toPredicate = NSPredicate(format: "taskTime.startDate < %@", dateTo! as NSDate)
+        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
+        request.predicate = datePredicate
+  
         //Fetch
         do{
             let tasks = try CoreDataStack.shared.context.fetch(request)
@@ -44,18 +93,16 @@ class EventViewController: UIViewController,Storyboarded {
         tableView.reloadData()
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        reloadData()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCalendarSegue"{
+            let popup = segue.destination as! CalenderViewController
+            popup.onSave = {(date) in
+                self.selectedDate = date
+                self.setDateRange()
+                self.reloadData()
+            }
+        }
     }
-    //Reload Table view
-//    func reloadTableView(newTask : Task){
-//        tasks.append(newTask)
-////        coordinator?.parentCoordinator?.tasks?.append(newTask)
-//        tableView.reloadData()
-//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
-//    }
     
 }
 
@@ -73,6 +120,16 @@ extension EventViewController:CheckBoxDelegate{
     }
 }
 
+
+//extension EventViewController:CalendarDelegate{
+//    func passSelectedDate(date: Date) {
+//        selectedDate = date
+//        setDateRange()
+//        reloadData()
+//    }
+//
+//
+//}
 
 //MARK:- Table view data source
 extension EventViewController: UITableViewDataSource,UITableViewDelegate{
@@ -103,7 +160,7 @@ extension EventViewController: UITableViewDataSource,UITableViewDelegate{
         configureCheckmark(for: cell, with: tasks[indexPath.row])
         
         cell.delegate = self
-        cell.changeButtonDelegate = self
+        cell.checkBoxDelegate = self
         cell.indexPath = indexPath.row
         cell.task = tasks[indexPath.row]
         return cell
@@ -130,16 +187,13 @@ extension EventViewController{
         tasks.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         CoreDataStack.shared.delete(task)
-//        self.coordinator?.parentCoordinator?.tasks?.remove(at: indexPath.row)
-//        self.coordinator?.parentCoordinator?.searchCoordinator?.start()
     }
     
     //MARK: Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         
-//        let checkAttribute: NSAttributedString = NSAttributedString()
-//        let uncheckAttribute: NSAttributedString = NSAttributedString()
-        
+        //        let checkAttribute: NSAttributedString = NSAttributedString()
+        //        let uncheckAttribute: NSAttributedString = NSAttributedString()
         
         if item.checked{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "uncheck"), for: .normal)
@@ -147,6 +201,6 @@ extension EventViewController{
         }else{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         }
-
+        
     }
 }

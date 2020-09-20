@@ -8,28 +8,77 @@
 
 import UIKit
 import FSCalendar
+import CoreData
+
 
 class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate,UIWebViewDelegate {
     var coordinator: CalenderFlow?
-    var dateArray: [String] = ["2020-08-08","2020-08-23"]
+    var dateArray: [String] = []
+    var dateCollect = [Date]()
     
-    @IBOutlet weak var text: UITextField!
-    @IBOutlet var calender:FSCalendar!
-   
-    @IBOutlet weak var Description: UIView!
+    var selectedDate = Date()
+    var onSave: ((_ date: Date) -> ())?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var calendar:FSCalendar!
+    @IBOutlet weak var calendarView: UIView!
+    
+    
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        calender.delegate = self
-        calender.appearance.eventDefaultColor = UIColor.blue
-        calender.appearance.eventSelectionColor = UIColor.red
+        loadTask()
+        calendar.delegate = self
         
-        // Do any additional setup after loading the view.
+        calendar.appearance.eventDefaultColor = UIColor.green
+        calendar.appearance.eventSelectionColor = UIColor.green
+        
+        
+        calendarView.layer.cornerRadius = 20
+        calendarView.layer.masksToBounds = true
+        calendar.reloadData()
+        
+        
     }
     
 
-//     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+    
+    func loadTask(){
+        //Request
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        //Fetch
+        do{
+            let tasks = try CoreDataStack.shared.context.fetch(request)
+
+            for task in tasks{
+                if !dateCollect.contains(task.taskTime.startDate as Date){
+                    dateCollect.append(task.taskTime.startDate as Date)
+                }
+            }
+            
+            for date in dateCollect{
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let dateString = dateFormatter.string(from: date)
+                dateArray.append(dateString)
+            }
+
+        } catch{}
+    }
+
+    @IBAction func save(_ sender: UIButton) {
+//        var passedDate = Date()
+//        let ca  = Calendar.current
+//        passedDate = ca.date(byAdding: .day, value: -2, to: passedDate)!
+//        print(passedDate)
+        
+        onSave?(selectedDate)
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
 //         let dateFormatter3 = DateFormatter()
 //         dateFormatter3.dateFormat = "yyyy-MM-dd"
 //         let dateString = dateFormatter3.string(from: date)
@@ -39,25 +88,34 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
 //         }else{
 //             text.text = "you don't have work for today!!"
 //         }
-//        
-//     }
+        self.selectedDate = date
+     }
 
-    
+//
 //    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-//        let dateFormatter3 = DateFormatter()
-//        dateFormatter3.dateFormat = "yyyy-MM-dd"
-//        let dateString = dateFormatter3.string(from: date)
-//        
-//        //display events as dots
-//        cell.eventIndicator.isHidden = false
-//        //cell.eventIndicator.color = UIColor.green
-//        
-//        
-//        if self.dateArray.contains(dateString){
-//            cell.eventIndicator.numberOfEvents = 1
-//        }
-//        
+////        let dateFormatter3 = DateFormatter()
+////        dateFormatter3.dateFormat = "yyyy-MM-dd"
+////        let dateString = dateFormatter3.string(from: date)
+////
+////        //display events as dots
+////        cell.eventIndicator.isHidden = false
+////        cell.eventIndicator.color = UIColor.green
+////
+////
+////        if self.dateArray.contains(dateString){
+////            cell.subtitle = "1"
+////        }else{
+////            cell.subtitle = " "
+////
+////        }
+//
+////        if self.dateCollect.contains(){
+////            cell.eventIndicator.numberOfEvents = 1
+////        }
+//
 //    }
+    
+  
     
 
     /*
@@ -71,4 +129,18 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
     */
 
 }
+
+extension CalenderViewController: FSCalendarDataSource{
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateFormatter3 = DateFormatter()
+        dateFormatter3.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter3.string(from: date)
+        
+        if dateArray.contains(dateString){
+            return 1
+        }
+        return 0
+    }
+}
+
 

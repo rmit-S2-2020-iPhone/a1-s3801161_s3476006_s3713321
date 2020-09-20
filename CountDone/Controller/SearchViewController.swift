@@ -12,22 +12,23 @@ import CoreData
 
 class SearchViewController: UIViewController, Storyboarded {
     
-    var coordinator: EventdFlow?
+    var coordinator: EventFlow?
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
     var tasks = [Task]() // to setup event mockup data
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUpEvents()
+
         //        setUpSearchBar()
         searchBarLayout()
-//        tableview.isScrollEnabled = true
+
         
-        reloadData()
-//        self.tmpEventArray = self.tasks
+//        reloadData()
+
     }
     func reloadData() {
         //Request
@@ -46,10 +47,6 @@ class SearchViewController: UIViewController, Storyboarded {
         
         self.tableView.reloadData()
     }
-//    private func setUpEvents() {
-//        tasks = coordinator!.parentCoordinator!.tasks!
-//        tmpEventArray = tasks
-//    }
     
     // search bar
     //    private func setUpSearchBar() {
@@ -59,18 +56,17 @@ class SearchViewController: UIViewController, Storyboarded {
         super.viewWillAppear(animated)
         reloadData()
         navigationItem.title = "\(tasks.count) results found"
-//        self.tmpEventArray = self.tasks
 
     }
 }
 
 
-extension SearchViewController : CellDelegate {
-    func customcell(cell: TaskTableViewCell) {
-        //        coordinator!.currentCell =  cell
-        coordinator?.add_item()
-    }
-}
+//extension SearchViewController : CellDelegate {
+//    func customcell(cell: TaskTableViewCell) {
+//        //        coordinator!.currentCell =  cell
+//        coordinator?.add_item()
+//    }
+//}
 
 extension SearchViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +75,7 @@ extension SearchViewController:UITableViewDataSource{
     }
     
     
-    // table
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
             return UITableViewCell()
@@ -100,7 +96,7 @@ extension SearchViewController:UITableViewDataSource{
         cell.dateLabel.text = date
         cell.timeLabel.text = time
         
-        cell.delegate = self
+//        cell.delegate = self
         cell.task = tasks[indexPath.row]
         
         

@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsTableViewController: UITableViewController,Storyboarded {
 
-    var coordinator: EventdFlow?
+    var coordinator: EventFlow?
     
     var task:Task?
     

@@ -13,7 +13,7 @@ import CoreData
 //}
 
 class CreateTaskTableViewController: UITableViewController,Storyboarded {
-    var coordinator: EventdFlow?
+    var coordinator: EventFlow?
     
     var managedContext: NSManagedObjectContext!
     

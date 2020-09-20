@@ -7,7 +7,7 @@
 //
 import UIKit
 
-protocol EventdFlow: class {
+protocol EventFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
     func add_item()
@@ -15,9 +15,10 @@ protocol EventdFlow: class {
     func delete_item()
     func showDetails()
     func backToEvent()
+    
 }
 
-class EventCoordinator: Coordinator, EventdFlow {
+class EventCoordinator: Coordinator, EventFlow {
  
     
 
@@ -40,6 +41,8 @@ class EventCoordinator: Coordinator, EventdFlow {
         controllerDic = ["eventController":eventController]
         navigationController?.pushViewController(eventController, animated: false)
     }
+    
+
     
     func add_item(){
         let vc = CreateTaskTableViewController.instantiate()

@@ -8,10 +8,8 @@
 
 import UIKit
 
-class SearchViewCoordinator: Coordinator, EventdFlow {
-  
+class SearchViewCoordinator: Coordinator, EventFlow {
     
-
     var parentCoordinator: TabBarCoordinator?
     
     var currentCell: TaskTableViewCell?
@@ -19,7 +17,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     var searchViewController:SearchViewController?
     
     var controllerDic:[String: UIViewController] = [:]
-
+    
     func showDetails(){
         let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
@@ -29,7 +27,7 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     func backToEvent() {
         var sc: SearchViewController!
         sc = controllerDic["SearchViewController"] as? SearchViewController
-     
+        
         navigationController?.popToViewController(sc, animated: false)
         
     }
@@ -61,4 +59,5 @@ class SearchViewCoordinator: Coordinator, EventdFlow {
     
     func add_item() {}
     func delete_item() {}
+    
 }

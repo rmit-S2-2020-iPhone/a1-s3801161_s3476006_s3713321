@@ -33,7 +33,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var cellButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     weak var delegate : CellDelegate!
-    var changeButtonDelegate:CheckBoxDelegate?
+    var checkBoxDelegate:CheckBoxDelegate?
     var indexPath: Int?
     var task:Task?
     var detailcell: CellDetail?
@@ -48,9 +48,9 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBAction func checkBoxAction(_ sender: Any) {
         if task!.checked{
-            changeButtonDelegate?.changeButton(checked: false, index: indexPath!)
+            checkBoxDelegate?.changeButton(checked: false, index: indexPath!)
         }else{
-            changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
+            checkBoxDelegate?.changeButton(checked: true, index: indexPath!)
         }
         CoreDataStack.shared.save()
     }
