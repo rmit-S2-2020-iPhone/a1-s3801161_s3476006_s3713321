@@ -32,6 +32,9 @@ class EventCoordinator: Coordinator, EventFlow {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.tabBarItem.badgeColor = .white
+
     }
     
     func start() {

@@ -32,6 +32,7 @@ class EventViewController: UIViewController,Storyboarded {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         reloadData()
     }
     

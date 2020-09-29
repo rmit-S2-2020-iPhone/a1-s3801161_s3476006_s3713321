@@ -16,7 +16,7 @@
 		3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8424F0155A000060FA /* Storyboarded.swift */; };
 		3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8624F0170A000060FA /* AppCoordinator.swift */; };
 		3D78DC8C24F03B7C000060FA /* StartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8B24F03B7C000060FA /* StartCoordinator.swift */; };
-		3D78DC8E24F03EA3000060FA /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8D24F03EA3000060FA /* StartViewController.swift */; };
+		3D78DC8E24F03EA3000060FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8D24F03EA3000060FA /* LoginViewController.swift */; };
 		3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */; };
 		3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9124F03F7B000060FA /* TabBarController.swift */; };
 		3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC9324F042D7000060FA /* EventsCoordinator.swift */; };
@@ -69,7 +69,7 @@
 		3D78DC8424F0155A000060FA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		3D78DC8624F0170A000060FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		3D78DC8B24F03B7C000060FA /* StartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCoordinator.swift; sourceTree = "<group>"; };
-		3D78DC8D24F03EA3000060FA /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		3D78DC8D24F03EA3000060FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3D78DC8F24F03EE9000060FA /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		3D78DC9124F03F7B000060FA /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3D78DC9324F042D7000060FA /* EventsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			children = (
 				A09786ED24DC16C2002AB009 /* EventViewController.swift */,
 				3DA2998B24F0D72A00F24FF7 /* SearchViewController.swift */,
-				3D78DC8D24F03EA3000060FA /* StartViewController.swift */,
+				3D78DC8D24F03EA3000060FA /* LoginViewController.swift */,
 				3D78DC9124F03F7B000060FA /* TabBarController.swift */,
 				3DA2999124F1718400F24FF7 /* CalenderViewController.swift */,
 				012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */,
@@ -532,7 +532,7 @@
 				3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */,
 				A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */,
-				3D78DC8E24F03EA3000060FA /* StartViewController.swift in Sources */,
+				3D78DC8E24F03EA3000060FA /* LoginViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */,
