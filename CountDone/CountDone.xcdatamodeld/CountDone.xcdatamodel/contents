@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="checked" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="taskDescrip" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,8 +12,16 @@
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="taskTime" inverseEntity="Task" syncable="YES"/>
     </entity>
+    <entity name="UserAccount" representedClassName=".UserAccount" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Task" positionX="-27" positionY="18" width="128" height="118"/>
+        <element name="Task" positionX="-27" positionY="18" width="128" height="120"/>
         <element name="Time" positionX="259.66796875" positionY="228.734375" width="128" height="58"/>
+        <element name="UserAccount" positionX="117" positionY="153" width="128" height="120"/>
     </elements>
 </model>
