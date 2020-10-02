@@ -70,6 +70,7 @@ class REST_Request
     
     
     private func syncUsers(userList: [[String:Any]]){
+        let list = getAccounts()
         for user in userList{
             print(user)
             let id = user["id"] as! Int64
@@ -84,10 +85,6 @@ class REST_Request
             try! self.context.save()
             
         }
-        
-        let list = getAccounts()
-        print(list.count)
-        print("________________________________")
     }
     
     public func emptyUsers(){
@@ -99,4 +96,16 @@ class REST_Request
         return users as! [UserAccount]
     }
     
+    public func filterId() -> Bool {
+        let idRequest = UserAccount.fetchRequest() as NSFetchRequest<UserAccount>
+        let pred = NSPredicate(format:"id == '1'")
+        idRequest.predicate = pred
+        let items = try! self.context.fetch(idRequest)
+        if(items.count>0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }

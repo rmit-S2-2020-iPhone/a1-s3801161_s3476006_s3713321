@@ -19,14 +19,24 @@ class CountDoneTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    // unit test for feching users from the internet
-    func testApiFectch() {
+    //positive tests for the fetch user function
+    func testApiFectchPositive() {
         let rest = REST_Request()
         rest.emptyUsers()
         rest.getUsers(withEmail: "duanxinhuan@163.com")
         sleep(1)
         let users =  rest.getAccounts()
         XCTAssertEqual(users.count, 3, "there are 3 users intotal")
+        XCTAssertTrue(rest.filterId())
+    }
+    
+    //negative test for the fetch user function
+    func testApiFetchNegative(){
+        let rest = REST_Request()
+        rest.emptyUsers()
+        let users =  rest.getAccounts()
+        XCTAssertEqual(users.count, 0, "there are 3 users intotal")
+        XCTAssertFalse(rest.filterId())
     }
     
     func testExample() {
