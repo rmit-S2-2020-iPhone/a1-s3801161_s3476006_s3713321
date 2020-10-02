@@ -15,18 +15,23 @@ protocol StartFlow: class {
 class StartCoordinator: Coordinator, StartFlow {
     let navigationController: UINavigationController
     
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController.isNavigationBarHidden = true
     }
     
     func start() {
-        let startViewController = StartViewController()
-        startViewController.coordinator = self
-        navigationController.pushViewController(startViewController, animated: true)
+        let loginViewController = LoginViewController.instantiate()
+        loginViewController.coordinator = self
+        
+        navigationController.pushViewController(loginViewController, animated: true)
     }
     
     // MARK: - Flow Methods
     func coordinateToTabBar() {
+        
+        
         let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
         coordinate(to: tabBarCoordinator)
     }

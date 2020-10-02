@@ -7,17 +7,20 @@
 //
 import UIKit
 
-protocol EventdFlow: class {
+protocol EventFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
     func add_item()
     func edit_item(task: Task)
     func delete_item()
     func showDetails()
-    func backToEvent(_ newTask:Task)
+    func backToEvent()
+    
 }
 
-class EventCoordinator: Coordinator, EventdFlow {
+class EventCoordinator: Coordinator, EventFlow {
+ 
+    
 
     var currentCell: TaskTableViewCell?
     
@@ -29,6 +32,9 @@ class EventCoordinator: Coordinator, EventdFlow {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.tabBarItem.badgeColor = .white
+
     }
     
     func start() {
@@ -38,6 +44,8 @@ class EventCoordinator: Coordinator, EventdFlow {
         controllerDic = ["eventController":eventController]
         navigationController?.pushViewController(eventController, animated: false)
     }
+    
+
     
     func add_item(){
         let vc = CreateTaskTableViewController.instantiate()
@@ -50,21 +58,12 @@ class EventCoordinator: Coordinator, EventdFlow {
         vc.coordinator = self
         vc.task = task
         vc.editModeOn()
-        vc.navigationItem.title = "Edit task"
+        vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func delete_item() {
-//        var ec:EventViewController!
-//        ec = controllerDic["eventController"] as? EventViewController
-//        
-//    
-//        let cell = ec.coordinator?.currentCell!
-//        let indexPath = IndexPath(row: (cell?.indexPath)!, section: 0)
-//        
-//        ec.deleteTask(indexPath:indexPath)
-//       
-//        navigationController?.popToViewController(ec, animated: false)
+
     }
     
     func showDetails(){
@@ -72,13 +71,10 @@ class EventCoordinator: Coordinator, EventdFlow {
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
-    
-    func backToEvent(_ newTask: Task) {
+    func backToEvent() {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
-        
-        ec.reloadTableView(newTask: newTask)
-        
+        ec.reloadData()
         
         navigationController?.popToViewController(ec, animated: false)
         

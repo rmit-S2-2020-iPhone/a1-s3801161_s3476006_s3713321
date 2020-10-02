@@ -33,7 +33,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var cellButton: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     weak var delegate : CellDelegate!
-    var changeButtonDelegate:CheckBoxDelegate?
+    var checkBoxDelegate:CheckBoxDelegate?
     var indexPath: Int?
     var task:Task?
     var detailcell: CellDetail?
@@ -41,34 +41,21 @@ class TaskTableViewCell: UITableViewCell {
     
     
     
-    override func awakeFromNib() { 
-        super.awakeFromNib()
-
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    @IBAction func cellButtonAction(_ sender: Any) {
+    @IBAction func showDetails(_ sender: Any) {
         delegate?.customcell(cell: self)
+        
     }
-    
-
     
     @IBAction func checkBoxAction(_ sender: Any) {
         if task!.checked{
-            changeButtonDelegate?.changeButton(checked: false, index: indexPath!)
+            checkBoxDelegate?.changeButton(checked: false, index: indexPath!)
         }else{
-            changeButtonDelegate?.changeButton(checked: true, index: indexPath!)
+            checkBoxDelegate?.changeButton(checked: true, index: indexPath!)
         }
-        
+        CoreDataStack.shared.save()
     }
-
     
+ 
 }
 
 

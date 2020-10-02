@@ -17,7 +17,7 @@ class TabBarController: UITabBarController,Storyboarded {
         //self.tabBar.tintColor = UIColor.orange
         
         self.tabBar.layer.shadowColor = UIColor.lightGray.cgColor
-        self.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
+//        self.tabBar.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
         self.tabBar.layer.shadowRadius = 10
         self.tabBar.layer.shadowOpacity = 1
         self.tabBar.layer.masksToBounds = false

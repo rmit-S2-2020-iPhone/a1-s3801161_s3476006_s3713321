@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsTableViewController: UITableViewController,Storyboarded {
 
-    var coordinator: EventdFlow?
+    var coordinator: EventFlow?
     
     var task:Task?
     
@@ -18,28 +18,25 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var emojiLabel: UILabel!
-    @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var editButton: UIButton!
-//    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let cell = coordinator?.currentCell!
-        task = (cell?.task!)!
-        self.setDetails(from: task! )
+        self.task = (cell?.task!)!
         
-//        deleteButton.isEnabled = false
+        self.setDetails(from: task! )
     }
 
     func setDetails(from task: Task){
-        let calender = Calendar.current
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleLabel.text = task.title
-        descriptionLabel.text = task.description
-        let dateTime = calender.date(from: task.time.startDateComponent)
-        dateLabel.text = dateFormatter.string(from: dateTime!)
+        descriptionLabel.text = task.taskDescrip
+        let dateTime = task.taskTime.startDate
+        dateLabel.text = dateFormatter.string(from: dateTime as Date)
         emojiLabel.text = task.typeEmoji
         
     }
@@ -48,9 +45,4 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         coordinator?.edit_item(task: task!)
     }
     
-//    @IBAction func deleteTask(_ sender: Any) {
-//        coordinator?.delete_item()
-//    }
-//
-
 }

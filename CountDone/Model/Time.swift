@@ -8,11 +8,13 @@
 
 import Foundation
 
-struct Time{
+struct _Time{
     var startDateComponent:DateComponents
     var endDateCompoment: DateComponents?
     let calender = Calendar.current
-    
+    var startDate:Date
+    var endDate:Date?
+
     /**
      initialize a time class for the task.
      
@@ -29,13 +31,12 @@ struct Time{
         -end_min: the min of end time
      
      */
-<<<<<<< HEAD
-=======
-    
+
     init(startDateComponent:DateComponents) {
         self.startDateComponent = startDateComponent
+        startDate = calender.date(from: startDateComponent)!
     }
->>>>>>> xd
+
     init(year: Int, month:Int, day: Int, hour: Int, min: Int){
         self.startDateComponent = DateComponents(
             year: year,
@@ -44,6 +45,7 @@ struct Time{
             hour: hour,
             minute:min
         )
+        startDate = calender.date(from: startDateComponent)!
     }
     
     init(year: Int, month:Int, day: Int, hour: Int, min: Int,end_year: Int, end_month:Int, end_day: Int, end_hour: Int, end_min: Int) {
@@ -53,13 +55,16 @@ struct Time{
             day: day,
             hour: hour,
             minute:min)
+        startDate = calender.date(from: startDateComponent)!
         self.endDateCompoment = DateComponents(
             year: end_year,
             month: end_month,
             day: end_day,
             hour: end_hour,
             minute:end_min
+            
         )
+        endDate = calender.date(from: endDateCompoment!)
         
     }
     /**
@@ -83,9 +88,7 @@ struct Time{
             interval =  DateInterval(start: today ,end: eventDate! )
             day = -interval.duration/60/60/240
         }
-        
-       
-        
+
         return day
     }
     
