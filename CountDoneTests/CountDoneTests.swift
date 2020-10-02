@@ -19,6 +19,13 @@ class CountDoneTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    func testSumOfTwoNumbers() {
+        let num1 = 10
+        let num2 = 20
+        let sum = num1 + num2
+        XCTAssertEqual(sum, 30, "sum should be 30")
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

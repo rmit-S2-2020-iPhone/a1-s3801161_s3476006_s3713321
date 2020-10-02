@@ -54,7 +54,7 @@ class REST_Request
                     print()
                 }
                 
-                let result = parsedResult as! [String:Any]
+                let result = parsedResult as! [[String:Any]]
                 
                 print(result)
                 
