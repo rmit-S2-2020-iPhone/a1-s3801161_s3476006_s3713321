@@ -10,6 +10,7 @@ import Foundation
 
 import Foundation
 import UIKit
+import CoreData
 
 
 class REST_Request
@@ -18,7 +19,8 @@ class REST_Request
     private let session = URLSession.shared
     private let base_url:String = "http://127.0.0.1:5000/"
     private let paramUser: String = "users/"
-    
+    let context = CoreDataStack.shared.context
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
     
     func getUsers(withEmail:String)
     {
@@ -30,7 +32,7 @@ class REST_Request
         {
             let request = URLRequest(url: url)
             
-           getData(request, element: "results")
+            getData(request, element: "results")
         }
     }
     
@@ -54,9 +56,10 @@ class REST_Request
                     print()
                 }
                 
-                let result = parsedResult as! [[String:Any]]
-                
-                print(result)
+                let results = parsedResult as! [[String:Any]]
+//                print(results)
+                self.syncUsers(userList: results)
+            
                 
             }
             
@@ -65,5 +68,35 @@ class REST_Request
         
     }
     
+    
+    private func syncUsers(userList: [[String:Any]]){
+        for user in userList{
+            print(user)
+            let id = user["id"] as! Int64
+            print(id)
+            let account = UserAccount(context: self.context)
+            account.id = id
+            account.email = user["email"] as? String
+            account.username = user["username"] as? String
+            account.user_description =  user["description"] as? String
+            account.photo = user["photo"] as? String
+            print(account)
+            try! self.context.save()
+            
+        }
+        
+        let list = getAccounts()
+        print(list.count)
+        print("________________________________")
+    }
+    
+    public func emptyUsers(){
+        try! self.context.execute(deleteRequest)
+    }
+    
+    public func getAccounts()->[UserAccount]{
+        let users = try! self.context.fetch(UserAccount.fetchRequest())
+        return users as! [UserAccount]
+    }
     
 }

@@ -19,11 +19,14 @@ class CountDoneTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testSumOfTwoNumbers() {
-        let num1 = 10
-        let num2 = 20
-        let sum = num1 + num2
-        XCTAssertEqual(sum, 30, "sum should be 30")
+    // unit test for feching users from the internet
+    func testApiFectch() {
+        let rest = REST_Request()
+        rest.emptyUsers()
+        rest.getUsers(withEmail: "duanxinhuan@163.com")
+        sleep(1)
+        let users =  rest.getAccounts()
+        XCTAssertEqual(users.count, 3, "there are 3 users intotal")
     }
     
     func testExample() {
