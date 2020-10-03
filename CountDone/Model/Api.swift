@@ -19,8 +19,11 @@ class REST_Request
     private let session = URLSession.shared
     private let base_url:String = "http://127.0.0.1:5000/"
     private let paramUser: String = "users/"
+    private let paramEvent: String = "events/"
     let context = CoreDataStack.shared.context
+    //to-do can make it to a closure
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
+    let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
     
     func getUsers(withEmail:String)
     {
@@ -32,8 +35,17 @@ class REST_Request
         {
             let request = URLRequest(url: url)
             
-            getData(request, element: "results")
+            getData(request, element: "users")
         }
+    }
+    
+    func getEvents(withId: Int){
+        let url = base_url + paramEvent + String(withId)
+        if let url = URL(string: url){
+            let request = URLRequest(url: url)
+            getData(request, element: "events")
+        }
+        
     }
     
     private func getData(_ request: URLRequest, element: String)
@@ -58,7 +70,12 @@ class REST_Request
                 
                 let results = parsedResult as! [[String:Any]]
 //                print(results)
-                self.syncUsers(userList: results)
+                if(element=="users"){
+                    self.syncUsers(userList: results)
+                }
+                if(element=="events"){
+                    self.syncEvents(eventList: results)
+                }
             
                 
             }
@@ -69,36 +86,31 @@ class REST_Request
     }
     
     
-    private func syncUsers(userList: [[String:Any]]){
-        let list = getAccounts()
-        for user in userList{
-            print(user)
-            let id = user["id"] as! Int64
-            print(id)
-            let account = UserAccount(context: self.context)
-            account.id = id
-            account.email = user["email"] as? String
-            account.username = user["username"] as? String
-            account.user_description =  user["description"] as? String
-            account.photo = user["photo"] as? String
-            print(account)
-            try! self.context.save()
-            
+    private func syncEvents(eventList: [[String:Any]]){
+        if(!filterEvent()){
+            for e in eventList{
+                print(e)
+                let event_id = e["id"]
+                let event = Task(context: self.context)
+                event.id = event_id as! Int64
+                event.checked = false
+                //to do parse true and false inapi to event
+                event.taskTime =  Time(context: self.context)
+                event.taskTime.startDate = NSDate()
+                //to-do: parse time in event to taskTime
+                event.taskDescrip = e["taskDescription"] as? String
+                event.typeEmoji = "😀"
+                event.title = e["title"] as! String
+                //to-do type emoji parsing
+                try! self.context.save()
+            }
         }
     }
     
-    public func emptyUsers(){
-        try! self.context.execute(deleteRequest)
-    }
-    
-    public func getAccounts()->[UserAccount]{
-        let users = try! self.context.fetch(UserAccount.fetchRequest())
-        return users as! [UserAccount]
-    }
-    
-    public func filterId() -> Bool {
-        let idRequest = UserAccount.fetchRequest() as NSFetchRequest<UserAccount>
-        let pred = NSPredicate(format:"id == '1'")
+    private func filterEvent() -> Bool{
+        let idRequest = Task.fetchRequest() as NSFetchRequest<Task>
+        let num = 1
+        let pred = NSPredicate(format:"id == '\(num)'")
         idRequest.predicate = pred
         let items = try! self.context.fetch(idRequest)
         if(items.count>0){
@@ -108,4 +120,54 @@ class REST_Request
             return false
         }
     }
+    
+    
+    private func syncUsers(userList: [[String:Any]]){
+        if(!filterId()){
+            for user in userList{
+                print(user)
+                let id = user["id"] as! Int64
+                print(id)
+                let account = UserAccount(context: self.context)
+                account.id = id
+                account.email = user["email"] as? String
+                account.username = user["username"] as? String
+                account.user_description =  user["description"] as? String
+                account.photo = user["photo"] as? String
+                print(account)
+                try! self.context.save()
+                
+            }
+            
+        }
+    }
+    
+    public func emptyUsers(){
+        try! self.context.execute(deleteRequest)
+    }
+    
+    public func emptyEvents(){
+        try! self.context.execute(deleteEvents)
+    }
+    
+    public func getAccounts()->[UserAccount]{
+        let users = try! self.context.fetch(UserAccount.fetchRequest())
+        return users as! [UserAccount]
+    }
+    
+    public func filterId() -> Bool {
+        let idRequest = UserAccount.fetchRequest() as NSFetchRequest<UserAccount>
+        let num = 1
+        let pred = NSPredicate(format:"id == '\(num)'")
+        idRequest.predicate = pred
+        let items = try! self.context.fetch(idRequest)
+        if(items.count>0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
+    
 }

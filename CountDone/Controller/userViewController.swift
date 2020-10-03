@@ -39,18 +39,18 @@ class userViewController:UITableViewController{
         self.present(alert, animated: true, completion: nil)
         
         // change to desired number of seconds (in this case 5 seconds)
-        let when = DispatchTime.now()+0.5
+        let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
             // your code with delay
             self.alert.dismiss(animated: true, completion: nil)
-            try! self.context.execute(self.deleteRequest)
             let rest = REST_Request()
             rest.getUsers(withEmail: "duanxinhuan@163.com")
+            super.viewDidLoad()
+            self.fetchUsers()
         }
         
        
-        super.viewDidLoad()
-        self.fetchUsers()
+        
         
         
     }
