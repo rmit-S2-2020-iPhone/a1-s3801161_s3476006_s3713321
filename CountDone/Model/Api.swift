@@ -15,7 +15,6 @@ import CoreData
 
 class REST_Request
 {
-    
     private let session = URLSession.shared
     private let base_url:String = "http://127.0.0.1:5000/"
     private let paramUser: String = "users/"
