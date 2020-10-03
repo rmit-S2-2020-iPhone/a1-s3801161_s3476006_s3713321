@@ -11,7 +11,7 @@ protocol EventFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
     func add_item()
-    func edit_item(task: Task)
+    func edit_item(task: TaskViewModel)
     func delete_item()
     func showDetails()
     func backToEvent()
@@ -53,17 +53,13 @@ class EventCoordinator: Coordinator, EventFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func edit_item(task: Task) {
+    func edit_item(task: TaskViewModel) {
         let vc = CreateTaskTableViewController.instantiate()
         vc.coordinator = self
-        vc.task = task
+        vc.task = task.task
         vc.editModeOn()
         vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
-    }
-    
-    func delete_item() {
-
     }
     
     func showDetails(){
@@ -79,5 +75,6 @@ class EventCoordinator: Coordinator, EventFlow {
         navigationController?.popToViewController(ec, animated: false)
         
     }
-
+    
+    func delete_item() {}
 }

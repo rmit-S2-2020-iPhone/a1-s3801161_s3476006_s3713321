@@ -17,8 +17,8 @@ class SearchViewController: UIViewController, Storyboarded {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
-    var tasks = [Task]() // to setup event mockup data
 
+    var taskViewModels = [TaskViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,10 @@ class SearchViewController: UIViewController, Storyboarded {
         //Fetch
         do{
             let tasks = try CoreDataStack.shared.context.fetch(request)
-            self.tasks = tasks
+            self.taskViewModels = tasks.map({
+                return TaskViewModel(task: $0)
+            })
+            
         } catch{}
         
         self.tableView.reloadData()
@@ -55,7 +58,7 @@ class SearchViewController: UIViewController, Storyboarded {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
-        navigationItem.title = "\(tasks.count) results found"
+        navigationItem.title = "\(taskViewModels.count) results found"
 
     }
 }
@@ -70,7 +73,7 @@ class SearchViewController: UIViewController, Storyboarded {
 
 extension SearchViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return taskViewModels.count
         //  return the number of array items in tableView
     }
     
@@ -80,12 +83,12 @@ extension SearchViewController:UITableViewDataSource{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
-        cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
-        cell.titleLabel.text = tasks[indexPath.row].title
+        cell.typeEmojiLabel.text = taskViewModels[indexPath.row].typeEmoji
+        cell.titleLabel.text = taskViewModels[indexPath.row].title
         
 //        let calender = Calendar.current
 //        let datetime = calender.date(from: tmpEventArray[indexPath.row].taskTime.startDateComponent)
-        let dateTime = tasks[indexPath.row].taskTime.startDate
+        let dateTime = taskViewModels[indexPath.row].taskTime.startDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d/MMM/yyyy"
         let date = dateFormatter.string(from: dateTime as Date)
@@ -97,7 +100,7 @@ extension SearchViewController:UITableViewDataSource{
         cell.timeLabel.text = time
         
 //        cell.delegate = self
-        cell.task = tasks[indexPath.row]
+        cell.task = taskViewModels[indexPath.row]
         
         
         return cell
@@ -118,21 +121,21 @@ extension SearchViewController:UISearchBarDelegate{
 //            tmpEventArray = tasks
             reloadData()
 //            tableView.reloadData()
-            navigationItem.title = "\(tasks.count) results found"
+            navigationItem.title = "\(taskViewModels.count) results found"
             return
         }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm, d MMM yyyy"
         
-        tasks = tasks.filter({ event -> Bool in
+        taskViewModels = taskViewModels.filter({ event -> Bool in
             (event.title.lowercased().contains(searchText.lowercased()) || dateFormatter.string(from: event.taskTime.startDate as Date).lowercased().contains(searchText.lowercased())
                 )
 
             // if the text typed in the search bar matching the event, it will show the result
         })
         tableView.reloadData()
-        navigationItem.title = "\(tasks.count) results found"
+        navigationItem.title = "\(taskViewModels.count) results found"
     }
 }
 

@@ -35,7 +35,7 @@ class TaskTableViewCell: UITableViewCell {
     weak var delegate : CellDelegate!
     var checkBoxDelegate:CheckBoxDelegate?
     var indexPath: Int?
-    var task:Task?
+    var task:TaskViewModel?
     var detailcell: CellDetail?
 
     

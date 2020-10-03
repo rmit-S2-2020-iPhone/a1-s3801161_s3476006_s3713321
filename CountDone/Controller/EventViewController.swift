@@ -26,6 +26,7 @@ class EventViewController: UIViewController,Storyboarded {
     @IBOutlet weak var navigationbar: UINavigationItem!
     @IBOutlet weak var dateButton: UIBarButtonItem!
     
+    var taskViewModels = [TaskViewModel]()
     var tasks = [Task]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +98,9 @@ class EventViewController: UIViewController,Storyboarded {
         //Fetch
         do{
             let tasks = try CoreDataStack.shared.context.fetch(request)
+            self.taskViewModels = tasks.map({
+                return TaskViewModel(task: $0)
+            })
             self.tasks = tasks
         } catch{}
         
@@ -125,27 +129,17 @@ extension EventViewController: CellDelegate{
 
 extension EventViewController:CheckBoxDelegate{
     func changeButton(checked: Bool, index: Int) {
-        tasks[index].checked = checked
+        taskViewModels[index].checked = checked
         reloadData()
     }
 }
 
 
-//extension EventViewController:CalendarDelegate{
-//    func passSelectedDate(date: Date) {
-//        selectedDate = date
-//        setDateRange()
-//        reloadData()
-//    }
-//
-//
-//}
-
 //MARK:- Table view data source
 extension EventViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasks.count
+        return taskViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,25 +148,27 @@ extension EventViewController: UITableViewDataSource,UITableViewDelegate{
             return UITableViewCell()
         }
         
-        let dateTime = tasks[indexPath.row].taskTime.startDate
+        //get date & time from taskTime
+        let dateTime = taskViewModels[indexPath.row].taskTime.startDate
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM"
         let date = dateFormatter.string(from: dateTime as Date)
         dateFormatter.dateFormat = "HH:mm"
         let time = dateFormatter.string(from: dateTime as Date)
         
-        cell.typeEmojiLabel.text = tasks[indexPath.row].typeEmoji
-        cell.titleLabel.text = tasks[indexPath.row].title
-        cell.descriptionLabel.text = tasks[indexPath.row].taskDescrip
+        //set task detail on cell
+        cell.typeEmojiLabel.text = taskViewModels[indexPath.row].typeEmoji
+        cell.titleLabel.text = taskViewModels[indexPath.row].title
+        cell.descriptionLabel.text = taskViewModels[indexPath.row].taskDescrip
         cell.dateLabel.text = date
         cell.timeLabel.text = time
         
-        configureCheckmark(for: cell, with: tasks[indexPath.row])
+        configureCheckmark(for: cell, with: taskViewModels[indexPath.row])
         
         cell.delegate = self
         cell.checkBoxDelegate = self
         cell.indexPath = indexPath.row
-        cell.task = tasks[indexPath.row]
+        cell.task = taskViewModels[indexPath.row]
         return cell
     }
 }
@@ -194,13 +190,13 @@ extension EventViewController{
     
     func deleteTask(indexPath: IndexPath){
         let task = tasks[indexPath.row]
-        tasks.remove(at: indexPath.row)
+        taskViewModels.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         CoreDataStack.shared.delete(task)
     }
     
     //MARK: Confirgure the checkmark
-    func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
+    func configureCheckmark(for cell: TaskTableViewCell,with item: TaskViewModel) {
         
         //        let checkAttribute: NSAttributedString = NSAttributedString()
         //        let uncheckAttribute: NSAttributedString = NSAttributedString()
@@ -215,22 +211,4 @@ extension EventViewController{
     }
 }
 
-
-
-//extension EventViewController{
-//
-//
-//    func getJson() {
-//        guard let json_url = Bundle.main.url(forResource: "http://ipse-33-290502.appspot.com/users/duanxinhuan@163.com", withExtension: nil),
-//            let data = try? Data.init(contentsOf: json_url) else {
-//                fatalError("json fetch failed")
-//        }
-//
-//        let decoder = JSONDecoder()
-//        guard let task = try? decoder.decode([tasks].self, from: data) else {
-//            fatalError("json decode failed")
-//        }
-//        reloadData()
-//    }
-//}
 
