@@ -13,6 +13,8 @@ class LoginViewController: UIViewController,Storyboarded {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
+        let rest = REST_Request()
+        rest.getEvents(withId: 1)
         super.viewDidLoad()
 //        setupUI()
     }
