@@ -13,7 +13,7 @@ import CoreData
 
 extension Time {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Time> {
+    @nonobjc public class func FetchRequest() -> NSFetchRequest<Time> {
         return NSFetchRequest<Time>(entityName: "Time")
     }
 
