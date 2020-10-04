@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */; };
+		01542FFA25273D4D00568026 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01542FF925273D4D00568026 /* ProfileViewController.swift */; };
+		01542FFC25273E0500568026 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01542FFB25273E0500568026 /* ProfileCoordinator.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
 		3D70BB582503B91C003E9824 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB562503B91C003E9824 /* Time.swift */; };
@@ -30,7 +32,6 @@
 		3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */; };
 		3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */; };
 		5BF07418164A6D70A75B36CC /* Pods_CountDone_CountDoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F2BE8F8D83E9BD1EF85FA7 /* Pods_CountDone_CountDoneUITests.framework */; };
-		A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033049E252778F300ED53A8 /* TaskViewModel.swift */; };
 		A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8B4250B871C00A5836F /* CoreDataStack.swift */; };
 		A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */; };
 		A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8BF250B8B4300A5836F /* Time+CoreDataProperties.swift */; };
@@ -66,6 +67,8 @@
 
 /* Begin PBXFileReference section */
 		012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		01542FF925273D4D00568026 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		01542FFB25273E0500568026 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
 		3D70BB562503B91C003E9824 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -89,7 +92,6 @@
 		3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		564AF1387303A8452450ABBB /* Pods-CountDoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.release.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountDone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A033049E252778F300ED53A8 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		A04FE8B4250B871C00A5836F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CountDone/CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
 		A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Time+CoreDataClass.swift"; path = "CountDone/Model/Time+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		A04FE8BF250B8B4300A5836F /* Time+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Time+CoreDataProperties.swift"; path = "CountDone/Model/Time+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -172,16 +174,9 @@
 				3D78DC9324F042D7000060FA /* EventsCoordinator.swift */,
 				3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */,
 				3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */,
+				01542FFB25273E0500568026 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		A033049D252778C400ED53A8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				A033049E252778F300ED53A8 /* TaskViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A04FE89D250B7DD300A5836F /* CoreDate */ = {
@@ -221,7 +216,6 @@
 		A09786EA24DC16C2002AB009 /* CountDone */ = {
 			isa = PBXGroup;
 			children = (
-				A033049D252778C400ED53A8 /* ViewModel */,
 				3D558D2D2504062F00E8D160 /* Util */,
 				3DA2998924F06DCA00F24FF7 /* Assets.xcassets */,
 				3D78DC8A24F03B4D000060FA /* Coordinators */,
@@ -288,6 +282,7 @@
 				A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */,
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
 				A09450802501590A00CD77E0 /* PopupViewController.swift */,
+				01542FF925273D4D00568026 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -552,16 +547,17 @@
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
 				A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */,
 				3DEA453925247A3600F949EB /* userViewController.swift in Sources */,
+				01542FFC25273E0500568026 /* ProfileCoordinator.swift in Sources */,
 				3D70BB592503B91C003E9824 /* Task.swift in Sources */,
 				3D78DC8C24F03B7C000060FA /* StartCoordinator.swift in Sources */,
 				3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */,
 				A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */,
+				01542FFA25273D4D00568026 /* ProfileViewController.swift in Sources */,
 				3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */,
 				3D78DC8E24F03EA3000060FA /* LoginViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */,
-				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,

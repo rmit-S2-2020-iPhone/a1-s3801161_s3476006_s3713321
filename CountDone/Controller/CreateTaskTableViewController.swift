@@ -114,9 +114,8 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
             task.taskDescrip = taskDescrip
             task.taskTime = time
             task.checked = false   
-            
+            CoreDataStack.shared.save()
         }
-        CoreDataStack.shared.save()
         coordinator?.backToEvent()
     }
     

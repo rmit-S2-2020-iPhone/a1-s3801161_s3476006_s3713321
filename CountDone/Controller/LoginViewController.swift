@@ -13,9 +13,11 @@ class LoginViewController: UIViewController,Storyboarded {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        let rest = REST_Request()
-        rest.getEvents(withId: 1)
         super.viewDidLoad()
+        let rest = REST_Request()
+        rest.getUsers(withEmail: "duanxinhuan@163.com")
+        
+        
 //        setupUI()
     }
     
@@ -25,6 +27,7 @@ class LoginViewController: UIViewController,Storyboarded {
     }
     
     // MARK: - Properties
+    
     
 
     
