@@ -22,8 +22,6 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
     @IBOutlet var calendar:FSCalendar!
     @IBOutlet weak var calendarView: UIView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTask()
@@ -67,10 +65,7 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
     }
 
     @IBAction func save(_ sender: UIButton) {
-//        var passedDate = Date()
-//        let ca  = Calendar.current
-//        passedDate = ca.date(byAdding: .day, value: -2, to: passedDate)!
-//        print(passedDate)
+
         
         onSave?(selectedDate)
         
@@ -79,54 +74,9 @@ class CalenderViewController: UIViewController, Storyboarded, FSCalendarDelegate
     
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-//         let dateFormatter3 = DateFormatter()
-//         dateFormatter3.dateFormat = "yyyy-MM-dd"
-//         let dateString = dateFormatter3.string(from: date)
-//         if self.dateArray.contains(dateString){
-//             text.text = "Today you have an event"
-//             self.calender.reloadData()
-//         }else{
-//             text.text = "you don't have work for today!!"
-//         }
         self.selectedDate = date
      }
 
-//
-//    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-////        let dateFormatter3 = DateFormatter()
-////        dateFormatter3.dateFormat = "yyyy-MM-dd"
-////        let dateString = dateFormatter3.string(from: date)
-////
-////        //display events as dots
-////        cell.eventIndicator.isHidden = false
-////        cell.eventIndicator.color = UIColor.green
-////
-////
-////        if self.dateArray.contains(dateString){
-////            cell.subtitle = "1"
-////        }else{
-////            cell.subtitle = " "
-////
-////        }
-//
-////        if self.dateCollect.contains(){
-////            cell.eventIndicator.numberOfEvents = 1
-////        }
-//
-//    }
-    
-  
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
