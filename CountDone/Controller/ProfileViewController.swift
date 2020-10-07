@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, Storyboarded {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+//        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     
@@ -57,9 +57,9 @@ extension ProfileViewController:UITableViewDataSource{
         let data = NSData(contentsOf: url! as URL)
         let image = UIImage(data: data! as Data)
 //        let imageView = UIImageView(image: image)
-        let un = "gouge"
-        let uemail = "gouge@example.org"
-        let user_D = "handsome"
+        let un = "username: gouge"
+        let uemail = "email: gouge@example.org"
+        let user_D = "description: gouge is very smart and handsome"
         
         cell.photo.image = image
 ////        cell.photo.image = profiles[profileIndexPath.row].photo
