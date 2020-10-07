@@ -71,34 +71,7 @@ class EventViewController: UIViewController,Storyboarded {
         addButton.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
     
-    //    func reloadData() {
-    //        //Request
-    //        let request: NSFetchRequest<Task> = Task.fetchRequest()
-    //
-    //
-    //        //set sort
-    //        let sortByDate = NSSortDescriptor(key: "taskTime.startDate", ascending: true)
-    //        let sortByCheck = NSSortDescriptor(key: "checked", ascending: true)
-    //        request.sortDescriptors = [sortByCheck,sortByDate]
-    //        //set filter
-    //        let fromPredicate = NSPredicate(format: "taskTime.startDate >= %@", dateFrom! as NSDate)
-    //        let toPredicate = NSPredicate(format: "taskTime.startDate < %@", dateTo! as NSDate)
-    //        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
-    //        request.predicate = datePredicate
-    //
-    //        //Fetch
-    //        do{
-    //            let tasks = try CoreDataStack.shared.context.fetch(request)
-    //            self.taskViewModels = tasks.map({
-    //                return TaskViewModel(task: $0)
-    //            })
-    //            self.tasks = tasks
-    //        } catch{}
-    //
-    //        tableView.reloadData()
-    //    }
-    
-    // TODO:- viewModel
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCalendarSegue"{
             let popup = segue.destination as! CalenderViewController
@@ -128,7 +101,6 @@ extension EventViewController:CheckBoxDelegate{
     }
 }
 
-
 //MARK:- Table view data source
 extension EventViewController: UITableViewDataSource,UITableViewDelegate{
     
@@ -137,7 +109,6 @@ extension EventViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
@@ -170,15 +141,7 @@ extension EventViewController{
 //            deleteTask(indexPath: indexPath)
         }
     }
-    
-    //TODO:- viewModel
-//    func deleteTask(indexPath: IndexPath){
-////        let task = taskViewModel.getTaskFor(indexPath.row)
-////        taskViewModel.removeTaskFor(indexPath.row)
-////        tableView.deleteRows(at: [indexPath], with: .automatic)
-////        CoreDataStack.shared.delete(task)
-//    }
-//
+
     //MARK: Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{

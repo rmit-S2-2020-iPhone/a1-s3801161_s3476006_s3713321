@@ -16,16 +16,17 @@ class SearchViewController: UIViewController, Storyboarded {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
-
+    
     var taskViewModel = TaskViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBarLayout()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        searchBar.text = nil
         taskViewModel.reloadData(in: .search)
         tableView.reloadData()
         navigationItem.title = "\(taskViewModel.count) results found"
@@ -37,14 +38,14 @@ extension SearchViewController:UITableViewDataSource{
         return taskViewModel.count
         //  return the number of array items in tableView
     }
-  
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
         let task = taskViewModel.tasks[indexPath.row]
         cell.setTaskCell(task: task, in: .search)
-
+        
         return cell
     }
 }
@@ -58,22 +59,15 @@ extension SearchViewController:UITableViewDelegate{
 
 extension SearchViewController:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {
-//            tmpEventArray = tasks
-            taskViewModel.reloadData(in: .search)
-//            tableView.reloadData()
-            navigationItem.title = "\(taskViewModel.count) results found"
-            return
-        }
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm, d MMM yyyy"
-        
-        taskViewModel.tasks = taskViewModel.tasks.filter({ event -> Bool in
-            (event.title.lowercased().contains(searchText.lowercased()) || dateFormatter.string(from: event.taskTime.startDate as Date).lowercased().contains(searchText.lowercased())
-                )
-            // if the text typed in the search bar matching the event, it will show the result
-        })
+        taskViewModel.reloadData(in: .search)
+
+        if !searchText.isEmpty {
+            taskViewModel.tasks = taskViewModel.tasks.filter({ event -> Bool in
+                (event.title.lowercased().contains(searchText.lowercased()) || dateFormatter.string(from: event.taskTime.startDate as Date).lowercased().contains(searchText.lowercased()))
+            })
+        }
         tableView.reloadData()
         navigationItem.title = "\(taskViewModel.count) results found"
     }
