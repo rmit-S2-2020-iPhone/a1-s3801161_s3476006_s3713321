@@ -10,8 +10,6 @@
 		012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
-		3D70BB582503B91C003E9824 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB562503B91C003E9824 /* Time.swift */; };
-		3D70BB592503B91C003E9824 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB572503B91C003E9824 /* Task.swift */; };
 		3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8224F014C1000060FA /* Coordinator.swift */; };
 		3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8424F0155A000060FA /* Storyboarded.swift */; };
 		3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8624F0170A000060FA /* AppCoordinator.swift */; };
@@ -38,7 +36,6 @@
 		A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8C1250B8B4300A5836F /* Task+CoreDataProperties.swift */; };
 		A07A0D6124FFEA5000B118A4 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */; };
 		A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */; };
-		A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09450802501590A00CD77E0 /* PopupViewController.swift */; };
 		A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786EB24DC16C2002AB009 /* AppDelegate.swift */; };
 		A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09786ED24DC16C2002AB009 /* EventViewController.swift */; };
 		A09786F124DC16C2002AB009 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A09786EF24DC16C2002AB009 /* Main.storyboard */; };
@@ -68,8 +65,6 @@
 		012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
-		3D70BB562503B91C003E9824 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
-		3D70BB572503B91C003E9824 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3D78DC8224F014C1000060FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3D78DC8424F0155A000060FA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		3D78DC8624F0170A000060FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -97,7 +92,6 @@
 		A04FE8C1250B8B4300A5836F /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "CountDone/Model/Task+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskTableViewController.swift; sourceTree = "<group>"; };
-		A09450802501590A00CD77E0 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		A09786E824DC16C2002AB009 /* CountDone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountDone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09786EB24DC16C2002AB009 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A09786ED24DC16C2002AB009 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +181,8 @@
 		A04FE89D250B7DD300A5836F /* CoreDate */ = {
 			isa = PBXGroup;
 			children = (
+				3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */,
+				3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */,
 				A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */,
 				A04FE8BF250B8B4300A5836F /* Time+CoreDataProperties.swift */,
 				A04FE8C0250B8B4300A5836F /* Task+CoreDataClass.swift */,
@@ -257,12 +253,8 @@
 		A097871C24DC16CB002AB009 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */,
-				3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */,
 				3DEA453F25258D4000F949EB /* Api.swift */,
 				A04FE89D250B7DD300A5836F /* CoreDate */,
-				3D70BB562503B91C003E9824 /* Time.swift */,
-				3D70BB572503B91C003E9824 /* Task.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,7 +279,6 @@
 				3DEA453825247A3600F949EB /* userViewController.swift */,
 				A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */,
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
-				A09450802501590A00CD77E0 /* PopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -552,7 +543,6 @@
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
 				A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */,
 				3DEA453925247A3600F949EB /* userViewController.swift in Sources */,
-				3D70BB592503B91C003E9824 /* Task.swift in Sources */,
 				3D78DC8C24F03B7C000060FA /* StartCoordinator.swift in Sources */,
 				3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */,
 				A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */,
@@ -563,7 +553,6 @@
 				3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */,
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
-				A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
@@ -572,7 +561,6 @@
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
-				3D70BB582503B91C003E9824 /* Time.swift in Sources */,
 				A07A0D6124FFEA5000B118A4 /* DetailsTableViewController.swift in Sources */,
 				3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */,
 			);
