@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */; };
+		015085EF252DC38700610275 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015085EE252DC38700610275 /* ProfileViewModel.swift */; };
+		015085F1252DE1B300610275 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015085F0252DE1B300610275 /* Profile.swift */; };
+		0168FF182529D74A00B42921 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF172529D74A00B42921 /* ProfileViewController.swift */; };
+		0168FF1A2529D75A00B42921 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF192529D75A00B42921 /* ProfileCoordinator.swift */; };
+		0168FF1C2529E0D900B42921 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
 		3D70BB582503B91C003E9824 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB562503B91C003E9824 /* Time.swift */; };
@@ -66,6 +71,11 @@
 
 /* Begin PBXFileReference section */
 		012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		015085EE252DC38700610275 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		015085F0252DE1B300610275 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		0168FF172529D74A00B42921 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0168FF192529D75A00B42921 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
 		3D70BB562503B91C003E9824 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -172,6 +182,7 @@
 				3D78DC9324F042D7000060FA /* EventsCoordinator.swift */,
 				3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */,
 				3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */,
+				0168FF192529D75A00B42921 /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -180,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				A033049E252778F300ED53A8 /* TaskViewModel.swift */,
+				015085EE252DC38700610275 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,6 +199,9 @@
 		A04FE89D250B7DD300A5836F /* CoreDate */ = {
 			isa = PBXGroup;
 			children = (
+				3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */,
+				3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */,
+				3DEA453F25258D4000F949EB /* Api.swift */,
 				A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */,
 				A04FE8BF250B8B4300A5836F /* Time+CoreDataProperties.swift */,
 				A04FE8C0250B8B4300A5836F /* Task+CoreDataClass.swift */,
@@ -257,12 +272,10 @@
 		A097871C24DC16CB002AB009 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */,
-				3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */,
-				3DEA453F25258D4000F949EB /* Api.swift */,
 				A04FE89D250B7DD300A5836F /* CoreDate */,
 				3D70BB562503B91C003E9824 /* Time.swift */,
 				3D70BB572503B91C003E9824 /* Task.swift */,
+				015085F0252DE1B300610275 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +301,8 @@
 				A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */,
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
 				A09450802501590A00CD77E0 /* PopupViewController.swift */,
+				0168FF172529D74A00B42921 /* ProfileViewController.swift */,
+				0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -550,6 +565,7 @@
 				3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */,
 				3DEA454025258D4000F949EB /* Api.swift in Sources */,
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
+				0168FF182529D74A00B42921 /* ProfileViewController.swift in Sources */,
 				A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */,
 				3DEA453925247A3600F949EB /* userViewController.swift in Sources */,
 				3D70BB592503B91C003E9824 /* Task.swift in Sources */,
@@ -565,9 +581,12 @@
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
+				0168FF1A2529D75A00B42921 /* ProfileCoordinator.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
+				015085F1252DE1B300610275 /* Profile.swift in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
+				0168FF1C2529E0D900B42921 /* ProfileViewCell.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
@@ -575,6 +594,7 @@
 				3D70BB582503B91C003E9824 /* Time.swift in Sources */,
 				A07A0D6124FFEA5000B118A4 /* DetailsTableViewController.swift in Sources */,
 				3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */,
+				015085EF252DC38700610275 /* ProfileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
