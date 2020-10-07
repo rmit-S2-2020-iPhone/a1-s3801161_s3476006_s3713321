@@ -56,12 +56,12 @@ extension ProfileViewController:UITableViewDataSource{
         let url = NSURL(string: "https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/d/domestic-dog_thumb.ngsversion.1546554600360.adapt.1900.1.jpg")
         let data = NSData(contentsOf: url! as URL)
         let image = UIImage(data: data! as Data)
-        let imageView = UIImageView(image: image)
+//        let imageView = UIImageView(image: image)
         let un = "gouge"
         let uemail = "gouge@example.org"
         let user_D = "handsome"
         
-        cell.photo.image = imageView.image
+        cell.photo.image = image
 ////        cell.photo.image = profiles[profileIndexPath.row].photo
 //        cell.username.text = profileVM[profileIndexPath.row].username
 //        cell.email.text = profileVM[profileIndexPath.row].email
