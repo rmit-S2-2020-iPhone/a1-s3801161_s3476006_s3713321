@@ -12,7 +12,7 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
 
     var coordinator: EventFlow?
     
-    var task:TaskViewModel?
+    var task:Task?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -29,8 +29,7 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         self.setDetails(from: task! )
     }
 
-    func setDetails(from task: TaskViewModel){
-
+    func setDetails(from task: Task){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleLabel.text = task.title

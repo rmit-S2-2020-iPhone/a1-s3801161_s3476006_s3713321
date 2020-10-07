@@ -35,15 +35,36 @@ class TaskTableViewCell: UITableViewCell {
     weak var delegate : CellDelegate!
     var checkBoxDelegate:CheckBoxDelegate?
     var indexPath: Int?
-    var task:TaskViewModel?
+   
     var detailcell: CellDetail?
 
+    var task:Task?
     
-    
+    func setTaskCell(task: Task,in view: TaskLoadIn){
+        self.task = task
+        
+        if view == .main{
+            descriptionLabel.text = task.taskDescrip
+        }
+        
+        //get date & time from taskTime
+        let dateTime = task.taskTime.startDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d MMM"
+        let date = dateFormatter.string(from: dateTime as Date)
+        dateFormatter.dateFormat = "HH:mm"
+        let time = dateFormatter.string(from: dateTime as Date)
+        
+        //set task detail on cell
+        typeEmojiLabel.text =  task.typeEmoji
+        titleLabel.text = task.title
+        
+        dateLabel.text = date
+        timeLabel.text = time
+    }
     
     @IBAction func showDetails(_ sender: Any) {
         delegate?.customcell(cell: self)
-        
     }
     
     @IBAction func checkBoxAction(_ sender: Any) {

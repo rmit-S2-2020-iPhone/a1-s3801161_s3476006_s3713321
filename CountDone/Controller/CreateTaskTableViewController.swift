@@ -8,9 +8,6 @@
 
 import UIKit
 import CoreData
-//class CellClass: UITableViewCell{
-//
-//}
 
 class CreateTaskTableViewController: UITableViewController,Storyboarded {
     var coordinator: EventFlow?
@@ -33,12 +30,11 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         doneBarButton.isEnabled = false
         //Disable Done button if titletextfield is empty
         titleTextField.addTarget(self, action: #selector(textFileIsNotEmpty), for:.editingChanged)
         
-        setDatePicker()
+        setDatePicker(editMode: editMode)
         
         if editMode == true{
             doneBarButton.isEnabled = true
@@ -47,7 +43,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         
     }
     
-    
+    //Force all task has a title at least
     @objc func textFileIsNotEmpty(textField: UITextField){
         textField.text = textField.text?.trimmingCharacters(in: .whitespaces)
         guard let title = titleTextField.text, !title.isEmpty
@@ -63,7 +59,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         titleTextField.becomeFirstResponder()
     }
     
-    fileprivate func setDatePicker() {
+    fileprivate func setDatePicker(editMode: Bool) {
         dateTimeTextField.tintColor = UIColor .clear
         
         //default dateTimeTextField as current time
@@ -74,6 +70,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         dateTimeTextField.text = currentDateTimeFormatter.string(from: currentDateTime)
         
         datePicker = UIDatePicker()
+        
         datePicker?.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
         dateTimeTextField.inputView = datePicker
         
@@ -128,13 +125,13 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         let cell = coordinator?.currentCell!
         let task = cell?.task!
         
-        //        let calender = Calendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleTextField.text = task?.title
         descriptionTextField.text = task?.taskDescrip
         //        let dateTime = calender.date(from: task!.time.startDateComponent)
         let dateTime = task!.taskTime.startDate
+        datePicker.setDate(dateTime as Date, animated: false)
         dateTimeTextField.text = dateFormatter.string(from: dateTime as Date)
         TagTextField.text = task?.typeEmoji
     }

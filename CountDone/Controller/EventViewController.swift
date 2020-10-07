@@ -12,65 +12,56 @@ import CoreData
 class EventViewController: UIViewController,Storyboarded {
     var coordinator: EventFlow?
     
-    var selectedDate = Date()
-    var dateFrom:Date?
-    var dateTo:Date?
-    var calendar = Calendar.current
-    
-    
+    var taskViewModel = TaskViewModel()
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var tableView: UITableView!
     
-    
     @IBOutlet weak var navigationbar: UINavigationItem!
     @IBOutlet weak var dateButton: UIBarButtonItem!
     
-    var taskViewModels = [TaskViewModel]()
-    var tasks = [Task]()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        reloadData()
+        self.taskViewModel.reloadData(in: .main)
+        
+        self.tableView.reloadData()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDateRange()        
+        setTableView()
+        setDateRange()
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
     }
     
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
     
-    
-   
+    func setTableView(){
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+    }
     
     func setDateRange(){
-        calendar.timeZone = NSTimeZone.local
+        
         let format = DateFormatter()
         format.dateFormat = "d MMM"
-        dateButton.title = format.string(from: selectedDate)
+        dateButton.title = format.string(from: self.taskViewModel.selectedDate)
         format.dateFormat = "EEEE"
         
-        if calendar.isDateInToday(selectedDate){
+        if self.taskViewModel.calendar.isDateInToday(self.taskViewModel.selectedDate){
             navigationbar.title = "Today"
-        }else if calendar.isDateInTomorrow(selectedDate){
+        }else if self.taskViewModel.calendar.isDateInTomorrow(self.taskViewModel.selectedDate){
             navigationbar.title = "Tomorrow"
-        }else if calendar.isDateInYesterday(selectedDate){
+        }else if self.taskViewModel.calendar.isDateInYesterday(self.taskViewModel.selectedDate){
             navigationbar.title = "Yesterday"
         }else{
-            navigationbar.title = format.string(from: selectedDate)
+            navigationbar.title = format.string(from: self.taskViewModel.selectedDate)
         }
         
-        dateFrom = calendar.startOfDay(for: selectedDate)
-        dateTo = calendar.date(byAdding: .day, value: 1,to: dateFrom!)
+        
     }
     
     func setCalendarLayer() {
@@ -80,40 +71,42 @@ class EventViewController: UIViewController,Storyboarded {
         addButton.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
     
-    func reloadData() {
-        //Request
-        let request: NSFetchRequest<Task> = Task.fetchRequest()
-        
-
-        //set sort
-        let sortByDate = NSSortDescriptor(key: "taskTime.startDate", ascending: true)
-        let sortByCheck = NSSortDescriptor(key: "checked", ascending: true)
-        request.sortDescriptors = [sortByCheck,sortByDate]
-        //set filter
-        let fromPredicate = NSPredicate(format: "taskTime.startDate >= %@", dateFrom! as NSDate)
-        let toPredicate = NSPredicate(format: "taskTime.startDate < %@", dateTo! as NSDate)
-        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
-        request.predicate = datePredicate
-  
-        //Fetch
-        do{
-            let tasks = try CoreDataStack.shared.context.fetch(request)
-            self.taskViewModels = tasks.map({
-                return TaskViewModel(task: $0)
-            })
-            self.tasks = tasks
-        } catch{}
-        
-        tableView.reloadData()
-    }
+    //    func reloadData() {
+    //        //Request
+    //        let request: NSFetchRequest<Task> = Task.fetchRequest()
+    //
+    //
+    //        //set sort
+    //        let sortByDate = NSSortDescriptor(key: "taskTime.startDate", ascending: true)
+    //        let sortByCheck = NSSortDescriptor(key: "checked", ascending: true)
+    //        request.sortDescriptors = [sortByCheck,sortByDate]
+    //        //set filter
+    //        let fromPredicate = NSPredicate(format: "taskTime.startDate >= %@", dateFrom! as NSDate)
+    //        let toPredicate = NSPredicate(format: "taskTime.startDate < %@", dateTo! as NSDate)
+    //        let datePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate])
+    //        request.predicate = datePredicate
+    //
+    //        //Fetch
+    //        do{
+    //            let tasks = try CoreDataStack.shared.context.fetch(request)
+    //            self.taskViewModels = tasks.map({
+    //                return TaskViewModel(task: $0)
+    //            })
+    //            self.tasks = tasks
+    //        } catch{}
+    //
+    //        tableView.reloadData()
+    //    }
     
+    // TODO:- viewModel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCalendarSegue"{
             let popup = segue.destination as! CalenderViewController
             popup.onSave = {(date) in
-                self.selectedDate = date
+                self.taskViewModel.selectedDate = date
                 self.setDateRange()
-                self.reloadData()
+                self.taskViewModel.reloadData(in: .main)
+                self.tableView.reloadData()
             }
         }
     }
@@ -129,8 +122,9 @@ extension EventViewController: CellDelegate{
 
 extension EventViewController:CheckBoxDelegate{
     func changeButton(checked: Bool, index: Int) {
-        taskViewModels[index].checked = checked
-        reloadData()
+        self.taskViewModel.getTaskFor(index).checked = checked
+        self.taskViewModel.reloadData(in: .main)
+        self.tableView.reloadData()
     }
 }
 
@@ -139,7 +133,7 @@ extension EventViewController:CheckBoxDelegate{
 extension EventViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskViewModels.count
+        return taskViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -147,28 +141,14 @@ extension EventViewController: UITableViewDataSource,UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell") as? TaskTableViewCell else {
             return UITableViewCell()
         }
-        
-        //get date & time from taskTime
-        let dateTime = taskViewModels[indexPath.row].taskTime.startDate
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "d MMM"
-        let date = dateFormatter.string(from: dateTime as Date)
-        dateFormatter.dateFormat = "HH:mm"
-        let time = dateFormatter.string(from: dateTime as Date)
-        
-        //set task detail on cell
-        cell.typeEmojiLabel.text = taskViewModels[indexPath.row].typeEmoji
-        cell.titleLabel.text = taskViewModels[indexPath.row].title
-        cell.descriptionLabel.text = taskViewModels[indexPath.row].taskDescrip
-        cell.dateLabel.text = date
-        cell.timeLabel.text = time
-        
-        configureCheckmark(for: cell, with: taskViewModels[indexPath.row])
+        let task = taskViewModel.getTaskFor(indexPath.row)
+        cell.setTaskCell(task: task, in: .main)
+        configureCheckmark(for: cell, with: cell.task!)
         
         cell.delegate = self
         cell.checkBoxDelegate = self
         cell.indexPath = indexPath.row
-        cell.task = taskViewModels[indexPath.row]
+        
         return cell
     }
 }
@@ -184,26 +164,25 @@ extension EventViewController{
     //MARK: Delete task
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete{
-            deleteTask(indexPath: indexPath)
+            taskViewModel.deleteTask(at: indexPath.row)
+            taskViewModel.reloadData(in: .main)
+            tableView.reloadData()
+//            deleteTask(indexPath: indexPath)
         }
     }
     
-    func deleteTask(indexPath: IndexPath){
-        let task = tasks[indexPath.row]
-        taskViewModels.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        CoreDataStack.shared.delete(task)
-    }
-    
+    //TODO:- viewModel
+//    func deleteTask(indexPath: IndexPath){
+////        let task = taskViewModel.getTaskFor(indexPath.row)
+////        taskViewModel.removeTaskFor(indexPath.row)
+////        tableView.deleteRows(at: [indexPath], with: .automatic)
+////        CoreDataStack.shared.delete(task)
+//    }
+//
     //MARK: Confirgure the checkmark
-    func configureCheckmark(for cell: TaskTableViewCell,with item: TaskViewModel) {
-        
-        //        let checkAttribute: NSAttributedString = NSAttributedString()
-        //        let uncheckAttribute: NSAttributedString = NSAttributedString()
-        
+    func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "uncheck"), for: .normal)
-            
         }else{
             cell.checkBox.setBackgroundImage(#imageLiteral(resourceName: "check"), for: .normal)
         }

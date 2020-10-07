@@ -31,11 +31,11 @@ class SearchViewCoordinator: Coordinator, EventFlow {
         navigationController?.popToViewController(sc, animated: false)
         
     }
-    func edit_item(task: TaskViewModel) {
+    func edit_item(task: Task) {
         let vc = CreateTaskTableViewController.instantiate()
         vc.coordinator = self
         vc.editModeOn()
-        vc.task = task.task
+        vc.task = task
         vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }

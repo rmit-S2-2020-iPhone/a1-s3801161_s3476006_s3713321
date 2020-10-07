@@ -11,7 +11,7 @@ protocol EventFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
     func add_item()
-    func edit_item(task: TaskViewModel)
+    func edit_item(task: Task)
     func delete_item()
     func showDetails()
     func backToEvent()
@@ -20,8 +20,6 @@ protocol EventFlow: class {
 
 class EventCoordinator: Coordinator, EventFlow {
  
-    
-
     var currentCell: TaskTableViewCell?
     
     weak var navigationController: UINavigationController?
@@ -53,10 +51,10 @@ class EventCoordinator: Coordinator, EventFlow {
         navigationController?.pushViewController(vc, animated: false)
     }
     
-    func edit_item(task: TaskViewModel) {
+    func edit_item(task: Task) {
         let vc = CreateTaskTableViewController.instantiate()
         vc.coordinator = self
-        vc.task = task.task
+        vc.task = task
         vc.editModeOn()
         vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
@@ -70,7 +68,8 @@ class EventCoordinator: Coordinator, EventFlow {
     func backToEvent() {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
-        ec.reloadData()
+        ec.taskViewModel.reloadData(in: .main)
+        ec.tableView.reloadData()
         
         navigationController?.popToViewController(ec, animated: false)
         
