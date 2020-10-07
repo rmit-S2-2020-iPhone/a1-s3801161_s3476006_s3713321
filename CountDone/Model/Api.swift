@@ -17,9 +17,9 @@ class REST_Request
 {
     
     private let session = URLSession.shared
-    private let base_url:String = "http://127.0.0.1:5000/"
-    private let paramUser: String = "users/"
-    private let paramEvent: String = "events/"
+    let base_url:String = "http://127.0.0.1:5000/"
+    let paramUser: String = "users/"
+    let paramEvent: String = "events/"
     let context = CoreDataStack.shared.context
     //to-do can make it to a closure
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())

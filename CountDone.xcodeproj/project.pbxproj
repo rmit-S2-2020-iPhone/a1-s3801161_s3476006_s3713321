@@ -10,6 +10,10 @@
 		012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
+		3D5D4D94252B6CD300FF0525 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4D93252B6CD300FF0525 /* utilities.swift */; };
+		3D5D4D96252C02AA00FF0525 /* ApiPostExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4D95252C02AA00FF0525 /* ApiPostExtension.swift */; };
+		3D5D4DA4252D5E9900FF0525 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4DA3252D5E9900FF0525 /* Api.swift */; };
+		3D5D4DA9252DDA6100FF0525 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4DA8252DDA6100FF0525 /* Services.swift */; };
 		3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8224F014C1000060FA /* Coordinator.swift */; };
 		3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8424F0155A000060FA /* Storyboarded.swift */; };
 		3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8624F0170A000060FA /* AppCoordinator.swift */; };
@@ -24,7 +28,6 @@
 		3DA2999024F1703200F24FF7 /* CalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */; };
 		3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2999124F1718400F24FF7 /* CalenderViewController.swift */; };
 		3DEA453925247A3600F949EB /* userViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA453825247A3600F949EB /* userViewController.swift */; };
-		3DEA454025258D4000F949EB /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA453F25258D4000F949EB /* Api.swift */; };
 		3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */; };
 		3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */; };
 		5BF07418164A6D70A75B36CC /* Pods_CountDone_CountDoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F2BE8F8D83E9BD1EF85FA7 /* Pods_CountDone_CountDoneUITests.framework */; };
@@ -65,6 +68,10 @@
 		012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
+		3D5D4D93252B6CD300FF0525 /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
+		3D5D4D95252C02AA00FF0525 /* ApiPostExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPostExtension.swift; sourceTree = "<group>"; };
+		3D5D4DA3252D5E9900FF0525 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		3D5D4DA8252DDA6100FF0525 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		3D78DC8224F014C1000060FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3D78DC8424F0155A000060FA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		3D78DC8624F0170A000060FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -79,7 +86,6 @@
 		3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCoordinator.swift; sourceTree = "<group>"; };
 		3DA2999124F1718400F24FF7 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
 		3DEA453825247A3600F949EB /* userViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userViewController.swift; sourceTree = "<group>"; };
-		3DEA453F25258D4000F949EB /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		564AF1387303A8452450ABBB /* Pods-CountDoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.release.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,9 +158,18 @@
 		3D558D2D2504062F00E8D160 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				3D5D4D93252B6CD300FF0525 /* utilities.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
+		};
+		3D5D4DA7252D60CB00FF0525 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3D5D4DA8252DDA6100FF0525 /* Services.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = SOURCE_ROOT;
 		};
 		3D78DC8A24F03B4D000060FA /* Coordinators */ = {
 			isa = PBXGroup;
@@ -217,6 +232,7 @@
 		A09786EA24DC16C2002AB009 /* CountDone */ = {
 			isa = PBXGroup;
 			children = (
+				3D5D4DA7252D60CB00FF0525 /* NetworkLayer */,
 				A033049D252778C400ED53A8 /* ViewModel */,
 				3D558D2D2504062F00E8D160 /* Util */,
 				3DA2998924F06DCA00F24FF7 /* Assets.xcassets */,
@@ -253,8 +269,9 @@
 		A097871C24DC16CB002AB009 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3DEA453F25258D4000F949EB /* Api.swift */,
+				3D5D4DA3252D5E9900FF0525 /* Api.swift */,
 				A04FE89D250B7DD300A5836F /* CoreDate */,
+				3D5D4D95252C02AA00FF0525 /* ApiPostExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -536,28 +553,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DA2999024F1703200F24FF7 /* CalenderCoordinator.swift in Sources */,
+				3D5D4D94252B6CD300FF0525 /* utilities.swift in Sources */,
 				3DA2998C24F0D72A00F24FF7 /* SearchViewController.swift in Sources */,
 				A04FE8C4250B8B4300A5836F /* Task+CoreDataClass.swift in Sources */,
 				3D78DC9224F03F7B000060FA /* TabBarController.swift in Sources */,
-				3DEA454025258D4000F949EB /* Api.swift in Sources */,
 				3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */,
 				A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */,
 				3DEA453925247A3600F949EB /* userViewController.swift in Sources */,
 				3D78DC8C24F03B7C000060FA /* StartCoordinator.swift in Sources */,
 				3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */,
 				A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */,
+				3D5D4D96252C02AA00FF0525 /* ApiPostExtension.swift in Sources */,
 				3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */,
 				3D78DC8E24F03EA3000060FA /* LoginViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */,
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
+				3D5D4DA4252D5E9900FF0525 /* Api.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
+				3D5D4DA9252DDA6100FF0525 /* Services.swift in Sources */,
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,

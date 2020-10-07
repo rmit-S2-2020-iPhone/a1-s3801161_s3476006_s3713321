@@ -57,6 +57,17 @@ class CountDoneTests: XCTestCase {
         XCTAssertEqual(events.count,0,"good fetch")
     }
     
+    func testUtility(){
+        let u = utilities.util
+        let img = u.get_image(address: "https://www.import.io/wp-content/uploads/2018/08/Screen-Shot-2018-08-20-at-11.16.18-AM-768x601.png")
+        XCTAssertNotNil(img)
+    }
+    func testUtilityNegative(){
+        let u = utilities.util
+        let img = u.get_image(address: "https://www.import.io/wp-content/uploads/2018/08/Screen-Shot-2018-08-20-at-11.1")
+        XCTAssertNil(img)
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
