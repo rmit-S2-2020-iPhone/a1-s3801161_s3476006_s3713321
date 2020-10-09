@@ -23,12 +23,74 @@ class CountDoneUITests: XCTestCase {
     }
 
     override func tearDown() {
+        
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testMainView_ChangeDateToDisplay(){
+            
+            let app = XCUIApplication()
+            app.buttons["Get Stared"].tap()
+            
+            let todayNavigationBar = app.navigationBars["Today"]
+            XCTAssert(todayNavigationBar.exists)
+            todayNavigationBar.buttons["9 Oct"].tap()
+            app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["8"]/*[[".cells.staticTexts[\"8\"]",".staticTexts[\"8\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            app.buttons["Save"].tap()
+            let yesterdayNivigationBar = app.navigationBars["Yesterday"].otherElements["Yesterday"]
+            XCTAssert(yesterdayNivigationBar.exists)
+        
     }
+    
+    func testMainView_NewTaskWithoutTitle(){
+        
+        let app = XCUIApplication()
+        app.buttons["Get Stared"].tap()
+        app.buttons["add"].tap()
+        let doneButton = app.navigationBars["Create task"].buttons["Done"]
+        XCTAssertFalse(doneButton.isEnabled)
+        
+    }
+    
+    func testMainView_NewTaskWithTitle(){
+        
+        let app = XCUIApplication()
+        app.buttons["Get Stared"].tap()
+        app.buttons["add"].tap()
+        let titleTextField = app.tables/*@START_MENU_TOKEN@*/.textFields["Title"]/*[[".cells.textFields[\"Title\"]",".textFields[\"Title\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        titleTextField.typeText("xx")
+        
+        let doneButton = app.navigationBars["Create task"].buttons["Done"]
+        XCTAssertTrue(doneButton.isEnabled)
+    }
+    
+    
+    func testMainView_CreateAndDeleteTask(){
+//        testMainView_CreateTask()
+        let app = XCUIApplication()
+        let newTaskTitle = "NewTaskTest"
+        let tablesQuery = app.tables
+        app.buttons["Get Stared"].tap()
+        app.buttons["add"].tap()
+        
+        let titleTextField = tablesQuery.textFields["Title"]
+        titleTextField.typeText(newTaskTitle)
+        
+        
+        app.navigationBars["Create task"].buttons["Done"].tap()
+        let newTaskCell = tablesQuery.staticTexts[newTaskTitle]
 
+        
+        XCTAssertTrue(newTaskCell.exists)
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["NewTaskTest"]/*[[".cells.staticTexts[\"NewTaskTest\"]",".staticTexts[\"NewTaskTest\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        tablesQuery.buttons["Delete"].tap()
+        let tables = app.tables
+        
+        
+        XCTAssertTrue(tables.count == 1)
+        XCTAssertFalse(newTaskCell.exists)
+        
+    }
+    
+    
 }
