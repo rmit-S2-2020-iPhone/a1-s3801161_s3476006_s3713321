@@ -19,54 +19,22 @@ class CountDoneTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    //positive tests for the fetch user function
-    func testApiFectchPositive() {
-        let rest = REST_Request()
-        rest.emptyUsers()
-        rest.getUsers(withEmail: "duanxinhuan@163.com")
-        sleep(1)
-        let users =  rest.getAccounts()
-        XCTAssertEqual(users.count, 3, "there are 3 users intotal")
-        XCTAssertTrue(rest.filterId())
+    func testUtilNegative(){
+        let util = NetWorkUtil.util
+        XCTAssertThrowsError(try util.StringToDate(dateString: "vnj vd")) { error in
+            XCTAssertEqual(error as! dateFormatError, dateFormatError.runtimeError("fail to format string"))
+        }
     }
     
-    //negative test for the fetch user function
-    func testApiFetchNegative(){
-        let rest = REST_Request()
-        rest.emptyUsers()
-        let users =  rest.getAccounts()
-        XCTAssertEqual(users.count, 0, "there are 3 users intotal")
-        XCTAssertFalse(rest.filterId())
-        rest.getUsers(withEmail: "duanxinhuan@163.com")
-        
+    func testUtilPositive(){
+        let util = NetWorkUtil.util
+        let Date = try! util.StringToDate(dateString: "09/10/2020, 16:55:59")
+        print(Date)
+        let s = util.dateToString(date: Date)
+        XCTAssertNotNil(Date)
+        XCTAssertEqual(s, "09/10/2020, 16:55:59" )
     }
     
-    func testApiFetchEventPositive(){
-        let rest = REST_Request()
-        rest.emptyEvents()
-        rest.getEvents(withId: 1)
-        sleep(1)
-        let events = try! rest.context.fetch(Task.fetchRequest())
-        XCTAssertEqual(events.count,6,"good fetch")
-    }
-    
-    func testApiFetchEventNegative(){
-        let rest = REST_Request()
-        rest.emptyEvents()
-        let events = try! rest.context.fetch(Task.fetchRequest())
-        XCTAssertEqual(events.count,0,"good fetch")
-    }
-    
-    func testUtility(){
-        let u = utilities.util
-        let img = u.get_image(address: "https://www.import.io/wp-content/uploads/2018/08/Screen-Shot-2018-08-20-at-11.16.18-AM-768x601.png")
-        XCTAssertNotNil(img)
-    }
-    func testUtilityNegative(){
-        let u = utilities.util
-        let img = u.get_image(address: "https://www.import.io/wp-content/uploads/2018/08/Screen-Shot-2018-08-20-at-11.1")
-        XCTAssertNil(img)
-    }
     
     func testExample() {
         // This is an example of a functional test case.

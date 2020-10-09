@@ -10,10 +10,12 @@
 		012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
+		3D04C4EB25309220000CAB82 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D04C4EA25309220000CAB82 /* EventManager.swift */; };
 		3D5D4D94252B6CD300FF0525 /* utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4D93252B6CD300FF0525 /* utilities.swift */; };
 		3D5D4D96252C02AA00FF0525 /* ApiPostExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4D95252C02AA00FF0525 /* ApiPostExtension.swift */; };
 		3D5D4DA4252D5E9900FF0525 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4DA3252D5E9900FF0525 /* Api.swift */; };
 		3D5D4DA9252DDA6100FF0525 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4DA8252DDA6100FF0525 /* Services.swift */; };
+		3D5D4DAB2530210B00FF0525 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D4DAA2530210B00FF0525 /* NetworkUtil.swift */; };
 		3D78DC8324F014C1000060FA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8224F014C1000060FA /* Coordinator.swift */; };
 		3D78DC8524F0155A000060FA /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8424F0155A000060FA /* Storyboarded.swift */; };
 		3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D78DC8624F0170A000060FA /* AppCoordinator.swift */; };
@@ -68,10 +70,12 @@
 		012EB85A24F3B67E0008F76C /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
+		3D04C4EA25309220000CAB82 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		3D5D4D93252B6CD300FF0525 /* utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utilities.swift; sourceTree = "<group>"; };
 		3D5D4D95252C02AA00FF0525 /* ApiPostExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPostExtension.swift; sourceTree = "<group>"; };
 		3D5D4DA3252D5E9900FF0525 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		3D5D4DA8252DDA6100FF0525 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		3D5D4DAA2530210B00FF0525 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
 		3D78DC8224F014C1000060FA /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3D78DC8424F0155A000060FA /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		3D78DC8624F0170A000060FA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -155,6 +159,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3D04C4E925309203000CAB82 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				3D04C4EA25309220000CAB82 /* EventManager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
 		3D558D2D2504062F00E8D160 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +178,9 @@
 		3D5D4DA7252D60CB00FF0525 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				3D04C4E925309203000CAB82 /* managers */,
 				3D5D4DA8252DDA6100FF0525 /* Services.swift */,
+				3D5D4DAA2530210B00FF0525 /* NetworkUtil.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = SOURCE_ROOT;
@@ -386,7 +400,7 @@
 				TargetAttributes = {
 					A09786E724DC16C2002AB009 = {
 						CreatedOnToolsVersion = 10.3;
-						LastSwiftMigration = 1030;
+						LastSwiftMigration = 1160;
 					};
 					A09786FE24DC16C4002AB009 = {
 						CreatedOnToolsVersion = 10.3;
@@ -572,9 +586,11 @@
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
 				3D5D4DA4252D5E9900FF0525 /* Api.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
+				3D5D4DAB2530210B00FF0525 /* NetworkUtil.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
+				3D04C4EB25309220000CAB82 /* EventManager.swift in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3D5D4DA9252DDA6100FF0525 /* Services.swift in Sources */,

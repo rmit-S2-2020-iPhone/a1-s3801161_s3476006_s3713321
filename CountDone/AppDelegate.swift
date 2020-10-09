@@ -14,11 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
-    public var currentId: Int?
-
+//    public var currentId: Int?
+    public let currentId = 1
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        self.currentId = 1
+//        self.currentId = 1
         window = UIWindow()
         coordinator = AppCoordinator(window: window!)
         coordinator?.start()

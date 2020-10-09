@@ -12,9 +12,9 @@ import Moya
 
 enum TaskService{
     // define 4 services for event on API
-    case createEvent(checked: String, taskDescription: String, title: String, typeEmoji:String, taskTime: String)
+    case createEvent(checked: Bool, taskDescription: String, title: String, typeEmoji:String, taskTime: Time)
     case deleteEvent(id: Int)
-    case updateEvent(id:Int,checked: String, taskDescription: String, title: String, typeEmoji:String, taskTime: String)
+    case updateEvent(id:Int,checked: Bool, taskDescription: String, title: String, typeEmoji:String, taskTime: Time)
     case readEvents(userId: Int)
 }
 
@@ -46,10 +46,10 @@ extension TaskService: TargetType{
         //define methiod for api
         switch self{
             case .createEvent(_,_,_,_,_):
-                return .post
+                return .put
             
             case .updateEvent(_,_,_,_,_,_):
-                return .put
+                return .post
             case .readEvents(_):
                 return .get
             case .deleteEvent(_):
@@ -65,23 +65,28 @@ extension TaskService: TargetType{
     var task: Moya.Task {
         switch self{
         case .createEvent(let checked,let taskDescription,let title,let typeEmoji, let taskTime):
+            let startTime = taskTime.startDate
+            let timeString = NetWorkUtil.util.dateToString(date: startTime)
+            let params = ["title" : title , "taskDescription" : taskDescription, "startDatetime": timeString, "checked": checked, "typeEmoji": typeEmoji,"user_id": NetWorkUtil.util.readCurrentId()] as [String : Any]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
             
-            return .requestParameters(parameters: <#T##[String : Any]#>, encoding: <#T##ParameterEncoding#>)
-            
-        case .updateEvent(_,_,_,_,_,_):
-            return .put
+        case .updateEvent(_,let checked,let taskDescription,let title,let typeEmoji, let taskTime):
+            let startTime = taskTime.startDate
+            let timeString = NetWorkUtil.util.dateToString(date: startTime)
+            let params = ["title" : title , "taskDescription" : taskDescription, "startDatetime": timeString, "checked": checked, "typeEmoji": typeEmoji,"user_id": NetWorkUtil.util.readCurrentId()] as [String : Any]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         case .readEvents(_):
             return .requestPlain
         case .deleteEvent(_):
-            return .delete
+            return .requestPlain
         }
     }
     
     var headers: [String : String]? {
-        <#code#>
+        return ["Content-Type": "application/json"]
     }
 }
     
-}
+
 
 
