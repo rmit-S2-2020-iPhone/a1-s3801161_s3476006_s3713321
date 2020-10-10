@@ -12,16 +12,19 @@ struct Tag{
     var tagName:String
 }
 struct TagList{
+    
+    public static let getter = TagList()
     var tags:[Tag] = [Tag(tagEmoji: "⚽️", tagName: "Sports"),Tag(tagEmoji: "🏫", tagName: "Study"),Tag(tagEmoji: "🛒", tagName: "Shopping"),Tag(tagEmoji: "🎂", tagName: "Anniversary"),Tag(tagEmoji: "💼", tagName: "Work"),Tag(tagEmoji: "💅", tagName: "Skincare"),Tag(tagEmoji: "🕹", tagName: "Game")]
     
     func getTag(tagEmoji: String) -> Tag {
         for i in 0..<tags.count{
-            if tags[i].tagEmoji == tagEmoji{
+            if (tags[i].tagEmoji == tagEmoji || tags[i].tagName == tagEmoji){
                 return tags[i]
             }
         }
         return Tag(tagEmoji: "❗️", tagName: "No Such Tag")
     }
+    
     
     func getTagIndex(tag: Tag) -> Int{
         for i in 0..<tags.count{

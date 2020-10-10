@@ -36,7 +36,8 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         descriptionLabel.text = task.taskDescrip
         let dateTime = task.taskTime.startDate
         dateLabel.text = dateFormatter.string(from: dateTime as Date)
-        emojiLabel.text = task.typeEmoji
+        let tag = TagList.getter.getTag(tagEmoji: task.typeEmoji!)
+        emojiLabel.text = tag.tagEmoji
         
     }
     

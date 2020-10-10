@@ -56,7 +56,10 @@ class TaskTableViewCell: UITableViewCell {
         let time = dateFormatter.string(from: dateTime as Date)
         
         //set task detail on cell
-        typeEmojiLabel.text =  task.typeEmoji
+        
+        let tag = TagList.getter.getTag(tagEmoji: task.typeEmoji!)
+        
+        typeEmojiLabel.text = tag.tagEmoji
         titleLabel.text = task.title
         
         dateLabel.text = date

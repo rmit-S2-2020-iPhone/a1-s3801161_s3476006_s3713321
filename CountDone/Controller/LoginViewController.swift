@@ -13,8 +13,9 @@ class LoginViewController: UIViewController,Storyboarded {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        let rest = REST_Request()
-        rest.getEvents(withId: 1)
+        let manager = EventManager.manager
+        manager.emptyEvents()
+        manager.requestEvent()
         super.viewDidLoad()
 //        setupUI()
     }
@@ -25,7 +26,7 @@ class LoginViewController: UIViewController,Storyboarded {
     @IBAction func login(_ sender: Any) {
         
         if loginViewModel.loginVerification(email: "email", password: "password"){
-            //successfully login
+            coordinator?.coordinateToTabBar()
         }else{
             self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
         }
