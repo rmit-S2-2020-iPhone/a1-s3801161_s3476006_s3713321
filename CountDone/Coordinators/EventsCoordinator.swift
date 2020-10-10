@@ -65,10 +65,8 @@ class EventCoordinator: Coordinator, EventFlow {
     }
     
     func edit_item(task: Task) {
-        let vc = CreateTaskTableViewController.instantiate()
+        let vc = CreateTaskTableViewController.instantiate(editMode: true, task: task)
         vc.coordinator = self
-        vc.task = task
-        vc.editModeOn()
         vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }
@@ -78,12 +76,10 @@ class EventCoordinator: Coordinator, EventFlow {
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
+    
     func backToEvent() {
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
-        ec.taskViewModel.reloadData(in: .main)
-        ec.tableView.reloadData()
-        
         navigationController?.popToViewController(ec, animated: false)
         
     }

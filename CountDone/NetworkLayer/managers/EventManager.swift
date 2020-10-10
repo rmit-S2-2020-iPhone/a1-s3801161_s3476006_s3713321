@@ -68,31 +68,41 @@ class EventManager{
     
     }
     
-    public func updateEvent(id: Int, checked:Bool, taskDescription: String, title: String, typeEmoji: String, taskTime: Time){
-        eventProvider.request(.updateEvent(id: id, checked: checked, taskDescription: taskDescription, title: title, typeEmoji: typeEmoji, taskTime: taskTime)){ (result) in
+    public func updateEvent(task: Task){
+        eventProvider.request(.updateEvent(id: Int(task.id), checked: task.checked, taskDescription: task.taskDescrip!, title: task.title, typeEmoji: task.typeEmoji!, taskTime: task.taskTime)){ (result) in
             switch result{
             case .success(let response):
                 let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
                 let result = parsedResult as! [String:Any]
                 print(result)
-                self.syncUser(event_id: id, userDict: result)
+//                self.quickSync(event_id: id, userDict: result)
             case .failure(let error):
                 print(error)
             }
         }
     }
-    public func createEvent(checked:Bool, taskDescription: String, title: String, typeEmoji: String, taskTime: Time){
+    public func createEvent(checked:Bool, taskDescription: String, title: String, typeEmoji: String, taskTime: Time) -> Int{
+        var statisCode = 0
         eventProvider.request(.createEvent(checked: checked, taskDescription: taskDescription, title: title, typeEmoji: typeEmoji, taskTime: taskTime)){ (result) in
             switch result{
             case .success(let response):
-                let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
-                let result = parsedResult as! [String:Any]
-                print(result)
-                self.syncUser(event_id: result["id"] as! Int, userDict: result)
+                if(response.statusCode < 300){
+                    let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    let result = parsedResult as! [String:Any]
+                    print(result)
+                    self.quickSync(event_id: result["id"] as! Int, userDict: result)
+                    statisCode = 200
+                    
+                }
+                else{
+                    statisCode = 400
+                }
             case .failure(let error):
                 print(error)
+                statisCode = 400
             }
         }
+        return statisCode
     }
     private func syncUser(event_id: Int, userDict: [String:Any]){
         var event:Task
@@ -102,6 +112,23 @@ class EventManager{
         else{
             event = Task(context: self.context)
         }
+        event.id = Int64(event_id as Int)
+        event.checked = userDict["checked"] as! Bool
+        //to do parse true and false inapi to event
+        event.taskTime =  Time(context: self.context)
+        let timeString = userDict["startDatetime"] as! String
+        event.taskTime.startDate = try! NetWorkUtil.util.StringToDate(dateString: timeString)
+        //to-do: parse time in event to taskTime
+        event.taskDescrip = userDict["taskDescription"] as? String
+        event.typeEmoji = userDict["typeEmoji"] as? String
+        event.title = userDict["title"] as! String
+        //to-do type emoji parsing
+        try! self.context.save()
+    }
+    
+    private func quickSync(event_id: Int, userDict: [String:Any]){
+        var event:Task
+        event = Task(context: self.context)
         event.id = Int64(event_id as Int)
         event.checked = userDict["checked"] as! Bool
         //to do parse true and false inapi to event

@@ -30,15 +30,14 @@ class SearchViewCoordinator: Coordinator, EventFlow {
     func backToEvent() {
         var sc: SearchViewController!
         sc = controllerDic["SearchViewController"] as? SearchViewController
+        sc.tableView.reloadData()
         
         navigationController?.popToViewController(sc, animated: false)
         
     }
     func edit_item(task: Task) {
-        let vc = CreateTaskTableViewController.instantiate()
+        let vc = CreateTaskTableViewController.instantiate(editMode: true, task: task)
         vc.coordinator = self
-        vc.editModeOn()
-        vc.task = task
         vc.navigationItem.title = "Edit Task"
         navigationController?.pushViewController(vc, animated: false)
     }

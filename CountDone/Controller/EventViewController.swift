@@ -22,6 +22,7 @@ class EventViewController: UIViewController,Storyboarded {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.taskViewModel.reloadData(in: .main)
         
         self.tableView.reloadData()
@@ -70,6 +71,7 @@ class EventViewController: UIViewController,Storyboarded {
         addButton.layer.shadowRadius = 5
         addButton.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
+    
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
