@@ -54,6 +54,8 @@ extension SearchViewController:UITableViewDelegate{
         let cell:TaskTableViewCell = tableView.cellForRow(at: indexPath) as! TaskTableViewCell
         coordinator?.currentCell = cell
         coordinator?.showDetails()
+        
+        
     }
 }
 

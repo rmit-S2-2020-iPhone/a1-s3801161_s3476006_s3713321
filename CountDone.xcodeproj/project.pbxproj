@@ -42,6 +42,7 @@
 		A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A09786F224DC16C2002AB009 /* CountDone.xcdatamodeld */; };
 		A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870324DC16C4002AB009 /* CountDoneTests.swift */; };
 		A097870F24DC16C4002AB009 /* CountDoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A097870E24DC16C4002AB009 /* CountDoneUITests.swift */; };
+		A0D0C4C9253093E000CDB67A /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0C4C8253093E000CDB67A /* TagViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		A097871024DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0D0C4BC253059E500CDB67A /* CountDoneUITests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneUITests1.swift; sourceTree = "<group>"; };
 		A0D0C4BE253059E500CDB67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0D0C4C8253093E000CDB67A /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		A9FF17D8073316FFB7DB5A4B /* Pods-CountDone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.release.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.release.xcconfig"; sourceTree = "<group>"; };
 		B347B854577C06A6BE82972A /* Pods-CountDoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.debug.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1972635DC595E9F4B1D819 /* Pods-CountDone-CountDoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.release.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				3DEA453825247A3600F949EB /* userViewController.swift */,
 				A07A0D6024FFEA5000B118A4 /* DetailsTableViewController.swift */,
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
+				A0D0C4C8253093E000CDB67A /* TagViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */,
 				A04FE8C3250B8B4300A5836F /* Time+CoreDataProperties.swift in Sources */,
 				3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */,
+				A0D0C4C9253093E000CDB67A /* TagViewController.swift in Sources */,
 				A09786EE24DC16C2002AB009 /* EventViewController.swift in Sources */,
 				3D78DC8E24F03EA3000060FA /* LoginViewController.swift in Sources */,
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,

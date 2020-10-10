@@ -19,6 +19,8 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var TagTextField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var TagLabel: UILabel!
+    
     
     @IBOutlet weak var navigationBar: UINavigationItem!
     
@@ -28,8 +30,10 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     private var datePicker : UIDatePicker!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         doneBarButton.isEnabled = false
         //Disable Done button if titletextfield is empty
         titleTextField.addTarget(self, action: #selector(textFileIsNotEmpty), for:.editingChanged)
@@ -54,10 +58,10 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         doneBarButton.isEnabled=true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        titleTextField.becomeFirstResponder()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        titleTextField.becomeFirstResponder()
+//    }
     
     fileprivate func setDatePicker(editMode: Bool) {
         dateTimeTextField.tintColor = UIColor .clear
@@ -74,17 +78,17 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         datePicker?.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
         dateTimeTextField.inputView = datePicker
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTaskTableViewController.viewTapped(gestureRecognizer:)))
-        
-        view.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTaskTableViewController.viewTapped(gestureRecognizer:)))
+//        
+//        view.addGestureRecognizer(tapGesture)
         
         dateTimeTextField.inputView = datePicker
     }
-    
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
-        view.endEditing(true)
-    }
-    
+//
+//    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
+//        view.endEditing(true)
+//    }
+//
     @objc func dateChange(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
@@ -134,8 +138,14 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         datePicker.setDate(dateTime as Date, animated: false)
         dateTimeTextField.text = dateFormatter.string(from: dateTime as Date)
         TagTextField.text = task?.typeEmoji
+        TagLabel.text = task?.typeEmoji
+    
     }
 }
 
-
+extension CreateTaskTableViewController{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Selection is : \(indexPath.section)")
+    }
+}
 

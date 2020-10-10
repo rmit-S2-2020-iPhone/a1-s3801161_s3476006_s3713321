@@ -43,5 +43,5 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
     @IBAction func editTask(_ sender: Any) {
         coordinator?.edit_item(task: task!)
     }
-    
+   
 }
