@@ -11,8 +11,13 @@ import CoreData
 
 class CreateTaskTableViewController: UITableViewController,Storyboarded {
     var coordinator: EventFlow?
-    
-    var managedContext: NSManagedObjectContext!
+    var viewModel: CreateTaskViewModel?
+    //deletable
+    let tagList = TagList()
+    var task: Task?
+    var editMode = false
+    private var datePicker : UIDatePicker!
+    //deletable
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTimeTextField: UITextField!
@@ -23,12 +28,13 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     @IBOutlet weak var navigationBar: UINavigationItem!
     
-    var task: Task?
     
-    var editMode = false
-    
-    private var datePicker : UIDatePicker!
-    
+    static func instantiate(editMode: Bool) -> CreateTaskTableViewController{
+        
+        let vc = CreateTaskTableViewController.instantiate()
+        vc.viewModel = CreateTaskViewModel(editMode: editMode)
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,26 +67,15 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     fileprivate func setDatePicker(editMode: Bool) {
         dateTimeTextField.tintColor = UIColor .clear
-        
-        //default dateTimeTextField as current time
-        let currentDateTime = Date()
-        let currentDateTimeFormatter = DateFormatter()
-        currentDateTimeFormatter.dateFormat = "HH:mm E, d MMM"
-        
-        dateTimeTextField.text = currentDateTimeFormatter.string(from: currentDateTime)
-        
-        datePicker = UIDatePicker()
-        
-        datePicker?.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
-        dateTimeTextField.inputView = datePicker
-        
-
+        dateTimeTextField.text = viewModel?.dateTimeText
+        viewModel?.datePicker.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
+        dateTimeTextField.inputView = viewModel?.datePicker
     }
 
     @objc func dateChange(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
-        dateTimeTextField.text = dateFormatter.string(from: datePicker.date)
+        dateTimeTextField.text = dateFormatter.string(from: viewModel!.datePicker.date)
         view.endEditing(true)
     }
     
@@ -89,7 +84,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         let typeEmoji = TagLabel.text!
         let taskDescrip = descriptionTextField.text!
         let time = Time(context: CoreDataStack.shared.context)
-        time.startDate = datePicker.date as NSDate
+        time.startDate = self.viewModel!.datePicker.date as NSDate
         
         if editMode{
             task?.title = title
@@ -99,10 +94,13 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         }else{
             let task = Task(context: CoreDataStack.shared.context)
             task.title = title
-            task.typeEmoji = typeEmoji
+            let tagName = tagList.getTag(tagEmoji: typeEmoji)
+            task.typeEmoji = tagName.tagName
+            
             task.taskDescrip = taskDescrip
             task.taskTime = time
-            task.checked = false   
+            task.checked = false
+            print(task.typeEmoji!)
             
         }
         CoreDataStack.shared.save()
@@ -136,7 +134,7 @@ extension CreateTaskTableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let vc = TagViewController.instantiate()
-            let tagList = TagList()
+           
             let tag = tagList.getTag(tagEmoji: task?.typeEmoji ?? "")
             vc.tagViewModel.setTag(tag:tag)
             vc.tagViewModel.createVC = self

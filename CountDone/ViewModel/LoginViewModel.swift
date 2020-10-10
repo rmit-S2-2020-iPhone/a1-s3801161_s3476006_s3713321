@@ -14,7 +14,7 @@ class LoginViewModel{
     func loginVerification(email:String, password:String) -> Bool{
         //verification logic
         
-        return false
+        return true
     }
     
     func verificationAlert() -> UIAlertController{

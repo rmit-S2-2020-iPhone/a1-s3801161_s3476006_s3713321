@@ -59,7 +59,7 @@ class EventCoordinator: Coordinator, EventFlow {
 
     
     func add_item(){
-        let vc = CreateTaskTableViewController.instantiate()
+        let vc = CreateTaskTableViewController.instantiate(editMode: false)
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }

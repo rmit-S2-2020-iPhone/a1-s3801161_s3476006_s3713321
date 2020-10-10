@@ -1,16 +1,30 @@
 PODS:
+  - Alamofire (4.9.1)
   - FSCalendar (2.8.1)
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya/Core (12.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.0)
+  - Result (4.1.0)
 
 DEPENDENCIES:
   - FSCalendar
+  - Moya (~> 12.0.1)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - FSCalendar
+    - Moya
+    - Result
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: 8fa653fbcc2645652f438e67052e1c3a20f32f73
+PODFILE CHECKSUM: 7bd84a82e1f806350c551187805aefd4ae91e9ed
 
 COCOAPODS: 1.9.3

@@ -6,6 +6,13 @@ target 'CountDone' do
   use_frameworks!
 
 pod 'FSCalendar'
+pod 'Moya' , '~> 12.0.1'
+
+
+inhibit_all_warnings!
+
+
+
   # Pods for CountDone
 
   target 'CountDoneTests' do
