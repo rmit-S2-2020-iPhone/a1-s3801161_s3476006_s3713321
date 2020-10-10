@@ -22,7 +22,7 @@ extension TaskService: TargetType{
     
     var baseURL: URL {
         // define base url for api
-        return URL(string: "http://127.0.0.1:5000")!
+        return URL(string: "http://ipse-33-290502.appspot.com")!
     }
     
     var path: String {

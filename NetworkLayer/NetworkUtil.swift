@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 
 enum dateFormatError: Error, Equatable {
@@ -19,13 +20,17 @@ public class NetWorkUtil{
     public static let util = NetWorkUtil()
     private let delegate = (UIApplication.shared.delegate as! AppDelegate)
     private let formatter = DateFormatter()
+    let context = CoreDataStack.shared.context
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
+    let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
     
     init(){
         self.formatter.dateFormat = "MM/dd/yyyy, HH:mm:ss"
     }
     
     func readCurrentId() -> Int {
-        return delegate.currentId
+//        return delegate.currentId
+        return 1
     }
     
     func dateToString(date:NSDate) -> String{

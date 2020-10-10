@@ -12,11 +12,11 @@ import Moya
 
 enum apiError: Error, Equatable{
     case updateError(String)
-    // set id to -1
+    // set id to negative
     case createError(String)
-    //set id to -2
+    //set id to 0
     case deleteError(String)
-    // set id to -3
+    // set title to [deleted]
     case getError(String)
 }
 
@@ -24,6 +24,8 @@ class EventManager{
     let context = CoreDataStack.shared.context
     var eventProvider = MoyaProvider<TaskService>()
     public static let manager = EventManager()
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
+    let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
     
     func requestEvent(){
         eventProvider.request(.readEvents(userId: NetWorkUtil.util.readCurrentId())){ (result) in
@@ -119,6 +121,10 @@ class EventManager{
             return items[0]
         }
         return nil
+    }
+    
+    public func emptyEvents(){
+        try! self.context.execute(deleteEvents)
     }
     
     
