@@ -22,10 +22,12 @@ class LoginViewController: UIViewController,Storyboarded {
         
         
         
-        EventManager.manager.updateEvent(id: 1, checked: true, taskDescription: "I am happy", title: "Fuel up", typeEmoji: "sport", taskTime: t)
+        EventManager.manager.updateEvent(id: 2, checked: true, taskDescription: "I am happy", title: "Fuel up", typeEmoji: "sport", taskTime: t)
         EventManager.manager.createEvent(checked: false, taskDescription: "I am sad", title: "gogogo", typeEmoji: "laugh", taskTime: t)
+        
+//        EventManager.manager.deleteEvent(id: 1)
+        
         EventManager.manager.requestEvent()
-        EventManager.manager.deleteEvent(id: 5)
         
         
 

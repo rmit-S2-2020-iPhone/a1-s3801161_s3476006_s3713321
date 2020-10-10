@@ -27,15 +27,22 @@ class EventManager{
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
     let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
     
-    func requestEvent(){
-        eventProvider.request(.readEvents(userId: NetWorkUtil.util.readCurrentId())){ (result) in
+    func requestEvent() {
+        eventProvider.request(.readEvents(userId: NetWorkUtil.util.readCurrentId()))
+        { (result) in
             switch result{
             case .success(let response):
+               
                 let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
-                let results = parsedResult as! [[String:Any]]
+                guard let results = parsedResult as? [[String:Any]]
+                    else{
+                        return
+                }
                 self.sync(eventList: results)
-            case .failure(let error):
-                print(error)
+              
+                
+            case .failure(_):
+               print("unable to request event")
             }
         }
     }
