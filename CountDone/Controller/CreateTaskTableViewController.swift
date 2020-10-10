@@ -17,8 +17,9 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTimeTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var TagTextField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var TagLabel: UILabel!
+    @IBOutlet weak var tagName: UILabel!
     
     @IBOutlet weak var navigationBar: UINavigationItem!
     
@@ -28,8 +29,10 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     private var datePicker : UIDatePicker!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         doneBarButton.isEnabled = false
         //Disable Done button if titletextfield is empty
         titleTextField.addTarget(self, action: #selector(textFileIsNotEmpty), for:.editingChanged)
@@ -43,6 +46,8 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         
     }
     
+    
+    
     //Force all task has a title at least
     @objc func textFileIsNotEmpty(textField: UITextField){
         textField.text = textField.text?.trimmingCharacters(in: .whitespaces)
@@ -52,11 +57,6 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
                 return
         }
         doneBarButton.isEnabled=true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        titleTextField.becomeFirstResponder()
     }
     
     fileprivate func setDatePicker(editMode: Bool) {
@@ -74,17 +74,9 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         datePicker?.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
         dateTimeTextField.inputView = datePicker
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CreateTaskTableViewController.viewTapped(gestureRecognizer:)))
-        
-        view.addGestureRecognizer(tapGesture)
-        
-        dateTimeTextField.inputView = datePicker
+
     }
-    
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer){
-        view.endEditing(true)
-    }
-    
+
     @objc func dateChange(datePicker: UIDatePicker){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm E, d MMM"
@@ -94,7 +86,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     
     @IBAction func done() {
         let title = titleTextField.text!
-        let typeEmoji = TagTextField.text!
+        let typeEmoji = TagLabel.text!
         let taskDescrip = descriptionTextField.text!
         let time = Time(context: CoreDataStack.shared.context)
         time.startDate = datePicker.date as NSDate
@@ -129,13 +121,27 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         dateFormatter.dateFormat = "HH:mm E, d MMM"
         titleTextField.text = task?.title
         descriptionTextField.text = task?.taskDescrip
-        //        let dateTime = calender.date(from: task!.time.startDateComponent)
         let dateTime = task!.taskTime.startDate
         datePicker.setDate(dateTime as Date, animated: false)
         dateTimeTextField.text = dateFormatter.string(from: dateTime as Date)
-        TagTextField.text = task?.typeEmoji
+        
+        let tagList = TagList()
+        
+        tagName.text = tagList.getTag(tagEmoji: task?.typeEmoji ?? "").tagName
+        TagLabel.text = tagList.getTag(tagEmoji: task?.typeEmoji ?? "").tagEmoji
     }
 }
 
-
+extension CreateTaskTableViewController{
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let vc = TagViewController.instantiate()
+            let tagList = TagList()
+            let tag = tagList.getTag(tagEmoji: task?.typeEmoji ?? "")
+            vc.tagViewModel.setTag(tag:tag)
+            vc.tagViewModel.createVC = self
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
 
