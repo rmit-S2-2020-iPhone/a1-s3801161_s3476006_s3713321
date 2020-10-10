@@ -24,5 +24,4 @@ class TabBarController: UITabBarController,Storyboarded {
     }
     
     var coordinator: TabBarCoordinator?
-    
 }

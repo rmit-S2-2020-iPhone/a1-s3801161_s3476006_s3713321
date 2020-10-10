@@ -13,7 +13,7 @@ class EventViewController: UIViewController,Storyboarded {
    
     // MARK: -sidebar delegate
     // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
-    var sideBarDelegate: SideBarDelegate?
+    var delegate: SideBarDelegate?
     
     var coordinator: EventFlow?
     
@@ -47,17 +47,31 @@ class EventViewController: UIViewController,Storyboarded {
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+
         configureSideBar()
-        
     }
+    
+    // MARK: -sidebar
+    // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
+    @objc func handleMenu() {
+        // to link the two controllers
+//                print("menu here")
+        delegate?.handleMenu()
+    }
+    
+    func configureSideBar() {
+        navigationController?.navigationBar.barTintColor = .lightGray
+        navigationController?.navigationBar.barStyle = .blackOpaque
+        
+        //        navigationItem.title = "Menu"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
+    }
+    
     
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
     
-    
-   
     
     func setDateRange(){
         calendar.timeZone = NSTimeZone.local
@@ -124,24 +138,6 @@ class EventViewController: UIViewController,Storyboarded {
             }
         }
     }
-    
-    
-    // MARK: -sidebar
-    // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
-    @objc func handleMenu() {
-        // to link the two controllers
-//        print("menu here")
-        sideBarDelegate?.handleMenu()
-    }
-    
-    func configureSideBar() {
-        navigationController?.navigationBar.barTintColor = .lightGray
-        navigationController?.navigationBar.barStyle = .blackOpaque
-        
-//        navigationItem.title = "Menu"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
-    }
-    
 }
 
 extension EventViewController: CellDelegate{
