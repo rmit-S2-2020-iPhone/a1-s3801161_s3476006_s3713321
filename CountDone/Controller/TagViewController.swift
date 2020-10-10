@@ -8,31 +8,47 @@
 
 import UIKit
 
-class TagViewController: UIViewController {
 
-    var tags:[String:String] = ["🏃":"play"]
+
+class TagViewController: UIViewController,Storyboarded {
+    var coordinator: EventFlow?
     
+    var tagViewModel = TagViewModel()
+    
+    @IBOutlet weak var tblview: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tblview.dataSource = self
+        tblview.delegate = self
+        tblview.reloadData()
     }
-    
-
 
 }
 
-extension TagViewController: UITableViewDataSource,UITabBarDelegate{
+extension TagViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tags.count
+        return tagViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TagCell", for: indexPath) as? TagCell else{
+            return UITableViewCell()
+        }
+        cell.configureTag(tag: tagViewModel.getTagsFor(at: indexPath.row))
         
+        tagViewModel.configureSelect(at: cell, with: indexPath.row)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tblview.cellForRow(at: indexPath)
+        if tagViewModel.singleSelection(selectedCell: cell!,at: indexPath.row){
+            tblview.reloadData()
+            
+        }
+    }
     
+    
+
 }

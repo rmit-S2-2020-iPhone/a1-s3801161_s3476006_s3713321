@@ -10,6 +10,9 @@ import UIKit
 
 class SearchViewCoordinator: Coordinator, EventFlow {
     
+    
+    
+    
     var parentCoordinator: TabBarCoordinator?
     
     var currentCell: TaskTableViewCell?

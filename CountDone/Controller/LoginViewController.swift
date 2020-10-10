@@ -19,14 +19,23 @@ class LoginViewController: UIViewController,Storyboarded {
 //        setupUI()
     }
     
-//    // MARK: - Actions
+    var loginViewModel = LoginViewModel()
+
+    
     @IBAction func login(_ sender: Any) {
+        
+        if loginViewModel.loginVerification(email: "email", password: "password"){
+            //successfully login
+        }else{
+            self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
+        }
+    }
+    
+    
+    @IBAction func StraightIn(_ sender: Any) {
         coordinator?.coordinateToTabBar()
     }
     
-    // MARK: - Properties
-    
-
     
     
 
