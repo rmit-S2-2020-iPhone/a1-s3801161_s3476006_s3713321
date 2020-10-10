@@ -30,6 +30,8 @@
 		3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */; };
 		3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */; };
 		5BF07418164A6D70A75B36CC /* Pods_CountDone_CountDoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F2BE8F8D83E9BD1EF85FA7 /* Pods_CountDone_CountDoneUITests.framework */; };
+		A01C9A2425320D410099088D /* TaskViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C9A2325320D410099088D /* TaskViewModelTest.swift */; };
+		A01C9A262532173D0099088D /* TagViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01C9A252532173D0099088D /* TagViewModelTest.swift */; };
 		A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A033049E252778F300ED53A8 /* TaskViewModel.swift */; };
 		A04FE8B5250B871C00A5836F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8B4250B871C00A5836F /* CoreDataStack.swift */; };
 		A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */; };
@@ -93,6 +95,8 @@
 		3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		564AF1387303A8452450ABBB /* Pods-CountDoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.release.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountDone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A01C9A2325320D410099088D /* TaskViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTest.swift; sourceTree = "<group>"; };
+		A01C9A252532173D0099088D /* TagViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModelTest.swift; sourceTree = "<group>"; };
 		A033049E252778F300ED53A8 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		A04FE8B4250B871C00A5836F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CountDone/CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
 		A04FE8BE250B8B4300A5836F /* Time+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Time+CoreDataClass.swift"; path = "CountDone/Model/Time+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -268,6 +272,8 @@
 			children = (
 				A097870324DC16C4002AB009 /* CountDoneTests.swift */,
 				A097870524DC16C4002AB009 /* Info.plist */,
+				A01C9A2325320D410099088D /* TaskViewModelTest.swift */,
+				A01C9A252532173D0099088D /* TagViewModelTest.swift */,
 			);
 			path = CountDoneTests;
 			sourceTree = "<group>";
@@ -619,6 +625,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */,
+				A01C9A2425320D410099088D /* TaskViewModelTest.swift in Sources */,
+				A01C9A262532173D0099088D /* TagViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
