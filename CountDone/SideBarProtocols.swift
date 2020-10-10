@@ -6,6 +6,6 @@
 //  Copyright © 2020 G33. All rights reserved.
 //
 
-protocol SideBarDelegate: class {
+protocol SideBarDelegate {
     func handleMenu() 
 }

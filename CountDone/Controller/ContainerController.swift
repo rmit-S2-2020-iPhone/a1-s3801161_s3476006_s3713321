@@ -9,10 +9,13 @@
 
 import UIKit
 
-class ContainerController: UIViewController {
+class ContainerController: UIViewController, Storyboarded {
+    
+    var coordinator: MenuFlow?
     
     // MARK: -Properties
     
+//    var eventController: UIViewController!
     var menuController: UIViewController!
     var centerController: UIViewController!
     var isExpanded = false
@@ -32,7 +35,7 @@ class ContainerController: UIViewController {
     
     func configureEventController() {
         let eventController = EventViewController()
-        eventController.delegate = self
+        eventController.sideBarDelegate = self
         centerController = UINavigationController(rootViewController: eventController)
 
         view.addSubview(centerController.view)

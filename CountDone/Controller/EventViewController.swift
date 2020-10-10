@@ -13,9 +13,10 @@ class EventViewController: UIViewController,Storyboarded {
    
     // MARK: -sidebar delegate
     // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
-    var delegate: SideBarDelegate?
+    var sideBarDelegate: SideBarDelegate?
     
     var coordinator: EventFlow?
+    var mcoordinator: MenuFlow?
     
     var selectedDate = Date()
     var dateFrom:Date?
@@ -47,7 +48,7 @@ class EventViewController: UIViewController,Storyboarded {
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         configureSideBar()
     }
     
@@ -56,7 +57,7 @@ class EventViewController: UIViewController,Storyboarded {
     @objc func handleMenu() {
         // to link the two controllers
 //                print("menu here")
-        delegate?.handleMenu()
+        sideBarDelegate?.handleMenu()
     }
     
     func configureSideBar() {
