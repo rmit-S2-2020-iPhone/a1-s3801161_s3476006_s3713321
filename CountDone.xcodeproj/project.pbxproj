@@ -13,6 +13,9 @@
 		0168FF182529D74A00B42921 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF172529D74A00B42921 /* ProfileViewController.swift */; };
 		0168FF1A2529D75A00B42921 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF192529D75A00B42921 /* ProfileCoordinator.swift */; };
 		0168FF1C2529E0D900B42921 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */; };
+		01A23CD5253126DC00913E4B /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD4253126DC00913E4B /* MenuController.swift */; };
+		01A23CD72531ADCB00913E4B /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD62531ADCB00913E4B /* ContainerController.swift */; };
+		01A23CD92531C4E200913E4B /* SideBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD82531C4E200913E4B /* SideBarProtocols.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
 		3D70BB582503B91C003E9824 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D70BB562503B91C003E9824 /* Time.swift */; };
@@ -76,6 +79,9 @@
 		0168FF172529D74A00B42921 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0168FF192529D75A00B42921 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
+		01A23CD4253126DC00913E4B /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		01A23CD62531ADCB00913E4B /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
+		01A23CD82531C4E200913E4B /* SideBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarProtocols.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
 		3D70BB562503B91C003E9824 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 		3D558D2D2504062F00E8D160 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				01A23CD82531C4E200913E4B /* SideBarProtocols.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -303,6 +310,8 @@
 				A09450802501590A00CD77E0 /* PopupViewController.swift */,
 				0168FF172529D74A00B42921 /* ProfileViewController.swift */,
 				0168FF1B2529E0D900B42921 /* ProfileViewCell.swift */,
+				01A23CD4253126DC00913E4B /* MenuController.swift */,
+				01A23CD62531ADCB00913E4B /* ContainerController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -584,11 +593,14 @@
 				0168FF1A2529D75A00B42921 /* ProfileCoordinator.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
 				A09786F424DC16C2002AB009 /* CountDone.xcdatamodeld in Sources */,
+				01A23CD5253126DC00913E4B /* MenuController.swift in Sources */,
 				015085F1252DE1B300610275 /* Profile.swift in Sources */,
+				01A23CD92531C4E200913E4B /* SideBarProtocols.swift in Sources */,
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				0168FF1C2529E0D900B42921 /* ProfileViewCell.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
+				01A23CD72531ADCB00913E4B /* ContainerController.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
 				3D70BB582503B91C003E9824 /* Time.swift in Sources */,

@@ -10,6 +10,11 @@ import UIKit
 import CoreData
 
 class EventViewController: UIViewController,Storyboarded {
+   
+    // MARK: -sidebar delegate
+    // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
+    var sideBarDelegate: SideBarDelegate?
+    
     var coordinator: EventFlow?
     
     var selectedDate = Date()
@@ -17,7 +22,7 @@ class EventViewController: UIViewController,Storyboarded {
     var dateTo:Date?
     var calendar = Calendar.current
     
-    
+
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -42,6 +47,8 @@ class EventViewController: UIViewController,Storyboarded {
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        configureSideBar()
         
     }
     
@@ -116,6 +123,23 @@ class EventViewController: UIViewController,Storyboarded {
                 self.reloadData()
             }
         }
+    }
+    
+    
+    // MARK: -sidebar
+    // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
+    @objc func handleMenu() {
+        // to link the two controllers
+//        print("menu here")
+        sideBarDelegate?.handleMenu()
+    }
+    
+    func configureSideBar() {
+        navigationController?.navigationBar.barTintColor = .lightGray
+        navigationController?.navigationBar.barStyle = .blackOpaque
+        
+//        navigationItem.title = "Menu"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
     }
     
 }
@@ -210,5 +234,7 @@ extension EventViewController{
         
     }
 }
+
+
 
 
