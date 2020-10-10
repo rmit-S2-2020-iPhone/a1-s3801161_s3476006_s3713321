@@ -104,6 +104,8 @@
 		A097870A24DC16C4002AB009 /* CountDoneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountDoneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A097870E24DC16C4002AB009 /* CountDoneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneUITests.swift; sourceTree = "<group>"; };
 		A097871024DC16C4002AB009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0D0C4BC253059E500CDB67A /* CountDoneUITests1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDoneUITests1.swift; sourceTree = "<group>"; };
+		A0D0C4BE253059E500CDB67A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9FF17D8073316FFB7DB5A4B /* Pods-CountDone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.release.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.release.xcconfig"; sourceTree = "<group>"; };
 		B347B854577C06A6BE82972A /* Pods-CountDoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.debug.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1972635DC595E9F4B1D819 /* Pods-CountDone-CountDoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.release.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				A09786EA24DC16C2002AB009 /* CountDone */,
 				A097870224DC16C4002AB009 /* CountDoneTests */,
 				A097870D24DC16C4002AB009 /* CountDoneUITests */,
+				A0D0C4BB253059E500CDB67A /* CountDoneUITests1 */,
 				A09786E924DC16C2002AB009 /* Products */,
 				FD2CACBEBA872974C3317F33 /* Pods */,
 				393274C48A6230CF42D1CEDF /* Frameworks */,
@@ -281,6 +284,15 @@
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		A0D0C4BB253059E500CDB67A /* CountDoneUITests1 */ = {
+			isa = PBXGroup;
+			children = (
+				A0D0C4BC253059E500CDB67A /* CountDoneUITests1.swift */,
+				A0D0C4BE253059E500CDB67A /* Info.plist */,
+			);
+			path = CountDoneUITests1;
 			sourceTree = "<group>";
 		};
 		FD2CACBEBA872974C3317F33 /* Pods */ = {
