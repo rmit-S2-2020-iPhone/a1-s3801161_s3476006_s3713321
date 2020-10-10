@@ -14,9 +14,8 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     var viewModel: CreateTaskViewModel?
     //deletable
     let tagList = TagList()
-    var task: Task?
-    var editMode = false
-    private var datePicker : UIDatePicker!
+    let queue = DispatchQueue.main
+   
     //deletable
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -33,26 +32,35 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         
         let vc = CreateTaskTableViewController.instantiate()
         vc.viewModel = CreateTaskViewModel(editMode: editMode)
+        
+        return vc
+    }
+    
+    static func instantiate(editMode: Bool, task:Task) -> CreateTaskTableViewController{
+        
+        let vc = CreateTaskTableViewController.instantiate(editMode: editMode)
+        vc.viewModel?.task = task
         return vc
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel!.vc = self
         
         doneBarButton.isEnabled = false
         //Disable Done button if titletextfield is empty
         titleTextField.addTarget(self, action: #selector(textFileIsNotEmpty), for:.editingChanged)
         
-        setDatePicker(editMode: editMode)
+        setDatePicker()
+        descriptionTextField.text = "I am a Task!"
         
-        if editMode == true{
+        if viewModel!.editMode == true{
             doneBarButton.isEnabled = true
             setEditDetail()
         }
         
+        
     }
-    
-    
     
     //Force all task has a title at least
     @objc func textFileIsNotEmpty(textField: UITextField){
@@ -65,7 +73,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         doneBarButton.isEnabled=true
     }
     
-    fileprivate func setDatePicker(editMode: Bool) {
+    fileprivate func setDatePicker() {
         dateTimeTextField.tintColor = UIColor .clear
         dateTimeTextField.text = viewModel?.dateTimeText
         viewModel?.datePicker.addTarget(self, action: #selector(CreateTaskTableViewController.dateChange(datePicker:)), for: .valueChanged)
@@ -73,10 +81,21 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     }
 
     @objc func dateChange(datePicker: UIDatePicker){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm E, d MMM"
-        dateTimeTextField.text = dateFormatter.string(from: viewModel!.datePicker.date)
+        viewModel?.updateTime()
+        dateTimeTextField.text = viewModel?.dateTimeText
         view.endEditing(true)
+    }
+    
+    
+    
+    func now(_ closure: () -> Void) {
+        closure()
+    }
+    
+    func later(_ closure: @escaping () -> Void) {
+        queue.asyncAfter(deadline: .now() + 3) {
+            closure()
+        }
     }
     
     @IBAction func done() {
@@ -84,49 +103,56 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
         let typeEmoji = TagLabel.text!
         let taskDescrip = descriptionTextField.text!
         let time = Time(context: CoreDataStack.shared.context)
-        time.startDate = self.viewModel!.datePicker.date as NSDate
+        time.startDate = viewModel!.datePicker.date as NSDate
         
-        if editMode{
-            task?.title = title
-            task?.taskDescrip = taskDescrip
-            task?.typeEmoji = typeEmoji
-            task?.taskTime = time
+        
+        if viewModel!.editMode{
+            let _ = viewModel?.done(title: title, typeEmoji: typeEmoji, taskDescrip: taskDescrip, time: time)
+            self.coordinator?.backToEvent()
         }else{
-            let task = Task(context: CoreDataStack.shared.context)
-            task.title = title
-            let tagName = tagList.getTag(tagEmoji: typeEmoji)
-            task.typeEmoji = tagName.tagName
+           
             
-            task.taskDescrip = taskDescrip
-            task.taskTime = time
-            task.checked = false
-            print(task.typeEmoji!)
+            now {
+                guard let _ = self.viewModel?.done(title: title, typeEmoji: typeEmoji, taskDescrip: taskDescrip, time: time)
+                    else{
+                        print("sorry")
+                        return
+                }
+            }
+            let alert = UIAlertController(title: "", message: "uploading your task to api......", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+            let when = DispatchTime.now() + 3
+            DispatchQueue.main.asyncAfter(deadline: when){
+                alert.dismiss(animated: true, completion: nil)
+            }
+            later{
+                self.coordinator?.backToEvent()
+                
+            }
+           
+       
             
         }
-        CoreDataStack.shared.save()
-        coordinator?.backToEvent()
+        
+        
+        
     }
-    
-    func editModeOn(){
-        editMode = true
-    }
+
     
     func setEditDetail(){
-        let cell = coordinator?.currentCell!
-        let task = cell?.task!
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm E, d MMM"
+        let task = viewModel?.task!
+        
+      
         titleTextField.text = task?.title
         descriptionTextField.text = task?.taskDescrip
         let dateTime = task!.taskTime.startDate
-        datePicker.setDate(dateTime as Date, animated: false)
-        dateTimeTextField.text = dateFormatter.string(from: dateTime as Date)
+        viewModel!.datePicker.setDate(dateTime as Date, animated: false)
+        viewModel?.updateTime()
+        dateTimeTextField.text = viewModel?.dateTimeText
         
-        let tagList = TagList()
-        
-        tagName.text = tagList.getTag(tagEmoji: task?.typeEmoji ?? "").tagName
-        TagLabel.text = tagList.getTag(tagEmoji: task?.typeEmoji ?? "").tagEmoji
+        tagName.text = TagList.getter.getTag(tagEmoji: task?.typeEmoji ?? "").tagName
+        TagLabel.text = TagList.getter.getTag(tagEmoji: task?.typeEmoji ?? "").tagEmoji
     }
 }
 
@@ -135,7 +161,7 @@ extension CreateTaskTableViewController{
         if indexPath.section == 1 {
             let vc = TagViewController.instantiate()
            
-            let tag = tagList.getTag(tagEmoji: task?.typeEmoji ?? "")
+            let tag = tagList.getTag(tagEmoji: viewModel?.task?.typeEmoji ?? "")
             vc.tagViewModel.setTag(tag:tag)
             vc.tagViewModel.createVC = self
             navigationController?.pushViewController(vc, animated: true)

@@ -30,7 +30,7 @@ public class NetWorkUtil{
     
     func readCurrentId() -> Int {
 //        return delegate.currentId
-        return 1
+        return 3
     }
     
     func dateToString(date:NSDate) -> String{

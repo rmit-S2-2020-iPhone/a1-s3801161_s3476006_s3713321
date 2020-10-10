@@ -61,6 +61,7 @@ struct TaskViewModel {
     
     func deleteTask(at index: Int){
         let task = tasks[index]
+        EventManager.manager.deleteEvent(id: Int(task.id) )
         CoreDataStack.shared.delete(task)
     }
     

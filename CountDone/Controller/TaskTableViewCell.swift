@@ -76,6 +76,7 @@ class TaskTableViewCell: UITableViewCell {
         }else{
             checkBoxDelegate?.changeButton(checked: true, index: indexPath!)
         }
+        EventManager.manager.updateEvent(task: task!)
         CoreDataStack.shared.save()
     }
     
