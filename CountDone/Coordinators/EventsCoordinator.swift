@@ -10,18 +10,19 @@ import UIKit
 protocol EventFlow: class {
     var currentCell: TaskTableViewCell?{get set}
     var parentCoordinator:TabBarCoordinator?{get set}
-    
     func add_item()
     func edit_item(task: Task)
     func delete_item()
     func showDetails()
     func backToEvent()
-
+    func logout()
 }
 
 
 
 class EventCoordinator: Coordinator, EventFlow {
+    
+    
     func tagSelection(tag: String) {
         
     }
@@ -50,7 +51,7 @@ class EventCoordinator: Coordinator, EventFlow {
     
     func start() {
         let eventController = EventViewController.instantiate()
-        
+
         eventController.coordinator = self
         controllerDic = ["eventController":eventController]
         navigationController?.pushViewController(eventController, animated: false)
@@ -84,5 +85,12 @@ class EventCoordinator: Coordinator, EventFlow {
         
     }
 
+    func logout() {
+//        let vc = LoginViewController.instantiate()
+        let start  = StartCoordinator(navigationController: navigationController!)
+        start.start()
+//        vc.coordinator = self.parentCoordinator as? StartFlow
+//        navigationController?.present(vc, animated: false, completion: nil )
+    }
     func delete_item() {}
 }

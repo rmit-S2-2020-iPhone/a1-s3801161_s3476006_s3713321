@@ -186,29 +186,15 @@ extension EventViewController{
     }
     
     func transitionToNewContent(_  menuType: MenuType){
-        let title = String(describing: menuType).capitalized
-        self.title = title
+        
         
         topView?.removeFromSuperview()
         switch menuType{
         case .home:
-            let view = UIView()
-            view.backgroundColor = .yellow
-            view.frame = self.view.bounds
-            self.view.addSubview(view)
-            self.topView = view
-        case .profile:
-            let view = UIView()
-            view.backgroundColor = .blue
-            view.frame = self.view.bounds
-            self.view.addSubview(view)
-            self.topView = view
+            print()
         case .logout:
-            let view = UIView()
-            view.backgroundColor = .black
-            view.frame = self.view.bounds
-            self.view.addSubview(view)
-            self.topView = view
+            coordinator?.logout()
         }
+
     }
 }
