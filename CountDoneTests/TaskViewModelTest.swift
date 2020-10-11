@@ -18,7 +18,7 @@ class TaskViewModelTest: XCTestCase {
     var dateTime1:Date?
     var dateTime2:Date?
     override func setUp() {
-        taskViewModel = TaskViewModel()
+//        taskViewModel = TaskViewModel()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         someDateTime = formatter.date(from: "2016/10/08 22:31")
 

@@ -12,6 +12,10 @@ import CoreData
 class EventViewController: UIViewController,Storyboarded {
     var coordinator: EventFlow?
     
+    let transition = SlideTransit()
+    var topView:UIView?
+    
+    
     var taskViewModel = TaskViewModel()
     
     @IBOutlet weak var addButton: UIButton!
@@ -40,6 +44,7 @@ class EventViewController: UIViewController,Storyboarded {
     @IBAction func AddItem(_ sender: Any) {
         coordinator?.add_item()
     }
+    
     
     func setTableView(){
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -156,3 +161,54 @@ extension EventViewController{
 }
 
 
+extension EventViewController:UIViewControllerTransitioningDelegate{
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isPresneting = true
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.isPresneting = false
+        return transition
+    }
+}
+
+extension EventViewController{
+    @IBAction func didTapMenu(_ sender: Any) {
+        guard let  menuVC = storyboard?.instantiateViewController(withIdentifier: "MenuViewController")  as? MenuViewController else {return}
+        menuVC.didTapMenuType = {menuType in
+            self.transitionToNewContent(menuType)
+        }
+        menuVC.modalPresentationStyle = .overCurrentContext
+        menuVC.transitioningDelegate = self
+        self.present(menuVC, animated: true, completion: nil)
+        
+    }
+    
+    func transitionToNewContent(_  menuType: MenuType){
+        let title = String(describing: menuType).capitalized
+        self.title = title
+        
+        topView?.removeFromSuperview()
+        switch menuType{
+        case .home:
+            let view = UIView()
+            view.backgroundColor = .yellow
+            view.frame = self.view.bounds
+            self.view.addSubview(view)
+            self.topView = view
+        case .profile:
+            let view = UIView()
+            view.backgroundColor = .blue
+            view.frame = self.view.bounds
+            self.view.addSubview(view)
+            self.topView = view
+        case .logout:
+            let view = UIView()
+            view.backgroundColor = .black
+            view.frame = self.view.bounds
+            self.view.addSubview(view)
+            self.topView = view
+        }
+    }
+}

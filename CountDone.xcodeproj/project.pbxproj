@@ -51,6 +51,8 @@
 		A0D0C4CD25316D2700CDB67A /* TagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0C4CC25316D2700CDB67A /* TagViewModel.swift */; };
 		A0D0C4CF25317DE700CDB67A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0C4CE25317DE700CDB67A /* LoginViewModel.swift */; };
 		A0D0C4D12531A62000CDB67A /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0C4D02531A61F00CDB67A /* Tag.swift */; };
+		A0EF38CB2532A90400F87D6E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38CA2532A90400F87D6E /* MenuViewController.swift */; };
+		A0EF38CD2532B16900F87D6E /* SlideTransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38CC2532B16900F87D6E /* SlideTransit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,8 @@
 		A0D0C4CC25316D2700CDB67A /* TagViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewModel.swift; sourceTree = "<group>"; };
 		A0D0C4CE25317DE700CDB67A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A0D0C4D02531A61F00CDB67A /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		A0EF38CA2532A90400F87D6E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		A0EF38CC2532B16900F87D6E /* SlideTransit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTransit.swift; sourceTree = "<group>"; };
 		A9FF17D8073316FFB7DB5A4B /* Pods-CountDone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.release.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.release.xcconfig"; sourceTree = "<group>"; };
 		B347B854577C06A6BE82972A /* Pods-CountDoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.debug.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1972635DC595E9F4B1D819 /* Pods-CountDone-CountDoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.release.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				A094507E250133CF00CD77E0 /* CreateTaskTableViewController.swift */,
 				A0D0C4C8253093E000CDB67A /* TagViewController.swift */,
 				A0D0C4CA25314CAA00CDB67A /* TagViewCell.swift */,
+				A0EF38CA2532A90400F87D6E /* MenuViewController.swift */,
+				A0EF38CC2532B16900F87D6E /* SlideTransit.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A0D0C4CF25317DE700CDB67A /* LoginViewModel.swift in Sources */,
+				A0EF38CD2532B16900F87D6E /* SlideTransit.swift in Sources */,
 				A0D0C4CD25316D2700CDB67A /* TagViewModel.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,
@@ -613,6 +620,7 @@
 				A09786EC24DC16C2002AB009 /* AppDelegate.swift in Sources */,
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
+				A0EF38CB2532A90400F87D6E /* MenuViewController.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
 				A07A0D6124FFEA5000B118A4 /* DetailsTableViewController.swift in Sources */,
