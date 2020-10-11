@@ -38,13 +38,12 @@ class EventViewController: UIViewController,Storyboarded {
     var taskViewModels = [TaskViewModel]()
     var tasks = [Task]()
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         reloadData()
     }
-    
+
     
     override func viewDidLoad() {
         
@@ -54,9 +53,8 @@ class EventViewController: UIViewController,Storyboarded {
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        
     }
+    
     var sideBarDelegate: SideBarDelegate?
     
     // MARK: -sidebar
@@ -153,6 +151,7 @@ class EventViewController: UIViewController,Storyboarded {
             sideBarDelegate?.handleMenu()
         }
     }
+    
 }
 
 extension EventViewController: CellDelegate{
@@ -245,6 +244,7 @@ extension EventViewController{
         
     }
 }
+
 
 
 

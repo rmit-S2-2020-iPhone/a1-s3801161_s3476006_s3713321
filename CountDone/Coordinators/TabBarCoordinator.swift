@@ -35,7 +35,7 @@ class TabBarCoordinator: Coordinator {
         searchCoordinator!.parentCoordinator = self
         
         let profileNavigationController = UINavigationController()
-        profileNavigationController.tabBarItem = UITabBarItem.init(title: "Profile", image: #imageLiteral(resourceName: "search"), tag:2)
+        profileNavigationController.tabBarItem = UITabBarItem.init(title: "Profile", image: #imageLiteral(resourceName: "profile"), tag:2)
         profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController)
         profileCoordinator!.parentCoordinator = self
         

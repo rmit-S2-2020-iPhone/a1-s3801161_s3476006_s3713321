@@ -16,17 +16,23 @@ class MenuController: UIViewController, Storyboarded {
     // MARK: -Properties
     
     var coordinator: MenuFlow?
+    var ecoordinator: EventFlow?
     
     var userButton: UIButton!
     var tagButton: UIButton!
     @IBOutlet weak var menuView: UIView!
     
     // MARK: -Init
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        configureTableView()
     }
+    
+    @IBAction func back() {
+        ecoordinator?.backToEvent()
+    }
+//        configureTableView()
+
     
     
 //    // MARK: -Handlers
