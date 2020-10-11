@@ -53,6 +53,10 @@
 		A0D0C4D12531A62000CDB67A /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D0C4D02531A61F00CDB67A /* Tag.swift */; };
 		A0EF38CB2532A90400F87D6E /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38CA2532A90400F87D6E /* MenuViewController.swift */; };
 		A0EF38CD2532B16900F87D6E /* SlideTransit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38CC2532B16900F87D6E /* SlideTransit.swift */; };
+		A0EF38D12532F93000F87D6E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38D02532F93000F87D6E /* ProfileViewModel.swift */; };
+		A0EF38D32532F93B00F87D6E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38D22532F93B00F87D6E /* ProfileCoordinator.swift */; };
+		A0EF38D52532F95000F87D6E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38D42532F95000F87D6E /* ProfileViewController.swift */; };
+		A0EF38D72532F95600F87D6E /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38D62532F95500F87D6E /* ProfileViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +132,10 @@
 		A0D0C4D02531A61F00CDB67A /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		A0EF38CA2532A90400F87D6E /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A0EF38CC2532B16900F87D6E /* SlideTransit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTransit.swift; sourceTree = "<group>"; };
+		A0EF38D02532F93000F87D6E /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewModel.swift; path = "../../../../ios assign profile/a1-s3801161_s3476006_s3713321/CountDone/ViewModel/ProfileViewModel.swift"; sourceTree = "<group>"; };
+		A0EF38D22532F93B00F87D6E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileCoordinator.swift; path = "../../../../ios assign profile/a1-s3801161_s3476006_s3713321/CountDone/Coordinators/ProfileCoordinator.swift"; sourceTree = "<group>"; };
+		A0EF38D42532F95000F87D6E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "../../../../ios assign profile/a1-s3801161_s3476006_s3713321/CountDone/Controller/ProfileViewController.swift"; sourceTree = "<group>"; };
+		A0EF38D62532F95500F87D6E /* ProfileViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewCell.swift; path = "../../../../ios assign profile/a1-s3801161_s3476006_s3713321/CountDone/Controller/ProfileViewCell.swift"; sourceTree = "<group>"; };
 		A9FF17D8073316FFB7DB5A4B /* Pods-CountDone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.release.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.release.xcconfig"; sourceTree = "<group>"; };
 		B347B854577C06A6BE82972A /* Pods-CountDoneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.debug.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1972635DC595E9F4B1D819 /* Pods-CountDone-CountDoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.release.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,6 +209,7 @@
 				3D78DC9324F042D7000060FA /* EventsCoordinator.swift */,
 				3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */,
 				3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */,
+				A0EF38D22532F93B00F87D6E /* ProfileCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 		A033049D252778C400ED53A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A0EF38D02532F93000F87D6E /* ProfileViewModel.swift */,
 				A033049E252778F300ED53A8 /* TaskViewModel.swift */,
 				A0D0C4CC25316D2700CDB67A /* TagViewModel.swift */,
 				A0D0C4CE25317DE700CDB67A /* LoginViewModel.swift */,
@@ -323,6 +333,8 @@
 				A0D0C4CA25314CAA00CDB67A /* TagViewCell.swift */,
 				A0EF38CA2532A90400F87D6E /* MenuViewController.swift */,
 				A0EF38CC2532B16900F87D6E /* SlideTransit.swift */,
+				A0EF38D42532F95000F87D6E /* ProfileViewController.swift */,
+				A0EF38D62532F95500F87D6E /* ProfileViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -588,6 +600,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0EF38D72532F95600F87D6E /* ProfileViewCell.swift in Sources */,
 				3D000F572531DC1100AF620D /* EventManager.swift in Sources */,
 				3DA2999024F1703200F24FF7 /* CalenderCoordinator.swift in Sources */,
 				3DA2998C24F0D72A00F24FF7 /* SearchViewController.swift in Sources */,
@@ -608,7 +621,9 @@
 				3D78DC9024F03EE9000060FA /* TabBarCoordinator.swift in Sources */,
 				3D000F582531DC1100AF620D /* NetworkUtil.swift in Sources */,
 				3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */,
+				A0EF38D12532F93000F87D6E /* ProfileViewModel.swift in Sources */,
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
+				A0EF38D52532F95000F87D6E /* ProfileViewController.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A0D0C4CF25317DE700CDB67A /* LoginViewModel.swift in Sources */,
 				A0EF38CD2532B16900F87D6E /* SlideTransit.swift in Sources */,
@@ -621,6 +636,7 @@
 				3D78DC9424F042D7000060FA /* EventsCoordinator.swift in Sources */,
 				3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */,
 				A0EF38CB2532A90400F87D6E /* MenuViewController.swift in Sources */,
+				A0EF38D32532F93B00F87D6E /* ProfileCoordinator.swift in Sources */,
 				A04FE8C5250B8B4300A5836F /* Task+CoreDataProperties.swift in Sources */,
 				3D78DC8724F0170A000060FA /* AppCoordinator.swift in Sources */,
 				A07A0D6124FFEA5000B118A4 /* DetailsTableViewController.swift in Sources */,
