@@ -11,31 +11,40 @@ import XCTest
 class CountDoneUITests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+       
         continueAfterFailure = false
+        let de = UserDefaults.standard
+        de.set(0, forKey: "userId")
 
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
+    
 
     override func tearDown() {
         
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func test_Login(){
+        
     }
 
     func testMainView_ChangeDateToDisplay(){
             
             let app = XCUIApplication()
-            app.buttons["Get Stared"].tap()
-            
+            let date = Date()
+        
+            let format = DateFormatter()
+            format.dateFormat = "d MMM"
+            let buttondate = format.string(from: date)
+            format.dateFormat = "d"
+            var buttondate2 = (Int)(format.string(from: date))!
+            buttondate2 -= 1
+        
             let todayNavigationBar = app.navigationBars["Today"]
             XCTAssert(todayNavigationBar.exists)
-            todayNavigationBar.buttons["9 Oct"].tap()
-            app.collectionViews/*@START_MENU_TOKEN@*/.staticTexts["8"]/*[[".cells.staticTexts[\"8\"]",".staticTexts[\"8\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+            todayNavigationBar.buttons[buttondate].tap()
+            app.collectionViews.staticTexts["\(buttondate2)"].tap()
             app.buttons["Save"].tap()
             let yesterdayNivigationBar = app.navigationBars["Yesterday"].otherElements["Yesterday"]
             XCTAssert(yesterdayNivigationBar.exists)
@@ -45,7 +54,6 @@ class CountDoneUITests: XCTestCase {
     func testMainView_NewTaskWithoutTitle(){
         
         let app = XCUIApplication()
-        app.buttons["Get Stared"].tap()
         app.buttons["add"].tap()
         let doneButton = app.navigationBars["Create task"].buttons["Done"]
         XCTAssertFalse(doneButton.isEnabled)
@@ -55,9 +63,10 @@ class CountDoneUITests: XCTestCase {
     func testMainView_NewTaskWithTitle(){
         
         let app = XCUIApplication()
-        app.buttons["Get Stared"].tap()
+        
         app.buttons["add"].tap()
         let titleTextField = app.tables/*@START_MENU_TOKEN@*/.textFields["Title"]/*[[".cells.textFields[\"Title\"]",".textFields[\"Title\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        titleTextField.tap()
         titleTextField.typeText("xx")
         
         let doneButton = app.navigationBars["Create task"].buttons["Done"]
@@ -66,14 +75,15 @@ class CountDoneUITests: XCTestCase {
     
     
     func testMainView_CreateAndDeleteTask(){
-//        testMainView_CreateTask()
+        
         let app = XCUIApplication()
         let newTaskTitle = "NewTaskTest"
         let tablesQuery = app.tables
-        app.buttons["Get Stared"].tap()
+        
         app.buttons["add"].tap()
         
         let titleTextField = tablesQuery.textFields["Title"]
+        titleTextField.tap()
         titleTextField.typeText(newTaskTitle)
         
         
@@ -91,6 +101,9 @@ class CountDoneUITests: XCTestCase {
         XCTAssertFalse(newTaskCell.exists)
         
     }
+    
+    
+    
     
     
 }
