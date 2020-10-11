@@ -45,4 +45,10 @@ class DetailsTableViewController: UITableViewController,Storyboarded {
         coordinator?.edit_item(task: task!)
     }
    
+    @IBAction func deleteTask(_ sender: Any) {
+        CoreDataStack.shared.context.delete(task!)
+        let task = self.task!
+        EventManager.manager.deleteEvent(id: Int(task.id))
+        coordinator?.backToEvent()
+    }
 }
