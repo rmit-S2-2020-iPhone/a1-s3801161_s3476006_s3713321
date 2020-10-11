@@ -538,10 +538,14 @@
                         <viewLayoutGuide key="safeArea" id="BXF-8K-qAW"/>
                     </view>
                     <navigationItem key="navigationItem" id="qZG-sb-6qG"/>
+                    <connections>
+                        <outlet property="passWordField" destination="P7t-EB-Wnx" id="AKy-6O-jXE"/>
+                        <outlet property="userNameField" destination="xiz-VO-qej" id="N7O-yi-ucf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnv-8I-Iy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894.375" y="-638.02816901408448"/>
+            <point key="canvasLocation" x="548" y="-630"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="hST-fv-haL">
@@ -599,7 +603,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZh-5X-KWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632" y="288"/>
+            <point key="canvasLocation" x="-216" y="162"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="rBi-wK-l7x">

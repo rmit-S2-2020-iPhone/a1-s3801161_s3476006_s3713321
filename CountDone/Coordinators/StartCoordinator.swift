@@ -22,7 +22,7 @@ class StartCoordinator: Coordinator, StartFlow {
     }
     
     func start() {
-        print("start")
+        
         let loginViewController = LoginViewController.instantiate()
         loginViewController.coordinator = self
         
