@@ -93,7 +93,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     }
     
     func later(_ closure: @escaping () -> Void) {
-        queue.asyncAfter(deadline: .now() + 3) {
+        queue.asyncAfter(deadline: .now() + 1) {
             closure()
         }
     }
@@ -121,7 +121,7 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
             }
             let alert = UIAlertController(title: "", message: "uploading your task to api......", preferredStyle: .alert)
             self.present(alert, animated: true, completion: nil)
-            let when = DispatchTime.now() + 3
+            let when = DispatchTime.now() + 1
             DispatchQueue.main.asyncAfter(deadline: when){
                 alert.dismiss(animated: true, completion: nil)
             }
@@ -129,9 +129,6 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
                 self.coordinator?.backToEvent()
                 
             }
-           
-       
-            
         }
         
         

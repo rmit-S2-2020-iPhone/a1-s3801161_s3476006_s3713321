@@ -32,13 +32,19 @@ class EventManager{
         { (result) in
             switch result{
             case .success(let response):
-               
-                let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
-                guard let results = parsedResult as? [[String:Any]]
-                    else{
-                        return
+                
+                if(response.statusCode == 500){
+                    self.requestEvent()
                 }
-                self.sync(eventList: results)
+                else{
+                    let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    guard let results = parsedResult as? [[String:Any]]
+                        else{
+                            return
+                    }
+                    self.sync(eventList: results)
+                    
+                }
               
                 
             case .failure(_):
@@ -51,7 +57,13 @@ class EventManager{
         eventProvider.request(.deleteEvent(id: id)){ (result) in
             switch result{
             case .success(let response):
-                print(response.statusCode)
+                if(response.statusCode != 204){
+                    self.deleteEvent(id: id)
+                }
+                else{
+                    print(response.statusCode)
+                    
+                }
             case .failure(let error):
                 print(error)
             }
@@ -72,9 +84,15 @@ class EventManager{
         eventProvider.request(.updateEvent(id: Int(task.id), checked: task.checked, taskDescription: task.taskDescrip!, title: task.title, typeEmoji: task.typeEmoji!, taskTime: task.taskTime)){ (result) in
             switch result{
             case .success(let response):
-                let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
-                let result = parsedResult as! [String:Any]
-                print(result)
+                if(response.statusCode == 500){
+                    self.updateEvent(task: task)
+                }
+                else{
+                    let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
+                    let result = parsedResult as! [String:Any]
+                    print(result)
+                    
+                }
 //                self.quickSync(event_id: id, userDict: result)
             case .failure(let error):
                 print(error)
@@ -83,15 +101,27 @@ class EventManager{
     }
     public func createEvent(checked:Bool, taskDescription: String, title: String, typeEmoji: String, taskTime: Time) -> Int{
         var statisCode = 0
+        
+        let task = Task(context: self.context)
+        task.checked = checked
+        task.taskDescrip = taskDescription
+        task.title = title
+        task.typeEmoji = typeEmoji
+        task.taskTime = taskTime
+        try! self.context.save()
         eventProvider.request(.createEvent(checked: checked, taskDescription: taskDescription, title: title, typeEmoji: typeEmoji, taskTime: taskTime)){ (result) in
             switch result{
             case .success(let response):
-                if(response.statusCode < 300){
+                if(response.statusCode == 500){
+                    let code = self.createEvent(checked:checked, taskDescription: taskDescription, title: title, typeEmoji: typeEmoji, taskTime: taskTime)
+                    statisCode = code
+                }
+                else if(response.statusCode < 300){
                     let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
                     let result = parsedResult as! [String:Any]
                     print(result)
                     
-                    self.quickSync(event_id: result["id"] as! Int, userDict: result)
+                    self.quickSync(event_id: result["id"] as! Int, task: task)
                     statisCode = 200
                     
                 }
@@ -127,20 +157,8 @@ class EventManager{
         try! self.context.save()
     }
     
-    private func quickSync(event_id: Int, userDict: [String:Any]){
-        var event:Task
-        event = Task(context: self.context)
-        event.id = Int64(event_id as Int)
-        event.checked = userDict["checked"] as! Bool
-        //to do parse true and false inapi to event
-        event.taskTime =  Time(context: self.context)
-        let timeString = userDict["startDatetime"] as! String
-        event.taskTime.startDate = try! NetWorkUtil.util.StringToDate(dateString: timeString)
-        //to-do: parse time in event to taskTime
-        event.taskDescrip = userDict["taskDescription"] as? String
-        event.typeEmoji = userDict["typeEmoji"] as? String
-        event.title = userDict["title"] as! String
-        //to-do type emoji parsing
+    private func quickSync(event_id: Int, task:Task){
+        task.id = Int64(event_id as Int)
         try! self.context.save()
     }
     
