@@ -87,6 +87,8 @@ class EventCoordinator: Coordinator, EventFlow {
 
     func logout() {
 //        let vc = LoginViewController.instantiate()
+        self.parentCoordinator?.navigationController
+        
         let start  = StartCoordinator(navigationController: navigationController!)
         start.start()
 //        vc.coordinator = self.parentCoordinator as? StartFlow
