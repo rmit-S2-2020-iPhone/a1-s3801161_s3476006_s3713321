@@ -48,7 +48,7 @@ class EventManager{
               
                 
             case .failure(_):
-               print("unable to request event")
+               print("you are offline")
             }
         }
     }
@@ -64,8 +64,8 @@ class EventManager{
                     print(response.statusCode)
                     
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                print("you are offline")
             }
         }
     }
@@ -81,6 +81,8 @@ class EventManager{
     }
     
     public func updateEvent(task: Task){
+        task.id = Int64(-2)
+        try! self.context.save()
         eventProvider.request(.updateEvent(id: Int(task.id), checked: task.checked, taskDescription: task.taskDescrip!, title: task.title, typeEmoji: task.typeEmoji!, taskTime: task.taskTime)){ (result) in
             switch result{
             case .success(let response):
@@ -90,12 +92,13 @@ class EventManager{
                 else{
                     let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
                     let result = parsedResult as! [String:Any]
-                    print(result)
+                    let id = result["id"] as! Int
+                    task.id = Int64(id)
                     
                 }
 //                self.quickSync(event_id: id, userDict: result)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                print("you are off line")
             }
         }
     }
@@ -103,6 +106,8 @@ class EventManager{
         var statisCode = 0
         
         let task = Task(context: self.context)
+        // set it to neagtive 1 before api give back the id
+        task.id = Int64(-1)
         task.checked = checked
         task.taskDescrip = taskDescription
         task.title = title
@@ -128,8 +133,8 @@ class EventManager{
                 else{
                     statisCode = 400
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                print("your are off line")
                 statisCode = 400
             }
         }
