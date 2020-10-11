@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CountDoneTests/CountDoneTests.swift"
-            timestampString = "623385028.336845"
+            timestampString = "624054962.037241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
-            landmarkName = "testApiFectchPositive()"
-            landmarkType = "7">
+            landmarkName = "CountDoneTests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
