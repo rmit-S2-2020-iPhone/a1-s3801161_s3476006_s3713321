@@ -86,11 +86,10 @@ class EventCoordinator: Coordinator, EventFlow {
     }
 
     func logout() {
-//        let vc = LoginViewController.instantiate()
-        let start  = StartCoordinator(navigationController: navigationController!)
-        start.start()
-//        vc.coordinator = self.parentCoordinator as? StartFlow
-//        navigationController?.present(vc, animated: false, completion: nil )
+        
+        parentCoordinator?.logout()
+        
     }
+    
     func delete_item() {}
 }

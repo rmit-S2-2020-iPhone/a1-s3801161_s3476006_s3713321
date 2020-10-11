@@ -9,7 +9,7 @@
 import UIKit
 
 class TabBarCoordinator: Coordinator {
-    let navigationController: UINavigationController
+    var navigationController: UINavigationController
     var eventCoordinator:EventCoordinator?
     var searchCoordinator:SearchViewCoordinator?
     
@@ -49,4 +49,18 @@ class TabBarCoordinator: Coordinator {
 //        coordinate(to:calenderCoordinator)
         
     }
+    
+    
+    func logout(){
+
+        // get a reference to the app delegate
+        let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
+        
+        // call didFinishLaunchWithOptions ... why?
+        let _ = appDelegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
+//        let startCoordinator = StartCoordinator(navigationController: self.navigationController)
+//        coordinate(to: startCoordinator)
+    }
+    
+    
 }
