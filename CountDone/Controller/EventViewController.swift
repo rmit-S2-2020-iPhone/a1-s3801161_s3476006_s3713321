@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class EventViewController: UIViewController,Storyboarded {
     var coordinator: EventFlow?
@@ -15,6 +16,9 @@ class EventViewController: UIViewController,Storyboarded {
     let transition = SlideTransit()
     var topView:UIView?
     
+    var locationManager = CLLocationManager()
+    
+    @IBOutlet weak var locationLabel: UILabel!
     
     var taskViewModel = TaskViewModel()
     
@@ -27,6 +31,12 @@ class EventViewController: UIViewController,Storyboarded {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
         self.taskViewModel.reloadData(in: .main)
         
         self.tableView.reloadData()
@@ -34,6 +44,9 @@ class EventViewController: UIViewController,Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         setTableView()
         setDateRange()
         setCalendarLayer()
@@ -78,7 +91,7 @@ class EventViewController: UIViewController,Storyboarded {
     }
     
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCalendarSegue"{
             let popup = segue.destination as! CalenderViewController
@@ -145,10 +158,10 @@ extension EventViewController{
             taskViewModel.deleteTask(at: indexPath.row)
             taskViewModel.reloadData(in: .main)
             tableView.reloadData()
-//            deleteTask(indexPath: indexPath)
+            //            deleteTask(indexPath: indexPath)
         }
     }
-
+    
     //MARK: Confirgure the checkmark
     func configureCheckmark(for cell: TaskTableViewCell,with item: Task) {
         if item.checked{
@@ -195,6 +208,24 @@ extension EventViewController{
         case .logout:
             coordinator?.logout()
         }
-
+        
     }
+}
+
+extension EventViewController:CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let first  = locations.first else{
+           return
+        }
+        let geoCoder = CLGeocoder()
+        geoCoder.reverseGeocodeLocation(first, completionHandler: { (placemarks, _) -> Void in
+            
+            placemarks?.forEach { (placemark) in
+                
+                if let city = placemark.locality { self.locationLabel.text = "📍\(city)" } // Prints "New York"
+            }
+        })
+//        locationLabel.text = "\(first.coordinate.longitude) | \(first.coordinate.latitude)"
+    }
+    
 }
