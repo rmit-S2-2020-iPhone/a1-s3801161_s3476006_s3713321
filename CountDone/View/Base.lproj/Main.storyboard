@@ -753,11 +753,19 @@
                                     <action selector="AddItem:" destination="cYo-ee-2A0" eventType="touchUpInside" id="a4f-9q-IdX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFC-v9-nwi">
+                                <rect key="frame" x="18" y="529" width="61" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="C45-Qr-204" firstAttribute="trailing" secondItem="Nvw-Vz-HGw" secondAttribute="trailing" constant="18" id="9fD-Rw-mgd"/>
+                            <constraint firstItem="C45-Qr-204" firstAttribute="bottom" secondItem="QFC-v9-nwi" secondAttribute="bottom" constant="18" id="U0y-N1-T9C"/>
                             <constraint firstItem="C45-Qr-204" firstAttribute="bottom" secondItem="Nvw-Vz-HGw" secondAttribute="bottom" constant="18" id="dr3-pu-y7V"/>
+                            <constraint firstItem="QFC-v9-nwi" firstAttribute="leading" secondItem="C45-Qr-204" secondAttribute="leading" constant="18" id="q5g-bl-usD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C45-Qr-204"/>
                     </view>
@@ -777,6 +785,7 @@
                     <connections>
                         <outlet property="addButton" destination="Nvw-Vz-HGw" id="aav-Rz-5ok"/>
                         <outlet property="dateButton" destination="94C-e8-PdH" id="T2v-ah-1AS"/>
+                        <outlet property="locationLabel" destination="QFC-v9-nwi" id="rRe-3Z-tp7"/>
                         <outlet property="navigationbar" destination="hXx-x0-JSR" id="BhU-Mm-js2"/>
                         <outlet property="tableView" destination="0D8-Hn-bic" id="rzC-pi-yl4"/>
                     </connections>
