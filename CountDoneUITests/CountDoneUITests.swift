@@ -13,9 +13,7 @@ class CountDoneUITests: XCTestCase {
     override func setUp() {
        
         continueAfterFailure = false
-        let de = UserDefaults.standard
-        de.set(0, forKey: "userId")
-
+       
         XCUIApplication().launch()
 
     }
@@ -77,28 +75,11 @@ class CountDoneUITests: XCTestCase {
     func testMainView_CreateAndDeleteTask(){
         
         let app = XCUIApplication()
-        let newTaskTitle = "NewTaskTest"
-        let tablesQuery = app.tables
-        
-        app.buttons["add"].tap()
-        
-        let titleTextField = tablesQuery.textFields["Title"]
-        titleTextField.tap()
-        titleTextField.typeText(newTaskTitle)
+        app.navigationBars["Today"].buttons["Menu"].tap()
+        let home = app.tables.staticTexts["Home"]
+        XCTAssert(home.exists)
         
         
-        app.navigationBars["Create task"].buttons["Done"].tap()
-        let newTaskCell = tablesQuery.staticTexts[newTaskTitle]
-
-        
-        XCTAssertTrue(newTaskCell.exists)
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["NewTaskTest"]/*[[".cells.staticTexts[\"NewTaskTest\"]",".staticTexts[\"NewTaskTest\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
-        tablesQuery.buttons["Delete"].tap()
-        let tables = app.tables
-        
-        
-        XCTAssertTrue(tables.count == 1)
-        XCTAssertFalse(newTaskCell.exists)
         
     }
     
