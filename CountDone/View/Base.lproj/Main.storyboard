@@ -770,7 +770,7 @@
                         <viewLayoutGuide key="safeArea" id="C45-Qr-204"/>
                     </view>
                     <navigationItem key="navigationItem" title="Events" largeTitleDisplayMode="always" id="hXx-x0-JSR">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="O63-qQ-Lmk">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="O63-qQ-Lmk">
                             <connections>
                                 <action selector="didTapMenu:" destination="cYo-ee-2A0" id="DtM-Q5-00S"/>
                             </connections>
