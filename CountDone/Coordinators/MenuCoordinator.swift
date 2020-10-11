@@ -22,9 +22,9 @@ class MenuCoordinator: Coordinator, MenuFlow {
     }
     
     func start() {
-        let containerController = ContainerController.instantiate()
-        containerController.coordinator = self
-        navigationController?.pushViewController(containerController, animated: false)
+        let menuController = MenuController.instantiate()
+        menuController.coordinator = self
+        navigationController?.pushViewController(menuController, animated: false)
     }
     
 }

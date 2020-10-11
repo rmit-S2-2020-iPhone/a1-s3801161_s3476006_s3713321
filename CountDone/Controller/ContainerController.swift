@@ -9,6 +9,10 @@
 
 import UIKit
 
+protocol SideBarDelegate: class {
+    func handleMenu()
+}
+
 class ContainerController: UIViewController, Storyboarded {
     
     var coordinator: MenuFlow?
@@ -34,6 +38,7 @@ class ContainerController: UIViewController, Storyboarded {
     // MARK: -Handlers
     
     func configureEventController() {
+        
         let eventController = EventViewController()
         eventController.sideBarDelegate = self
         centerController = UINavigationController(rootViewController: eventController)
@@ -46,19 +51,21 @@ class ContainerController: UIViewController, Storyboarded {
     func configureMenuController() {
         if menuController == nil {
             // add menu controller
+            print("configureMenu")
             menuController = MenuController()
             view.insertSubview(menuController.view, at: 0)
             addChild(menuController)
             menuController.didMove(toParent: self)
-//            print("hi")
+            print("hi")
         }
     }
     
     func showMenu(shouldExpand: Bool) {
         if shouldExpand {
             // show menu
+            print("showMenu")
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
-                    self.centerController.view.frame.origin.x = self.centerController.view.frame.width - 80
+                    self.centerController.view.frame.origin.x = self.centerController.view.frame.width - 60
             }, completion: nil)
         } else {
             // hide menu

@@ -16,7 +16,6 @@
 		01A23CD5253126DC00913E4B /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD4253126DC00913E4B /* MenuController.swift */; };
 		01A23CD72531ADCB00913E4B /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD62531ADCB00913E4B /* ContainerController.swift */; };
 		01A23CD92531C4E200913E4B /* SideBarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CD82531C4E200913E4B /* SideBarProtocols.swift */; };
-		01A23CDE25322D5700913E4B /* MenuOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23CDD25322D5700913E4B /* MenuOptionCell.swift */; };
 		01A23D2A253239AA00913E4B /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A23D29253239AA00913E4B /* MenuCoordinator.swift */; };
 		0AD2DD0AACA17381CC51A9A0 /* Pods_CountDone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7245D736ACC07D02B468CF5E /* Pods_CountDone.framework */; };
 		2CD0CD5CCC4E4CD46628075C /* Pods_CountDoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EED82485197B8AE665BEE842 /* Pods_CountDoneTests.framework */; };
@@ -84,7 +83,6 @@
 		01A23CD4253126DC00913E4B /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		01A23CD62531ADCB00913E4B /* ContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		01A23CD82531C4E200913E4B /* SideBarProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarProtocols.swift; sourceTree = "<group>"; };
-		01A23CDD25322D5700913E4B /* MenuOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuOptionCell.swift; path = Controller/MenuOptionCell.swift; sourceTree = "<group>"; };
 		01A23D29253239AA00913E4B /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		1EABB099C97EA70050430964 /* Pods-CountDone-CountDoneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone-CountDoneUITests.debug.xcconfig"; path = "Target Support Files/Pods-CountDone-CountDoneUITests/Pods-CountDone-CountDoneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		34C4738AF250F64543053FFC /* Pods-CountDone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDone.debug.xcconfig"; path = "Target Support Files/Pods-CountDone/Pods-CountDone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 		3D558D2D2504062F00E8D160 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				01A23CDD25322D5700913E4B /* MenuOptionCell.swift */,
 				01A23CD82531C4E200913E4B /* SideBarProtocols.swift */,
 			);
 			name = Util;
@@ -604,7 +601,6 @@
 				A033049F252778F300ED53A8 /* TaskViewModel.swift in Sources */,
 				012EB85B24F3B67E0008F76C /* TaskTableViewCell.swift in Sources */,
 				A09450812501590A00CD77E0 /* PopupViewController.swift in Sources */,
-				01A23CDE25322D5700913E4B /* MenuOptionCell.swift in Sources */,
 				A094507F250133CF00CD77E0 /* CreateTaskTableViewController.swift in Sources */,
 				0168FF1A2529D75A00B42921 /* ProfileCoordinator.swift in Sources */,
 				A04FE8C2250B8B4300A5836F /* Time+CoreDataClass.swift in Sources */,

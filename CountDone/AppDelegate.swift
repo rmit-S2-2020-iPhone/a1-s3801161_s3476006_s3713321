@@ -20,12 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         window = UIWindow()
         
+        let containerController = ContainerController()
         // MARK: -new container controller added
         window?.makeKeyAndVisible()
-        window?.rootViewController = ContainerController()
+        window?.rootViewController = containerController
         
         coordinator = AppCoordinator(window: window!)
         coordinator?.start()
+        
         return true
     }
 

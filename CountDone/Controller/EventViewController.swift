@@ -9,21 +9,24 @@
 import UIKit
 import CoreData
 
+
 class EventViewController: UIViewController,Storyboarded {
    
     // MARK: -sidebar delegate
     // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
-    var sideBarDelegate: SideBarDelegate?
+    
+    
+
     
     var coordinator: EventFlow?
-    var mcoordinator: MenuFlow?
+//    var mcoordinator: MenuFlow?
+//    var sideBarDelegate: SideBarDelegate?
     
     var selectedDate = Date()
     var dateFrom:Date?
     var dateTo:Date?
     var calendar = Calendar.current
     
-
     
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet var tableView: UITableView!
@@ -35,6 +38,7 @@ class EventViewController: UIViewController,Storyboarded {
     var taskViewModels = [TaskViewModel]()
     var tasks = [Task]()
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
@@ -43,30 +47,33 @@ class EventViewController: UIViewController,Storyboarded {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        setDateRange()        
+//        configureSideBar()
+        setDateRange()
         setCalendarLayer()
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        configureSideBar()
+        
     }
+    var sideBarDelegate: SideBarDelegate?
     
     // MARK: -sidebar
     // reference: https://www.youtube.com/watch?v=dB-vB9uDRCI
-    @objc func handleMenu() {
-        // to link the two controllers
-//                print("menu here")
-        sideBarDelegate?.handleMenu()
-    }
-    
-    func configureSideBar() {
-        navigationController?.navigationBar.barTintColor = .lightGray
-        navigationController?.navigationBar.barStyle = .blackOpaque
-        
-        //        navigationItem.title = "Menu"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
-    }
+//    @objc func handleMenu() {
+//        // to link the two controllers
+//        print("menu here")
+//        sideBarDelegate?.handleMenu()
+//    }
+//
+//    func configureSideBar() {
+//        navigationController?.navigationBar.barTintColor = .lightGray
+//        navigationController?.navigationBar.barStyle = .blackOpaque
+//
+//        //        navigationItem.title = "Menu"
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "search").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenu))
+//    }
     
     
     @IBAction func AddItem(_ sender: Any) {
@@ -137,6 +144,13 @@ class EventViewController: UIViewController,Storyboarded {
                 self.setDateRange()
                 self.reloadData()
             }
+        }
+    }
+    
+    func sidebar(for segue2: UIStoryboardSegue, sender: Any?) {
+        if segue2.identifier == "toSideBarSegue"{
+            _ = segue2.destination as! MenuController
+            sideBarDelegate?.handleMenu()
         }
     }
 }
