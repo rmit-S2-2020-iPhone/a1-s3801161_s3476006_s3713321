@@ -12,13 +12,13 @@ class TabBarCoordinator: Coordinator {
     var navigationController: UINavigationController
     var eventCoordinator:EventCoordinator?
     var searchCoordinator:SearchViewCoordinator?
-    
+    var profileCoordinator:ProfileCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
-
+    
     func start() {
         let tabBarController = TabBarController()
         tabBarController.coordinator = self
@@ -32,21 +32,22 @@ class TabBarCoordinator: Coordinator {
         searchNavigationController.tabBarItem = UITabBarItem.init(title: "Search", image: #imageLiteral(resourceName: "search"), tag:1)
         searchCoordinator = SearchViewCoordinator(navigationController: searchNavigationController)
         searchCoordinator!.parentCoordinator = self
-//
-//        let calenderNavigationController = UINavigationController()
-//        calenderNavigationController.tabBarItem = UITabBarItem(
-//            title: "Calender", image: UIImage(named:"events"), tag:2)
-//        let calenderCoordinator = CalenderCoordinator(navigationController: calenderNavigationController)
+        
+        let profileNavigationController = UINavigationController()
+        profileNavigationController.tabBarItem = UITabBarItem.init(title: "Profile", image: #imageLiteral(resourceName: "profile"), tag:2)
+        profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController)
+        profileCoordinator!.parentCoordinator = self
+        
         tabBarController.viewControllers = [eventNavigationController,
-                                            searchNavigationController]
-//            ,calenderNavigationController]
+                                            searchNavigationController,profileNavigationController]
+        
         
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: true, completion: nil)
         
         coordinate(to:eventCoordinator!)
         coordinate(to:searchCoordinator!)
-//        coordinate(to:calenderCoordinator)
+        coordinate(to:profileCoordinator!)
         
     }
     
@@ -54,14 +55,15 @@ class TabBarCoordinator: Coordinator {
     func logout(){
         UserDefaults.standard.removeObject(forKey: "userId")
         EventManager.manager.emptyEvents()
-
+        
+        sleep(1)
+        
         // get a reference to the app delegate
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         
-        // call didFinishLaunchWithOptions ... why?
+        // call didFinishLaunchWithOptions
         let _ = appDelegate?.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-//        let startCoordinator = StartCoordinator(navigationController: self.navigationController)
-//        coordinate(to: startCoordinator)
+
     }
     
     
