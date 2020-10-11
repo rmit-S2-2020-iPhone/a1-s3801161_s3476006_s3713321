@@ -56,6 +56,8 @@ class TabBarCoordinator: Coordinator {
         UserDefaults.standard.removeObject(forKey: "userId")
         EventManager.manager.emptyEvents()
         
+        sleep(1)
+        
         // get a reference to the app delegate
         let appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
         
