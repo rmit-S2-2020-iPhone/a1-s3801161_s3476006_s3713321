@@ -90,6 +90,7 @@ class EventManager{
                     let parsedResult = try! JSONSerialization.jsonObject(with: response.data, options: JSONSerialization.ReadingOptions.allowFragments)
                     let result = parsedResult as! [String:Any]
                     print(result)
+                    
                     self.quickSync(event_id: result["id"] as! Int, userDict: result)
                     statisCode = 200
                     
