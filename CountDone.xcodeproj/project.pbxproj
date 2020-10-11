@@ -27,6 +27,7 @@
 		3DA2998E24F0D77300F24FF7 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */; };
 		3DA2999024F1703200F24FF7 /* CalenderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */; };
 		3DA2999224F1718400F24FF7 /* CalenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2999124F1718400F24FF7 /* CalenderViewController.swift */; };
+		3DBCDCBB2533274A0010927C /* LoginViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBCDCBA2533274A0010927C /* LoginViewModelTest.swift */; };
 		3DEA45512525D46100F949EB /* UserAccount+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */; };
 		3DEA45522525D46100F949EB /* UserAccount+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */; };
 		5BF07418164A6D70A75B36CC /* Pods_CountDone_CountDoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F2BE8F8D83E9BD1EF85FA7 /* Pods_CountDone_CountDoneUITests.framework */; };
@@ -97,6 +98,7 @@
 		3DA2998D24F0D77300F24FF7 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		3DA2998F24F1703200F24FF7 /* CalenderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCoordinator.swift; sourceTree = "<group>"; };
 		3DA2999124F1718400F24FF7 /* CalenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewController.swift; sourceTree = "<group>"; };
+		3DBCDCBA2533274A0010927C /* LoginViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTest.swift; sourceTree = "<group>"; };
 		3DEA454F2525D46100F949EB /* UserAccount+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3DEA45502525D46100F949EB /* UserAccount+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAccount+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		564AF1387303A8452450ABBB /* Pods-CountDoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountDoneTests.release.xcconfig"; path = "Target Support Files/Pods-CountDoneTests/Pods-CountDoneTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		A097870224DC16C4002AB009 /* CountDoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				3DBCDCBA2533274A0010927C /* LoginViewModelTest.swift */,
 				A097870324DC16C4002AB009 /* CountDoneTests.swift */,
 				A097870524DC16C4002AB009 /* Info.plist */,
 				A01C9A2325320D410099088D /* TaskViewModelTest.swift */,
@@ -648,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBCDCBB2533274A0010927C /* LoginViewModelTest.swift in Sources */,
 				A097870424DC16C4002AB009 /* CountDoneTests.swift in Sources */,
 				A01C9A2425320D410099088D /* TaskViewModelTest.swift in Sources */,
 				A01C9A262532173D0099088D /* TagViewModelTest.swift in Sources */,

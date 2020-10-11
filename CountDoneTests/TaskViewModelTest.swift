@@ -31,6 +31,7 @@ class TaskViewModelTest: XCTestCase {
     }
 
     func testDateFrom_Dateto_Setting() {
+        taskViewModel = TaskViewModel.init()
         
         taskViewModel.selectedDate = someDateTime!
         
