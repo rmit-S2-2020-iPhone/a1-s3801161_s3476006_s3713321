@@ -538,10 +538,87 @@
                         <viewLayoutGuide key="safeArea" id="BXF-8K-qAW"/>
                     </view>
                     <navigationItem key="navigationItem" id="qZG-sb-6qG"/>
+                    <connections>
+                        <outlet property="passWordField" destination="P7t-EB-Wnx" id="AKy-6O-jXE"/>
+                        <outlet property="userNameField" destination="xiz-VO-qej" id="N7O-yi-ucf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnv-8I-Iy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894.375" y="-638.02816901408448"/>
+            <point key="canvasLocation" x="548" y="-630"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="hST-fv-haL">
+            <objects>
+                <tableViewController storyboardIdentifier="MenuViewController" id="v9S-ri-dkP" customClass="MenuViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="UFM-gP-2h7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="GxA-63-ehW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="plI-eg-ahT" rowHeight="70" style="IBUITableViewCellStyleDefault" id="gZD-dh-tIY">
+                                        <rect key="frame" x="0.0" y="35" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gZD-dh-tIY" id="lrp-Uw-Mye">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="plI-eg-ahT">
+                                                    <rect key="frame" x="16" y="0.0" width="288" height="69.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="oFX-KY-nTH" rowHeight="70" style="IBUITableViewCellStyleDefault" id="B8E-eV-LBo">
+                                        <rect key="frame" x="0.0" y="105" width="320" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B8E-eV-LBo" id="q8R-zc-Zba">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oFX-KY-nTH">
+                                                    <rect key="frame" x="16" y="0.0" width="288" height="69.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="v9S-ri-dkP" id="P8I-g6-hCw"/>
+                            <outlet property="delegate" destination="v9S-ri-dkP" id="laO-bO-fWo"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZh-5X-KWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-216" y="162"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="rBi-wK-l7x">
+            <objects>
+                <viewController storyboardIdentifier="HomeViewController" id="9c0-TM-HSM" customClass="HomeViewController" customModule="CountDone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mCD-Wu-bto">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wI0-Z3-V6e"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Zq-H4-UJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1518" y="323"/>
         </scene>
         <!--Events-->
         <scene sceneID="DWy-Ra-SVS">
@@ -696,6 +773,11 @@
                         <viewLayoutGuide key="safeArea" id="C45-Qr-204"/>
                     </view>
                     <navigationItem key="navigationItem" title="Events" largeTitleDisplayMode="always" id="hXx-x0-JSR">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="O63-qQ-Lmk">
+                            <connections>
+                                <action selector="didTapMenu:" destination="cYo-ee-2A0" id="DtM-Q5-00S"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Today" id="94C-e8-PdH">
                             <connections>
                                 <segue destination="GSU-sd-c5H" kind="presentation" identifier="toCalendarSegue" id="7np-fx-gMv"/>

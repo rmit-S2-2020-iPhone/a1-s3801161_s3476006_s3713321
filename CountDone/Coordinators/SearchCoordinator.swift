@@ -9,6 +9,8 @@
 import UIKit
 
 class SearchViewCoordinator: Coordinator, EventFlow {
+   
+    
     
     
     
@@ -61,5 +63,5 @@ class SearchViewCoordinator: Coordinator, EventFlow {
     
     func add_item() {}
     func delete_item() {}
-    
+    func logout() {}
 }

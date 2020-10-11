@@ -20,6 +20,7 @@ public class NetWorkUtil{
     public static let util = NetWorkUtil()
     private let delegate = (UIApplication.shared.delegate as! AppDelegate)
     private let formatter = DateFormatter()
+    public var id:Int?
     let context = CoreDataStack.shared.context
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: UserAccount.fetchRequest())
     let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
@@ -30,7 +31,7 @@ public class NetWorkUtil{
     
     func readCurrentId() -> Int {
 //        return delegate.currentId
-        return 3
+        return id!
     }
     
     func dateToString(date:NSDate) -> String{

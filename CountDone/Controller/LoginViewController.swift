@@ -10,13 +10,27 @@ import UIKit
 
 class LoginViewController: UIViewController,Storyboarded {
     var coordinator: StartFlow?
+    let defaults = UserDefaults.standard
+    
+    @IBOutlet weak var userNameField: UITextField!
+    
+    @IBOutlet weak var passWordField: UITextField!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-        let manager = EventManager.manager
-        manager.emptyEvents()
-        manager.requestEvent()
+    
+        
         super.viewDidLoad()
+//        defaults.set(1, forKey: "userId")
+        let id = defaults.integer(forKey: "userId")
+        print(id)
+        if(id != 0){
+            NetWorkUtil.util.id = id
+            let manager = EventManager.manager
+            manager.requestEvent()
+            toTabBar()
+            
+        }
 //        setupUI()
     }
     
@@ -25,13 +39,31 @@ class LoginViewController: UIViewController,Storyboarded {
     
     @IBAction func login(_ sender: Any) {
         
-        if loginViewModel.loginVerification(email: "email", password: "password"){
+        guard let email = userNameField.text else {
+            self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
+            return
+        }
+        
+        guard let password = passWordField.text else {
+            self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
+            return
+        }
+        
+        print(email)
+        print(password)
+        
+        if loginViewModel.loginVerification(email:email, password: password){
+            
             coordinator?.coordinateToTabBar()
         }else{
             self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
         }
     }
     
+    func toTabBar(){
+         coordinator?.coordinateToTabBar()
+    }
+        
     
     @IBAction func StraightIn(_ sender: Any) {
         coordinator?.coordinateToTabBar()

@@ -10,9 +10,28 @@ import Foundation
 import UIKit
 
 class LoginViewModel{
+    
+    let passWordDict = [
+        "duanxinhuan@163.com": "123a",
+        "lucas@xyz.com": "321b",
+        "cy@pp.com": "456c"
+    ]
+    
+    let userDefault = UserDefaults.standard
 
     func loginVerification(email:String, password:String) -> Bool{
         //verification logic
+        
+        guard let pass = passWordDict[email]
+            else{
+                return false
+       }
+        if pass != password{
+            print(pass)
+            return false
+        }
+        
+        
         
         return true
     }
