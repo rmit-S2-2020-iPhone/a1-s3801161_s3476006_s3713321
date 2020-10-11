@@ -18,6 +18,8 @@ protocol ProfileCellDetail {
 
 class ProfileViewCell: UITableViewCell {
     
+    //cell for profile
+    
     @IBOutlet var photo: UIImageView!
     @IBOutlet var username: UILabel!
     @IBOutlet var email: UILabel!

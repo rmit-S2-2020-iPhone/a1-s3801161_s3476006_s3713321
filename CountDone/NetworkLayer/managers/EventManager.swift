@@ -28,6 +28,7 @@ class EventManager{
     let deleteEvents = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
     
     func requestEvent() {
+        // get event from the api
         eventProvider.request(.readEvents(userId: NetWorkUtil.util.readCurrentId()))
         { (result) in
             switch result{
@@ -54,6 +55,7 @@ class EventManager{
     }
     
     func deleteEvent(id: Int){
+        //delete event from api
         eventProvider.request(.deleteEvent(id: id)){ (result) in
             switch result{
             case .success(let response):
@@ -70,6 +72,7 @@ class EventManager{
         }
     }
     private func sync(eventList: [[String:Any]]) {
+        // sync event list
         
         for e in eventList{
             
@@ -81,6 +84,7 @@ class EventManager{
     }
     
     public func updateEvent(task: Task){
+        // update event to api
         eventProvider.request(.updateEvent(id: Int(task.id), checked: task.checked, taskDescription: task.taskDescrip!, title: task.title, typeEmoji: task.typeEmoji!, taskTime: task.taskTime)){ (result) in
             switch result{
             case .success(let response):
@@ -99,7 +103,9 @@ class EventManager{
             }
         }
     }
+    
     public func createEvent(checked:Bool, taskDescription: String, title: String, typeEmoji: String, taskTime: Time) -> Int{
+        //create event and send it to server
         var statisCode = 0
         
         let task = Task(context: self.context)
@@ -135,7 +141,9 @@ class EventManager{
         }
         return statisCode
     }
+    
     private func syncUser(event_id: Int, userDict: [String:Any]){
+        // sync a user's tasks to core data
         var event:Task
         if (getEventById(id: event_id) != nil){
             event = getEventById(id: event_id)!
@@ -165,6 +173,7 @@ class EventManager{
   
     
     private func getEventById(id : Int) -> Task?{
+        //get a event with event id
         let idRequest = Task.fetchRequest() as NSFetchRequest<Task>
         
         let pred = NSPredicate(format:"id == '\(id)'")

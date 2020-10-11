@@ -24,7 +24,7 @@ class LoginViewModelTest: XCTestCase {
         
     }
     
-    func testLoginPosite() {
+    func testLogin() {
         XCTAssertTrue(log!.loginVerification(email: "duanxinhuan@163.com", password: "123a"))
         XCTAssertFalse(log!.loginVerification(email: "a", password: "b"))
         

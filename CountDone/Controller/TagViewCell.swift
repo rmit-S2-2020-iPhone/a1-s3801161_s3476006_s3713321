@@ -9,6 +9,7 @@
 import UIKit
 
 class TagCell: UITableViewCell {
+    // tag cell
 
     @IBOutlet weak var emoji: UILabel!
     @IBOutlet weak var name: UILabel!

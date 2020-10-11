@@ -23,16 +23,19 @@ class TabBarCoordinator: Coordinator {
         let tabBarController = TabBarController()
         tabBarController.coordinator = self
         
+        // nevigation controller for event
         let eventNavigationController = UINavigationController()
         eventNavigationController.tabBarItem = UITabBarItem.init(title: "Events", image: #imageLiteral(resourceName: "event"), tag:0)
         self.eventCoordinator = EventCoordinator(navigationController: eventNavigationController)
         eventCoordinator!.parentCoordinator = self
         
+        // search controller for tab bar
         let searchNavigationController = UINavigationController()
         searchNavigationController.tabBarItem = UITabBarItem.init(title: "Search", image: #imageLiteral(resourceName: "search"), tag:1)
         searchCoordinator = SearchViewCoordinator(navigationController: searchNavigationController)
         searchCoordinator!.parentCoordinator = self
         
+        //profile controller for tab bar
         let profileNavigationController = UINavigationController()
         profileNavigationController.tabBarItem = UITabBarItem.init(title: "Profile", image: #imageLiteral(resourceName: "profile"), tag:2)
         profileCoordinator = ProfileCoordinator(navigationController: profileNavigationController)

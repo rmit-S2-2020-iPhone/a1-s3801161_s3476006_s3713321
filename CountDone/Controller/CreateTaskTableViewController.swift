@@ -12,11 +12,9 @@ import CoreData
 class CreateTaskTableViewController: UITableViewController,Storyboarded {
     var coordinator: EventFlow?
     var viewModel: CreateTaskViewModel?
-    //deletable
     let tagList = TagList()
     let queue = DispatchQueue.main
    
-    //deletable
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var dateTimeTextField: UITextField!
@@ -99,12 +97,12 @@ class CreateTaskTableViewController: UITableViewController,Storyboarded {
     }
     
     @IBAction func done() {
+        // done and save
         let title = titleTextField.text!
         let typeEmoji = TagLabel.text!
         let taskDescrip = descriptionTextField.text!
         let time = Time(context: CoreDataStack.shared.context)
         time.startDate = viewModel!.datePicker.date as NSDate
-        
         
         if viewModel!.editMode{
             let _ = viewModel?.done(title: title, typeEmoji: typeEmoji, taskDescrip: taskDescrip, time: time)

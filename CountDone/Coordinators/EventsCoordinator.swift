@@ -50,6 +50,7 @@ class EventCoordinator: Coordinator, EventFlow {
     }
     
     func start() {
+        // put view
         let eventController = EventViewController.instantiate()
 
         eventController.coordinator = self
@@ -60,12 +61,14 @@ class EventCoordinator: Coordinator, EventFlow {
 
     
     func add_item(){
+        // add a item
         let vc = CreateTaskTableViewController.instantiate(editMode: false)
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func edit_item(task: Task) {
+        //edit a item
         let vc = CreateTaskTableViewController.instantiate(editMode: true, task: task)
         vc.coordinator = self
         vc.navigationItem.title = "Edit Task"
@@ -73,19 +76,23 @@ class EventCoordinator: Coordinator, EventFlow {
     }
     
     func showDetails(){
+        //show details of a item
         let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func backToEvent() {
+        // go back to a event
         var ec:EventViewController!
         ec = controllerDic["eventController"] as? EventViewController
         navigationController?.popToViewController(ec, animated: false)
         
     }
+    
 
     func logout() {
+        // logout 
         
         parentCoordinator?.logout()
         

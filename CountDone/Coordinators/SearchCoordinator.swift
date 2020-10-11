@@ -24,12 +24,14 @@ class SearchViewCoordinator: Coordinator, EventFlow {
     var controllerDic:[String: UIViewController] = [:]
     
     func showDetails(){
+        // show details of a item
         let vc = DetailsTableViewController.instantiate()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: false)
     }
     
     func backToEvent() {
+        // go back to event page
         var sc: SearchViewController!
         sc = controllerDic["SearchViewController"] as? SearchViewController
         sc.tableView.reloadData()
@@ -37,7 +39,9 @@ class SearchViewCoordinator: Coordinator, EventFlow {
         navigationController?.popToViewController(sc, animated: false)
         
     }
+    
     func edit_item(task: Task) {
+        // edit an item
         let vc = CreateTaskTableViewController.instantiate(editMode: true, task: task)
         vc.coordinator = self
         vc.navigationItem.title = "Edit Task"
@@ -51,8 +55,8 @@ class SearchViewCoordinator: Coordinator, EventFlow {
     }
     
     func start() {
+        // start
         searchViewController = SearchViewController.instantiate()
-        
         
         searchViewController!.coordinator = self
         

@@ -9,6 +9,7 @@
 import UIKit
 
 class SlideTransit: NSObject,UIViewControllerAnimatedTransitioning {
+    // slide for side bar
     var isPresneting = false
     let dimmingView = UIView()
     

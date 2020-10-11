@@ -14,15 +14,10 @@ class ProfileViewController: UIViewController, Storyboarded {
     
     @IBOutlet var tableView: UITableView!
     
-    //    let rest = REST_Request()
-    
-    
-    //    var profileVM = [ProfileViewModel]()
     var profiles = [Student]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     
@@ -33,6 +28,7 @@ class ProfileViewController: UIViewController, Storyboarded {
     }
     
     private func setUpStudent() {
+        // set up student for profile
         profiles.append(Student(name: "Name: \nXinhuan Duan", student_no: "Student No: \ns3713321", hobby: "Hobby: Hanging out \nwith girlfriend", photo: "gouge"))
         profiles.append(Student(name: "Name: \nFanwei Wang", student_no: "Student No: \ns3801161", hobby: "Hobby: \nEat and sleep", photo: "lucas"))
         profiles.append(Student(name: "Name: \nChangyu Yu", student_no: "Student No: \ns3476006", hobby: "Hobby: Gaming", photo: "cy"))
@@ -40,6 +36,7 @@ class ProfileViewController: UIViewController, Storyboarded {
 }
 
 class Student {
+    // student model
     let name: String
     let student_no: String
     let hobby: String
@@ -54,16 +51,9 @@ class Student {
     
 }
 
-//extension ProfileViewController:ProfileCellDelegate{
-//    func profileCustomCell(cell: ProfileViewCell) {
-//        coordinator!.profileCurrentCell = cell
-//    }
-//
-//}
 
 extension ProfileViewController:UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //        return rest.getAccounts().count
         return profiles.count
         
     }

@@ -13,7 +13,7 @@ enum MenuType: Int {
     case logout
 }
 class MenuViewController: UITableViewController {
-
+    //the memu for side bar
     var didTapMenuType: ((MenuType) -> Void)?
     
     override func viewDidLoad() {

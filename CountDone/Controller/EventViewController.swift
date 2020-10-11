@@ -11,6 +11,7 @@ import CoreData
 import CoreLocation
 
 class EventViewController: UIViewController,Storyboarded {
+    // th3e controller for event view
     var coordinator: EventFlow?
     
     let transition = SlideTransit()

@@ -12,16 +12,6 @@ import CoreData
 
 @objc(Task)
 public class Task: NSManagedObject {
-    
-//    init(title: String, typeEmoji:String,description:String,time:Time,checked:Bool) {
-//        self.title = title
-//        self.typeEmoji = typeEmoji
-//        self.taskDescrip = description
-//        self.taskTime = time
-//        self.checked = checked
-//    }
-  
-    
     func toggleCheck(){
         checked = !checked
     }

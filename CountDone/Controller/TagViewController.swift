@@ -11,6 +11,8 @@ import UIKit
 
 
 class TagViewController: UIViewController,Storyboarded {
+    // tagview for user to choose from tags
+    
     var coordinator: EventFlow?
     
     var tagViewModel = TagViewModel()
