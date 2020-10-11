@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+//import CoreLocation
 
 class SearchViewController: UIViewController, Storyboarded {
     
@@ -17,10 +18,22 @@ class SearchViewController: UIViewController, Storyboarded {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var searchBar: UISearchBar!
     
+//    @IBOutlet weak var locationLabel: UILabel!
+//    let locationManager = CLLocationManager()
+    
     var taskViewModel = TaskViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        locationManager.requestAlwaysAuthorization()
+
+//        if CLLocationManager.locationServicesEnabled(){
+//            locationManager.delegate = self
+//            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            locationManager.startUpdatingLocation()
+//        }
+        
         searchBarLayout()
     }
     
@@ -97,3 +110,11 @@ extension SearchViewController{
         return UITableView.automaticDimension
     }
 }
+
+//extension SearchViewController: CLLocationManagerDelegate{
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        if let location = locations.first{
+//            print(location.coordinate)
+//        }
+//    }
+//}
