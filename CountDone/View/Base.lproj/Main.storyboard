@@ -507,16 +507,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeV-LJ-KTF">
-                                <rect key="frame" x="35" y="488" width="47" height="30"/>
-                                <state key="normal" title="Sign in"/>
-                                <connections>
-                                    <action selector="StraightIn:" destination="MEw-Ks-zr1" eventType="touchUpInside" id="0aw-Bd-Klu"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fgo-R0-13U">
                                 <rect key="frame" x="170" y="488" width="115" height="30"/>
                                 <state key="normal" title="Forget Password"/>
+                                <connections>
+                                    <action selector="showPassWord:" destination="MEw-Ks-zr1" eventType="touchUpInside" id="074-Qm-NJJ"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wak-e3-aOM">
                                 <rect key="frame" x="35" y="40" width="250" height="324"/>
@@ -524,8 +520,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IeV-LJ-KTF" firstAttribute="leading" secondItem="BXF-8K-qAW" secondAttribute="leading" constant="35" id="0zE-bq-gEt"/>
-                            <constraint firstItem="IeV-LJ-KTF" firstAttribute="top" secondItem="3Sz-Cy-Ede" secondAttribute="bottom" constant="8" id="7nb-KG-uab"/>
                             <constraint firstItem="Fgo-R0-13U" firstAttribute="top" secondItem="3Sz-Cy-Ede" secondAttribute="bottom" constant="8" id="EBj-DY-WYd"/>
                             <constraint firstItem="wak-e3-aOM" firstAttribute="leading" secondItem="BXF-8K-qAW" secondAttribute="leading" constant="35" id="HBP-ip-qJB"/>
                             <constraint firstItem="3Sz-Cy-Ede" firstAttribute="top" secondItem="wak-e3-aOM" secondAttribute="bottom" constant="10" id="JUb-gB-IYE"/>
@@ -545,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnv-8I-Iy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-630"/>
+            <point key="canvasLocation" x="306" y="-635"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="hST-fv-haL">

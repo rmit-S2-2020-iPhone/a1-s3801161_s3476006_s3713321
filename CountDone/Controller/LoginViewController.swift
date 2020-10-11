@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController,Storyboarded {
     var coordinator: StartFlow?
     let defaults = UserDefaults.standard
+    let manager = EventManager.manager
     
     @IBOutlet weak var userNameField: UITextField!
     
@@ -23,10 +24,11 @@ class LoginViewController: UIViewController,Storyboarded {
         super.viewDidLoad()
 //        defaults.set(1, forKey: "userId")
         let id = defaults.integer(forKey: "userId")
-        print(id)
+        userNameField.text = "duanxinhuan@163.com"
+        passWordField.text = "123a"
+        passWordField.isSecureTextEntry = true
         if(id != 0){
             NetWorkUtil.util.id = id
-            let manager = EventManager.manager
             manager.requestEvent()
             toTabBar()
             
@@ -49,12 +51,17 @@ class LoginViewController: UIViewController,Storyboarded {
             return
         }
         
-        print(email)
-        print(password)
         
         if loginViewModel.loginVerification(email:email, password: password){
+            manager.requestEvent()
+            let alert = loginViewModel.firstLoginAlert()
+            self.navigationController?.present(alert, animated: true, completion: nil)
+            let when = DispatchTime.now() + 2
+            DispatchQueue.main.asyncAfter(deadline: when){
+                alert.dismiss(animated: true, completion: nil)
+                self.toTabBar()
+            }
             
-            coordinator?.coordinateToTabBar()
         }else{
             self.present(loginViewModel.verificationAlert(), animated: true, completion: nil)
         }
@@ -65,8 +72,10 @@ class LoginViewController: UIViewController,Storyboarded {
     }
         
     
-    @IBAction func StraightIn(_ sender: Any) {
-        coordinator?.coordinateToTabBar()
+   
+    @IBAction func showPassWord(_ sender: Any) {
+        let aler = loginViewModel.erificationAlert()
+        self.navigationController?.present(aler, animated: true, completion: nil)
     }
     
     
